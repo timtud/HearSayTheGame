@@ -10,10 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170821143421) do
+ActiveRecord::Schema.define(version: 20170821165829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "handle"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "followers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "follower_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_followers_on_user_id", using: :btree
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.integer  "answer_id"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_questions_on_answer_id", using: :btree
+  end
+
+  create_table "round_questions", force: :cascade do |t|
+    t.integer  "round_id"
+    t.integer  "question_id"
+    t.boolean  "answered"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["question_id"], name: "index_round_questions_on_question_id", using: :btree
+    t.index ["round_id"], name: "index_round_questions_on_round_id", using: :btree
+  end
+
+  create_table "rounds", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "score"
+    t.integer  "correct_count"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["user_id"], name: "index_rounds_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -32,4 +74,9 @@ ActiveRecord::Schema.define(version: 20170821143421) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "followers", "users"
+  add_foreign_key "questions", "answers"
+  add_foreign_key "round_questions", "questions"
+  add_foreign_key "round_questions", "rounds"
+  add_foreign_key "rounds", "users"
 end
