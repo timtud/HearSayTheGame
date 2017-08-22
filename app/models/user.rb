@@ -26,4 +26,15 @@ class User < ApplicationRecord
       b[0] <=> a[0]
     end
   end
+
+  def self.top_players_day
+    board = User.all(:conditions => { :updated_at => (Time.now.midnight - 1.day)..Time.now.midnight}).map do |user|
+      [user.total_score, user.email]
+    end
+    board.sort! do |a,b|
+      b[0] <=> a[0]
+    end
+    board[0..10]
+  end
+
 end
