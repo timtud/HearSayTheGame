@@ -8,8 +8,6 @@ class User < ApplicationRecord
   has_many :rounds
 
 
-
-
   def total_score
     total = 0;
     self.rounds.each do |round|
@@ -18,23 +16,29 @@ class User < ApplicationRecord
     total
   end
 
-  def self.top_players
+  def self.cal_score(array)
+    total = 0;
+    array.each do |round|
+      total += round.score
+    end
+    total
+  end
+
+  def self.top_players(hash = "")
     board = User.all.map do |user|
-      [user.total_score, user.email]
+      if hash == 'day'
+        user_score = User.cal_score(user.rounds.where("created_at >= ?", Time.zone.now.beginning_of_day))
+      elsif hash == 'week'
+        user_score = User.cal_score(user.rounds.where("created_at >= ?", Time.zone.now.beginning_of_week))
+      elsif hash == "month"
+        user_score = User.cal_score(user.rounds.where("created_at >= ?", Time.zone.now.beginning_of_month))
+      else
+        user_score = user.total_score
+      end
+      [user_score, user.email]
     end
     board.sort! do |a,b|
       b[0] <=> a[0]
     end
   end
-
-  def self.top_players_day
-    board = User.all(:conditions => { :updated_at => (Time.now.midnight - 1.day)..Time.now.midnight}).map do |user|
-      [user.total_score, user.email]
-    end
-    board.sort! do |a,b|
-      b[0] <=> a[0]
-    end
-    board[0..10]
-  end
-
 end

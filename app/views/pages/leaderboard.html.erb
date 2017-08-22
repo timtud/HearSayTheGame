@@ -3,8 +3,20 @@
   <%= current_user.total_score %>
 
 <% end %>
-
+all time
 <% User.top_players.each do |user| %>
+<p><%= user[1] %>: <%= user[0] %></p>
+<% end %>
+day
+<% User.top_players("day").each do |user| %>
+<p><%= user[1] %>: <%= user[0] %></p>
+<% end %>
+week
+<% User.top_players("week").each do |user| %>
+<p><%= user[1] %>: <%= user[0] %></p>
+<% end %>
+month
+<% User.top_players("month").each do |user| %>
 <p><%= user[1] %>: <%= user[0] %></p>
 <% end %>
 
