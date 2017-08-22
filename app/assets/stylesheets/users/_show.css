@@ -1,0 +1,13 @@
+#avatar {
+  border-radius: 50%;
+  width: 150;
+  height: 150;
+}
+
+#twitter-bar {
+  background-color: white;
+}
+
+#handle {
+  color: grey;
+}
