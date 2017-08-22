@@ -1,1 +1,11 @@
 <h1>Leaderboard</h1>
+<% if user_signed_in? %>
+  <%= current_user.total_score %>
+
+<% end %>
+
+<% User.top_players.each do |user| %>
+<p><%= user[1] %>: <%= user[0] %></p>
+<% end %>
+
+

@@ -6,4 +6,24 @@ class User < ApplicationRecord
 
   has_many :followers
   has_many :rounds
+
+
+
+
+  def total_score
+    total = 0;
+    self.rounds.each do |round|
+      total += round.score
+    end
+    total
+  end
+
+  def self.top_players
+    board = User.all.map do |user|
+      [user.total_score, user.email]
+    end
+    board.sort! do |a,b|
+      b[0] <=> a[0]
+    end
+  end
 end
