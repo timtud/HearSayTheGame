@@ -1,2 +1,13 @@
 <h1>Question Page</h1>
+<%= link_to "start new game" , rounds_path() , :method=> :post%>
+<% rqst = @round.round_questions.where(answered: false).first%>
+<h3>
+<%= rqst.question.content %>
+</h3>
+<%  @answers.each do |answer|%>
+<p><%= answer.name %></p>
 
+<% end %>
+
+<%= link_to "next question" , round_path(@round) , :method=> :put%>
+<h1><%= rqst.question.answer.name %></h1>
