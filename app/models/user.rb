@@ -8,8 +8,6 @@ class User < ApplicationRecord
   has_many :followers
   has_many :rounds
 
-
-
   def total_score
     total = 0;
     self.rounds.each do |round|
@@ -43,7 +41,7 @@ class User < ApplicationRecord
       b[0] <=> a[0]
     end
   end
-end
+
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
