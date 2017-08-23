@@ -10,7 +10,7 @@ class RoundsController < ApplicationController
       @answers << answer
       @answers.shuffle!
     else
-      redirect_to root_path
+      redirect_to round_show_result_path(@round)
     end
   end
 
@@ -19,8 +19,9 @@ class RoundsController < ApplicationController
     answer = @round.round_questions.where(answered: false).first
     answer.update(answered: true)
     if answer.save
-      redirect_to @round
+      redirect_to round_path(@round)
     else
+      raise
       redirect_to root_path
     end
   end
@@ -35,6 +36,7 @@ class RoundsController < ApplicationController
     if @round.save
       redirect_to @round
     else
+      raise
       redirect_to root_path
     end
   end
@@ -48,5 +50,9 @@ class RoundsController < ApplicationController
       @round.update(score: score)
       @round.save
     end
+  end
+
+  def show_result
+     @round = Round.find(params[:round_id])
   end
 end
