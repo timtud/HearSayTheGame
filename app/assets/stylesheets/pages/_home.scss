@@ -1,21 +1,79 @@
 // Specific CSS for your home-page
 body {
-  background-color: $blue;
 }
 
 .banner {
-  display: flex;
-  justify-content:center;
-  align-items: center;
-  height: 100vh;
+  height: 80vh;
+  background-size: cover;
+  position: relative;
+  background-position: center;
+  h2 {
+    margin:0;
+    padding-top:10px;
+  }
 }
 
-h3{
+h2{
   color:white;
 }
-
 .page-wrapper {
 	max-width: 900px;
 	margin: 0 auto;
 	min-height: calc(100vh - 100px)
+}
+
+.wrap{
+  white-space: nowrap;
+  border: 10px;
+}
+
+.banner-content{
+  white-space: nowrap;
+  margin-top: 140px;
+  margin-right: 200px;
+}
+
+ .btn-hearsay {
+  margin-top: 35px;
+  border: 1px solid #0084b4;
+  padding: 10px 80px 10px 80px;
+  border-radius: 50px;
+  font-size: 30px;
+  width: 300px;
+}
+
+.btn-hearsay-white {
+  background: white;
+  color: #0084b4;
+}
+
+.btn-hearsay-twitter {
+  color: white;
+  background-color: #2795E9;
+}
+
+.btn-hearsay-facebook {
+  color: white;
+  background-color: #2D4373;
+}
+
+.social-icon {
+  margin-right: 10px;
+}
+
+.left-home-div{
+  margin-top: 200px;
+  font-family: 'Baloo Da', cursive;
+  font-size: 50px;
+  color: white;
+  white-space: nowrap;
+  position: absolute;
+  bottom: 30%;
+  left: 9%;
+}
+
+
+.follow-btn:hover {
+  background-color: #E5F2F7;
+  color: #0084b4;
 }
