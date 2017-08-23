@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :followers, only: [:create, :destroy]
 
   resources :rounds, only: [:show, :update, :create] do
+    member do
+      get "check_answer", to: "rounds#check_answer"
+    end
     resources :round_questions, only: [:show, :create, :update]
   end
 
