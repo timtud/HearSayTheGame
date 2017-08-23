@@ -6,7 +6,7 @@
 	 </h3>
 
 	<div class="answer_wrapper">
-		<div class="answer">
+		<div>
 			<%  @answers[0,2].each do |answer| %>
 				<div>
 					<%= link_to answer.name, check_answer_round_path(@round, answer_id: answer.id), remote: true, class: 'btn btn-primary answer' %>
@@ -22,7 +22,7 @@
 		</div>
 
 
-		<div class="answer">
+		<div>
 			<%  @answers[2,2].each do |answer| %>
 				<div>
 					<%= link_to answer.name, check_answer_round_path(@round, answer_id: answer.id), remote: true, class: 'btn btn-primary answer' %>
