@@ -5,9 +5,11 @@
 <%= rqst.question.content %>
 </h3>
 <%  @answers.each do |answer|%>
-<p><%= answer.name %></p>
+<%= link_to answer.name, check_answer_round_path(@round, answer_id: answer.id), remote: true, class: 'btn btn-primary answer' %>
 
 <% end %>
 
 <%= link_to "next question" , round_path(@round) , :method=> :put%>
 <h1><%= rqst.question.answer.name %></h1>
+
+

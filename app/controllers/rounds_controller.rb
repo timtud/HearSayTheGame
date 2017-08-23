@@ -38,4 +38,15 @@ class RoundsController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def check_answer
+    @round = Round.find(params[:id])
+    @answer = @round.round_questions.where(answered: false).first.question.answer
+    @choice = Answer.find(params[:answer_id])
+    if @answer == @choice
+      score = @round.score + 10
+      @round.update(score: score)
+      @round.save
+    end
+  end
 end
