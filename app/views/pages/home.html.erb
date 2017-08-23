@@ -4,8 +4,10 @@
         <div class="banner-content text-center">
           <h2>Guess Tweets. Get Famous.</h2>
           <div>
-          <a class="btn btn-hearsay btn-hearsay-white">
+          <%= link_to rounds_path() , :method=> :post, class: "btn btn-hearsay btn-hearsay-white" do%>
+          <!-- <a class="btn btn-hearsay btn-hearsay-white"> -->
             <span class ="fa fa-play social-icon"></span>Play</a>
+            <% end %>
           </div>
           <div>
           <a class="btn btn-hearsay btn-hearsay-facebook">
