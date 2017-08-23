@@ -28,15 +28,32 @@ h2{
   margin-right: 200px;
 }
 
-.banner-content .btn{
+ .btn-hearsay {
   margin-top: 35px;
-  background-color: white;
-  color: #0084b4;
   border: 1px solid #0084b4;
   padding: 10px 80px 10px 80px;
   border-radius: 50px;
   font-size: 30px;
   width: 300px;
+}
+
+.btn-hearsay-white {
+  background: white;
+  color: #0084b4;
+}
+
+.btn-hearsay-twitter {
+  color: white;
+  background-color: #2795E9;
+}
+
+.btn-hearsay-facebook {
+  color: white;
+  background-color: #2D4373;
+}
+
+.social-icon {
+  margin-right: 10px;
 }
 
 .left-home-div{

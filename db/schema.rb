@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(version: 20170823095444) do
   create_table "round_questions", force: :cascade do |t|
     t.integer  "round_id"
     t.integer  "question_id"
-    t.boolean  "answered"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "answered",    default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["question_id"], name: "index_round_questions_on_question_id", using: :btree
     t.index ["round_id"], name: "index_round_questions_on_round_id", using: :btree
   end
