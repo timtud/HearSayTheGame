@@ -16,10 +16,19 @@
 .tab {
   flex: 1 1 auto;
   text-align: center;
+  text-decoration: none;
 }
 
-.tab-box .tab .active {
+.tab-box.active {
   border-bottom: 3px solid #0084b4;
+}
+
+.tab-box:hover {
+  border-bottom: 3px solid #0084b4;
+}
+
+.tabs a {
+  text-decoration: none;
 }
 
 body {
@@ -45,6 +54,10 @@ body {
 }
 
 .active .tab-number {
+  color: #0084b4;
+}
+
+.tab:hover .tab-number {
   color: #0084b4;
 }
 

@@ -5,7 +5,7 @@ $( document ).ready(function() {
     $(this).addClass('active');
     $('.tab-content').addClass('hidden');
     $($(this).attr('data-target')).removeClass('hidden');
+    $('.tab-box').removeClass('active');
+    $(this).parent().addClass('active');
   });
-
 });
-
