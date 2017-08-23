@@ -1,7 +1,28 @@
-<h1>hello</h1>
-<h2> <%= @round.user.email %></h2>
-<h2> <%= @round.score %></h2>
-<h2> <%= @round.correct_count %>/10</h2>
+<div class="container wrapper text-center">
+<% avatar_url = current_user.picture_url || "http://placehold.it/30x30" %>
 
 
 
+  <div class="tweet">
+    <%= image_tag avatar_url, class: "avatar" %>
+    <div class="tweet-items">
+      <div class="tweet-name">
+        <h2><%= @round.user.email %></h2>
+
+      </div>
+      <div class="tweet-content">
+        <div class="tweet-content-sub">
+          <h3>Score: <%= @round.score %></h2>
+
+        </div>
+        <div class="tweet-content-sub">
+          <h3><%= @round.correct_count %>/10 correct</h2>
+        </div>
+      </div>
+      <div class="tweet-links">
+        <%= link_to "<i class='fa fa-trophy' aria-hidden='true'></i> Leaderboards ".html_safe, pages_leaderboard_path %>
+        <%= link_to "<i class='fa fa-user' aria-hidden='true'></i> Profile ".html_safe, pages_leaderboard_path %>
+      </div>
+    </div>
+  </div>
+</div>
