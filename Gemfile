@@ -16,6 +16,14 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
+gem 'omniauth-facebook'
+
+gem 'cloudinary'
+gem 'better_errors'
+gem 'binding_of_caller'
+
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 
 group :development, :test do
   gem 'pry-byebug'

@@ -1,1 +1,15 @@
 // Specific CSS for your home-page
+body {
+  background-color: $blue;
+}
+
+.banner {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  height: 100vh;
+}
+
+h3{
+  color:white;
+}
