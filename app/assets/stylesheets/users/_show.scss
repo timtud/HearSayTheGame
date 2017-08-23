@@ -1,16 +1,20 @@
 #avatar {
   border-radius: 50%;
-  width: 150;
-  height: 150;
+  width: 100;
+  height: 100;
 }
 
 #twitter-bar {
   background-color: white;
 }
 
-#handle {
+.small-font {
   color: #657786;
   font-size: 14px;
+}
+
+#bio {
+  color: black;
 }
 
 .tab {
@@ -68,6 +72,7 @@ body {
   padding: 5px 25px 5px 25px;
   border-radius: 50px;
   font-size: 16px;
+  text-shadow: none;
 }
 
 .follow-btn:hover {
@@ -79,4 +84,83 @@ body {
   color: black;
   font-size: 22px;
   font-weight: bold;
+}
+
+.score-panel {
+  background-color: white;
+}
+
+.add-top-margin {
+  margin-top: 10px;
+}
+
+/* cards */
+
+.cards .card {
+  margin: 10px;
+  width: 250px;
+}
+
+.card-inline {
+  display: inline;
+}
+
+.card-body {
+  position: relative;
+  height: 100px;
+  background-size: cover;
+  background-color: #1da1f2;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: white;
+}
+
+.card-avatar {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.card-category {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+  text-shadow: 1px 1px grey;
+}
+
+.card-desc {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  text-shadow: 1px 1px grey;
+}
+
+.card-links a:hover {
+  opacity: 0.5;
+}
+
+.small-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+
+.card-name {
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* scorecard */
+
+.scorecard-name {
+  font-size: 14px;
 }
