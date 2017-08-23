@@ -1,21 +1,33 @@
 <% rqst = @round.round_questions.where(answered: false).first%>
 
-<div class="container">
-	<h3 class="text-center">
+<div class="jumbotron">
+	<h3 class="question text-center">
 		<%= rqst.question.content %>
 	 </h3>
 
-	<div class="row">
-	<%  @answers.each do |answer|%><br>
+	<div class="answer_wrapper">
+		<div class="answer">
+			<%  @answers[0,2].each do |answer| %>
+				<div>
+					<%= link_to answer.name, check_answer_round_path(@round, answer_id: answer.id), remote: true, class: 'btn btn-primary answer' %>
+				</div>
+			<% end %>
+		</div>
 
-	<%= link_to answer.name, check_answer_round_path(@round, answer_id: answer.id), remote: true, class: 'btn btn-primary answer' %>
-	<br>
-	<% end %>
 
+		<div class="next-question">
+			<div class="next question col-xs-4">
+				<%= link_to "next question" , round_path(@round) , :method=> :put, class: 'btn btn-primary' %>
+			</div>
+		</div>
+
+
+		<div class="answer">
+			<%  @answers[2,2].each do |answer| %>
+				<div>
+					<%= link_to answer.name, check_answer_round_path(@round, answer_id: answer.id), remote: true, class: 'btn btn-primary answer' %>
+				</div>
+			<% end %>
+		</div>
 	</div>
-
-	<%= link_to "next question" , round_path(@round) , :method=> :put, class: 'btn btn-primary' %>
-
 </div>
-
-

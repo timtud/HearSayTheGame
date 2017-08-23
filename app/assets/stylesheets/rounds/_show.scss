@@ -1,8 +1,52 @@
 // Specific CSS for your home-page
-body {
-  background-color: $blue;
+h3 {
+  color: black;
+  border: 2px solid;
+  border-radius: 16px;
+  padding: 20px;
 }
 
-h3 {
-  color:black;
+.jumbotron {
+  background-color: white;
+  margin-top: 50px;
+  border: 2px solid;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.question {
+  margin-bottom: 50px;
+}
+
+.answer_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border: 2px solid;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.answer {
+  width: 200px;
+  margin-bottom: 10px;
+  box-shadow: 1px 1px #888888;
+}
+
+.btn {
+  background-color: white;
+  opacity: 0.6;
+  color: #999999;
+  font-weight: lighter;
+  border: 1px solid #999999;
+  border-radius: 16px;
+  padding: 10px 15px;
+}
+
+.btn:hover {
+  background-color: white;
+  opacity: 1;
+  color: #999999;
 }
