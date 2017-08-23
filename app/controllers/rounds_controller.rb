@@ -16,14 +16,11 @@ class RoundsController < ApplicationController
 
   def update
     @round = Round.find(params[:id])
-    answer = @round.round_questions.where(answered: false).first
-    answer.update(answered: true)
-    if answer.save
-      redirect_to round_path(@round)
-    else
-      raise
-      redirect_to root_path
-    end
+    # answer = @round.round_questions.where(answered: false).first
+    # answer.update(answered: true)
+    # @round.save
+    redirect_to round_path(@round)
+
   end
 
   def create
@@ -45,14 +42,18 @@ class RoundsController < ApplicationController
     @round = Round.find(params[:id])
     @answer = @round.round_questions.where(answered: false).first.question.answer
     @choice = Answer.find(params[:answer_id])
+    answer = @round.round_questions.where(answered: false).first
+    answer.update(answered: true)
+    answer.save
     if @answer == @choice
       score = @round.score + 10
-      @round.update(score: score)
+      count = @round.correct_count + 1
+      @round.update(score: score, correct_count: count)
       @round.save
     end
   end
 
   def show_result
-     @round = Round.find(params[:round_id])
+    @round = Round.find(params[:round_id])
   end
 end
