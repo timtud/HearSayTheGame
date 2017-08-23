@@ -6,6 +6,13 @@ Devise.setup do |config|
     info_fields: 'email, first_name, last_name',
     image_size: 'square',  # 50x50, guaranteed ratio
     secure_image_url: true
+
+  config.omniauth :twitter, ENV["API_KEY"], ["API_SECRET"],
+    secure_image_url: 'true',
+    image_size: 'original',
+    authorize_params: {
+      force_login: 'true',
+    }
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
