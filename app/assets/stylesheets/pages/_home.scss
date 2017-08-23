@@ -1,15 +1,57 @@
 // Specific CSS for your home-page
 body {
-  background-color: $blue;
 }
 
 .banner {
-  display: flex;
-  justify-content:center;
-  align-items: center;
-  height: 100vh;
+  height: 80vh;
+  background-size: cover;
+  position: relative;
+  background-position: center;
+  h2 {
+    margin:0;
+    padding-top:10px;
+  }
 }
 
-h3{
+h2{
   color:white;
+}
+
+.wrap{
+  white-space: nowrap;
+  border: 10px;
+}
+
+.banner-content{
+  white-space: nowrap;
+  margin-top: 140px;
+  margin-right: 200px;
+}
+
+.banner-content .btn{
+  margin-top: 35px;
+  background-color: white;
+  color: #0084b4;
+  border: 1px solid #0084b4;
+  padding: 10px 80px 10px 80px;
+  border-radius: 50px;
+  font-size: 30px;
+  width: 300px;
+}
+
+.left-home-div{
+  margin-top: 200px;
+  font-family: 'Baloo Da', cursive;
+  font-size: 50px;
+  color: white;
+  white-space: nowrap;
+  position: absolute;
+  bottom: 30%;
+  left: 9%;
+}
+
+
+.follow-btn:hover {
+  background-color: #E5F2F7;
+  color: #0084b4;
 }
