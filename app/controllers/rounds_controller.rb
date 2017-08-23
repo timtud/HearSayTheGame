@@ -19,8 +19,9 @@ class RoundsController < ApplicationController
     answer = @round.round_questions.where(answered: false).first
     answer.update(answered: true)
     if answer.save
-      redirect_to @round
+      redirect_to round_path(@round)
     else
+      raise
       redirect_to root_path
     end
   end
