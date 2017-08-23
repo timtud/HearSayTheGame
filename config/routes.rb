@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     member do
       get "check_answer", to: "rounds#check_answer"
     end
+    get "show_result", to: "rounds#show_result"
     resources :round_questions, only: [:show, :create, :update]
   end
 
