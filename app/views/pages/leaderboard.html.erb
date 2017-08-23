@@ -1,0 +1,74 @@
+<div class="container text-center">
+<h1>Leaderboard</h1>
+<% if user_signed_in? %>
+  <%= current_user.total_score %>
+
+<% end %>
+
+
+  <div class="tabs">
+    <a class="tab active" data-target="#alltime">
+      <h3>All time</h3>
+    </a>
+    <a class="tab" data-target="#monthly">
+      <h3>Monthly</h3>
+    </a>
+    <a class="tab" data-target="#weekly">
+      <h3>Weekly</h3>
+    </a>
+      <a class="tab" data-target="#daily">
+      <h3>Daily</h3>
+    </a>
+  </div>
+
+  <div class="container text-center">
+    <div class="tab-content" id="alltime">
+      <ol>
+        <% User.top_players.each do |user| %>
+          <li><%= user[1] %>: <%= user[0] %></li>
+        <% end %>
+      </ol>
+    </div>
+    <div class="tab-content hidden" id="monthly">
+      <ol>
+        <% User.top_players("month").each do |user| %>
+          <li><%= user[1] %>: <%= user[0] %></li>
+        <% end %>
+      </ol>
+    </div>
+    <div class="tab-content hidden" id="weekly">
+      <ol>
+        <% User.top_players("week").each do |user| %>
+          <li><%= user[1] %>: <%= user[0] %></li>
+        <% end %>
+      </ol>
+    </div>
+    <div class="tab-content hidden" id="daily">
+      <ol>
+        <% User.top_players("day").each do |user| %>
+          <li><%= user[1] %>: <%= user[0] %></li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<% content_for(:after_js) do  %>
+
+<script>
+$(function(){
+
+  $(".tab").on("click", function(e){
+    // Change active tab
+    $(".tab").removeClass('active');
+    $(this).addClass('active');
+    // Hide all tab-content (use class="hidden")
+    $(".tab-content").addClass('hidden');
+    // Show target tab-content (use class="hidden")
+    $($(this).data('target')).removeClass('hidden');
+  });
+
+});
+</script>
+
+<% end %>
