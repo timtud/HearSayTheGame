@@ -16,6 +16,11 @@ body {
 h2{
   color:white;
 }
+.page-wrapper {
+	max-width: 900px;
+	margin: 0 auto;
+	min-height: calc(100vh - 100px)
+}
 
 .wrap{
   white-space: nowrap;
