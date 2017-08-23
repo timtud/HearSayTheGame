@@ -1,0 +1,18 @@
+
+$(document).ready(function(){
+$('.answer').each(function(){
+  console.log(this.text === '<%= @answer.name%>');
+  console.log('<%= @answer.name%>');
+  //console.log(this.removeClass('btn-primary'));
+
+  $(this).removeAttr("href");
+  if (this.text === '<%= @answer.name%>'){
+    $(this).removeClass('btn-primary');
+    $(this).addClass('btn-success');
+  }else if(this.text === '<%= @choice.name%>'){
+    $(this).removeClass('btn-primary');
+    $(this).addClass('btn-danger');
+  }
+
+});
+});
