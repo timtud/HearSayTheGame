@@ -1,5 +1,5 @@
 // Specific CSS for your home-page
-h3 {
+.question h3 {
   color: black;
 }
 
@@ -37,18 +37,18 @@ h3 {
   box-shadow: 1px 1px #888888;
 }
 
-.btn {
-  background-color: white;
-  opacity: 0.6;
-  color: #999999;
-  font-weight: lighter;
-  border: 1px solid #999999;
-  border-radius: 16px;
-  padding: 10px 15px;
-}
+// .btn {
+//   background-color: white;
+//   opacity: 0.6;
+//   color: #999999;
+//   font-weight: lighter;
+//   border: 1px solid #999999;
+//   border-radius: 16px;
+//   padding: 10px 15px;
+// }
 
-.btn:hover {
-  background-color: white;
-  opacity: 1;
-  color: #999999;
-}
+// .btn:hover {
+//   background-color: white;
+//   opacity: 1;
+//   color: #999999;
+// }
