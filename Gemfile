@@ -17,11 +17,16 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'omniauth-facebook'
+gem 'country_select'
+gem 'countries'
 
-gem 'cloudinary'
+gem 'cloudinary', '1.1.7'
+gem 'carrierwave', '~> 0.11.2'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
 gem 'better_errors'
 gem 'binding_of_caller'
-
+gem 'coffee-rails'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 

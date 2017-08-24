@@ -1,47 +1,28 @@
 <div class="container">
-  <div class="row">
-    <div class="row" id="twitter-bar">
-      <div class="col-xs-3">
-        <img id="avatar" class="img-responsive" alt="avatar" src="https://image.flaticon.com/icons/png/512/78/78373.png">
+  <div class="row" id="twitter-bar">
+    <div class="bar-avatar">
+      <%= cl_image_tag user_avatar(current_user), width: 150, height: 150, crop: :fill %>
+    </div>
+    <div class="profile-tabs">
+      <div class="tab-box active">
+        <a class="profile tab active" data-target="#fame">
+          <p class="button-word">Fame</p>
+          <p class="tab-number">1,567</p>
+        </a>
       </div>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <div class="profile-tabs">
-        <div class="col-xs-1">
-          <div class="tab-box active">
-            <a class="profile tab active" data-target="#fame">
-              <p class="button-word">Fame</p>
-              <p class="tab-number">1,567</p>
-            </a>
-          </div>
-        </div>
-        <div class="col-xs-1">
-          <div class="tab-box">
-            <a class="profile tab" data-target="#following">
-              <p class="button-word">Following</p>
-              <p class="tab-number">256</p>
-            </a>
-          </div>
-        </div>
-        <div class="col-xs-1">
-          <div class="tab-box">
-            <a class="profile tab" data-target="#followers">
-              <p class="button-word">Followers</p>
-              <p class="tab-number">2,637</p>
-            </a>
-          </div>
-        </div>
-        <div class="col-xs-1 col-xs-offset-4">
-          <br>
-          <a href="#" class="follow-btn">Follow</a>
-        </div>
+      <div class="tab-box">
+        <a class="profile tab" data-target="#following">
+          <p class="button-word">Following</p>
+          <p class="tab-number">256</p>
+        </a>
       </div>
+      <div class="tab-box">
+        <a class="profile tab" data-target="#followers">
+          <p class="button-word">Followers</p>
+          <p class="tab-number">2,637</p>
+        </a>
+      </div>
+      <a href="#" class="follow-btn">Follow</a>
     </div>
   </div>
   <div class="row">
@@ -62,10 +43,10 @@
             <p><i class="fa fa-link" aria-hidden="true"></i> <%= @user.twitter %></p>
           </div>
           <div class="row small-font">
-            <p><i class="icon-calendar"></i> Joined <%= @user.created_at %></p>
+            <p><i class="icon-calendar"></i> Joined <%= @user.created_at.strftime("%B %Y") %></p>
           </div>
           <div class="row small-font">
-            <p><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <%= link_to 'Edit Profile', edit_user_registration_path(@user)%></p>
+            <p><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <%= link_to 'Edit Profile', edit_user_registration_path %></p>
           </div>
         </div>
       </div>

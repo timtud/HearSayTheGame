@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     get "/users/:id", to: "users#show", as: :user
   end
 
+  mount Attachinary::Engine => "/attachinary"
+
   resources :followers, only: [:create, :destroy]
 
   resources :rounds, only: [:show, :update, :create] do
