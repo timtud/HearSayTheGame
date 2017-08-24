@@ -1,18 +1,16 @@
-
-$(document).ready(function(){
-$('.answer').each(function(){
-  console.log(this.text === '<%= @answer.name%>');
-  console.log('<%= @answer.name%>');
-  //console.log(this.removeClass('btn-primary'));
-
+$('.answer').each(function(i, obj){
   $(this).removeAttr("href");
-  if (this.text === '<%= @answer.name%>'){
-    $(this).removeClass('btn-primary');
-    $(this).addClass('btn-success');
-  }else if(this.text === '<%= @choice.name%>'){
-    $(this).removeClass('btn-primary');
-    $(this).addClass('btn-danger');
+
+  if ($(this).find('.answer-name').text() === '<%= @answer.name %>'){
+    $(this).removeClass('btn-answer');
+    $(this).addClass('btn-answer-green');
+
+  } else if($(this).find('.answer-name').text() === '<%= @choice.name %>'){
+    $(this).removeClass('btn-answer');
+    $(this).addClass('btn-answer-red');
   }
 
 });
-});
+
+$('.next-question').show(1000);
+$(".speech-bubble p").text("<%= @round.score%>");

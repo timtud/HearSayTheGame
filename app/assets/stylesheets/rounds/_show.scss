@@ -1,14 +1,25 @@
 // Specific CSS for your home-page
-.question h3 {
-  color: black;
-}
-
 .jumbotron {
   background-color: white;
   margin-top: 50px;
-  border: 1px solid;
   border-radius: 16px;
   padding: 20px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.8);
+}
+
+.question h3 {
+  color: black;
+  size: 25px;
+}
+
+.question h4 {
+  color: black;
+  size: 20px;
+}
+
+.question h5 {
+  color: black;
+  size: 16px;
 }
 
 .grayer {
@@ -32,23 +43,68 @@
 }
 
 .answer {
-  width: 200px;
+  width: 400px;
   margin-bottom: 10px;
   box-shadow: 1px 1px #888888;
 }
 
-// .btn {
-//   background-color: white;
-//   opacity: 0.6;
-//   color: #999999;
-//   font-weight: lighter;
-//   border: 1px solid #999999;
-//   border-radius: 16px;
-//   padding: 10px 15px;
-// }
+.btn-answer {
+  background-color: white;
+  opacity: 0.6;
+  color: #999999;
+  font-weight: lighter;
+  border: 1px solid #999999;
+  border-radius: 16px;
+  padding: 10px 15px;
+}
 
-// .btn:hover {
-//   background-color: white;
-//   opacity: 1;
-//   color: #999999;
-// }
+.btn-answer:hover {
+  background-color: white;
+  opacity: 1;
+  color: #999999;
+}
+
+.btn-answer-green {
+  background-color: green;
+  opacity: 0.6;
+  color: white;
+  font-weight: lighter;
+  border: 1px solid #999999;
+  border-radius: 16px;
+  padding: 10px 15px;
+
+}
+
+.btn-answer-red {
+  background-color: red;
+  opacity: 0.6;
+  color: white;
+  font-weight: lighter;
+  border: 1px solid #999999;
+  border-radius: 16px;
+  padding: 10px 15px;
+}
+
+.btn-answer-red:hover {
+  color: white;
+  background-color: red;
+}
+
+.btn-answer-green:hover {
+  background-color: green;
+  color: white;
+}
+
+.speech-bubble {
+	position: absolute 50%;
+}
+
+.next-question {
+	display: none;
+}
+
+#next-question {
+	background-color: rgb(66,191,252);
+	color: white;
+
+}

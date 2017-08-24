@@ -1,12 +1,11 @@
 <% rqst = @round.round_questions.where(answered: false).first%>
 
-<div class="jumbotron">
-	
+<div class="jumbotron container">
 	<div class="question">
 		<div style="display:flex;">
 			<%= image_tag "grayer_photo.png", class: "grayer" %>
 			<div style = "margin-left:20px;">
-				<h5>HearSay</h5>
+				<h4>HearSay</h5>
 				<h5>@WhoSaidWhatNow</h5>
 			</div>
 		</div>
@@ -19,7 +18,11 @@
 		<div>
 			<%  @answers[0,2].each do |answer| %>
 				<div>
-					<%= link_to answer.name, check_answer_round_path(@round, answer_id: answer.id), remote: true, class: 'btn btn-primary answer' %>
+					<%= link_to check_answer_round_path(@round, answer_id: answer.id), remote: true, class: 'btn btn-answer answer' do %>
+						<strong class="answer-name"><%= answer.name %></strong>
+						<br />
+						<%= answer.handle  %>
+					<% end %>
 				</div>
 			<% end %>
 		</div>
@@ -27,17 +30,25 @@
 
 		<div class="next-question">
 			<div class="col-xs-4">
-				<%= link_to "next question" , round_path(@round) , :method=> :put, class: 'btn btn-primary' %>
+				<%= link_to "next question" , round_path(@round) , :method=> :put, class: 'btn btn-answer' , id: 'next-question' %>
 			</div>
 		</div>
 
-
+	
 		<div>
 			<%  @answers[2,2].each do |answer| %>
 				<div>
-					<%= link_to answer.name, check_answer_round_path(@round, answer_id: answer.id), remote: true, class: 'btn btn-primary answer' %>
+					<%= link_to check_answer_round_path(@round, answer_id: answer.id), remote: true, class: 'btn btn-answer answer' do %>
+						<strong class="answer-name"><%= answer.name %></strong>
+						<br />
+						<%= answer.handle  %>
+					<% end %>
 				</div>
 			<% end %>
 		</div>
 	</div>
+</div>
+<div class="speech-bubble col-xs-offset-10">
+	<%= image_tag "speech_bubble.png", class: "grayer" %>
+	<p> <%= @round.score %></p>
 </div>
