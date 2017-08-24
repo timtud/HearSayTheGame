@@ -12,10 +12,10 @@
       <br>
       <br>
       <br>
-      <div class="tabs">
+      <div class="profile-tabs">
         <div class="col-xs-1">
           <div class="tab-box active">
-            <a class="tab active" data-target="#fame">
+            <a class="profile tab active" data-target="#fame">
               <p class="button-word">Fame</p>
               <p class="tab-number">1,567</p>
             </a>
@@ -23,7 +23,7 @@
         </div>
         <div class="col-xs-1">
           <div class="tab-box">
-            <a class="tab" data-target="#following">
+            <a class="profile tab" data-target="#following">
               <p class="button-word">Following</p>
               <p class="tab-number">256</p>
             </a>
@@ -31,14 +31,15 @@
         </div>
         <div class="col-xs-1">
           <div class="tab-box">
-            <a class="tab" data-target="#followers">
+            <a class="profile tab" data-target="#followers">
               <p class="button-word">Followers</p>
               <p class="tab-number">2,637</p>
             </a>
           </div>
         </div>
         <div class="col-xs-1 col-xs-offset-4">
-          <a href="#" class="btn btn-primary follow-btn">Follow</a>
+          <br>
+          <a href="#" class="follow-btn">Follow</a>
         </div>
       </div>
     </div>
@@ -48,20 +49,23 @@
       <div class="panel panel-default info add-top-margin">
         <div class="panel-body">
           <div class="row">
-            <h3 id="name">Name</h3>
-            <p class="small-font">@Handle</p>
+            <h3 id="profile"><%= @user.first_name %> <%= @user.last_name %></h3>
+            <p class="small-font">@<%= @user.handle %></p>
           </div>
           <div class="row small-font" id="bio">
-            <p>Bio (with character limit)</p>
+            <p><%= @user.bio %></p>
           </div>
           <div class="row small-font">
-            <p><i class="fa fa-map-marker" aria-hidden="true"></i> Location</p>
+            <p><i class="fa fa-map-marker" aria-hidden="true"></i> <%= @user.location %></p>
           </div>
           <div class="row small-font">
-            <p><i class="fa fa-link" aria-hidden="true"></i> Twitter Link</p>
+            <p><i class="fa fa-link" aria-hidden="true"></i> <%= @user.twitter %></p>
           </div>
           <div class="row small-font">
-            <p><i class="icon-calendar"></i> Date Joined</p>
+            <p><i class="icon-calendar"></i> Joined <%= @user.created_at %></p>
+          </div>
+          <div class="row small-font">
+            <p><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <%= link_to 'Edit Profile', edit_user_registration_path(@user)%></p>
           </div>
         </div>
       </div>
