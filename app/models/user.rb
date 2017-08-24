@@ -8,12 +8,26 @@ class User < ApplicationRecord
   has_many :followers
   has_many :rounds
 
+
   def total_score
     total = 0;
     self.rounds.each do |round|
       total += round.score
     end
     total
+  end
+
+  def player_score(hash = "")
+    if hash == 'day'
+        user_score = User.cal_score(self.rounds.where("created_at >= ?", Time.zone.now.beginning_of_day))
+      elsif hash == 'week'
+        user_score = User.cal_score(self.rounds.where("created_at >= ?", Time.zone.now.beginning_of_week))
+      elsif hash == "month"
+        user_score = User.cal_score(self.rounds.where("created_at >= ?", Time.zone.now.beginning_of_month))
+      else
+        user_score = self.total_score
+    end
+    user_score
   end
 
   def self.cal_score(array)
