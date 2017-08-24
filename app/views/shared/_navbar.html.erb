@@ -1,59 +1,56 @@
 <div class="navbar-wagon">
+
+ <% if user_signed_in? %>
+
+  <div class ="left-navigation">
+        <div class ="left-navigation-links">
+            <span class ="fa fa-home"><%= link_to "Home", "#", class: "navbar-wagon-item navbar-hearsay-link" %>
+            </span></a>
+        </div>
+        <div class="left-navigation-links">
+            <span class ="fa fa-user"><%= link_to "Profile", "#", class: "navbar-wagon-item navbar-hearsay-link" %>
+        </div>
+        <div class="left-navigation-links">
+            <span class ="fa fa-trophy"><%= link_to "Leaderboard", "#", class: "navbar-wagon-item navbar-hearsay-link" %>
+        </div>
+
+      </div>
+
+    <% end %>
+
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= cl_image_tag "sayer_uvz5ns.png" %>
+  <%= link_to root_path, class: "navbar-hearsay-brand" do %>
+    <%= cl_image_tag "SayerNavbar_z6ayp4.png" %>
   <% end %>
 
-  <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
+  <div class="right-navigation">
 
-    <% if user_signed_in? %>
+     <%= link_to "New Game" , rounds_path() , :method=> :post, class:"navbar-wagon-item btn btn-homepage right-navigation-link" %>
 
-      <!-- Links when logged in -->
-      <%= link_to "start new game" , rounds_path() , :method=> :post%>
-      <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+    <!-- Right Navigation -->
+    <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-      <!-- Avatar with dropdown menu -->
-      <div class="navbar-wagon-item">
-        <div class="dropdown">
-          <% avatar_url = current_user.picture_url || "http://placehold.it/30x30" %>
-          <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to user_path(current_user) do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-          </ul>
+      <% if user_signed_in? %>
+
+        <!-- Links when logged in -->
+
+
+        <!-- Avatar with dropdown menu -->
+        <div class="navbar-wagon-item right-navigation-link">
+            <% avatar_url = current_user.picture_url || "http://placehold.it/30x30" %>
+            <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+                <%= link_to destroy_user_session_path, method: :delete, class: "right-navigation-link" do %>
+                  <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+                <% end %>
         </div>
-      </div>
-    <% else %>
-      <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <% end %>
+      <% else %>
+        <!-- Login link (when logged out) -->
+        <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <% end %>
+    </div>
+
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
-      </ul>
-    </div>
   </div>
-</div>
 

@@ -1,18 +1,22 @@
 /* Main navbar */
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: white;
+  background: #FFFFFF;
   transition: all 0.3s ease;
   height: 70px;
   padding: 0px 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 /* Logo */
-.navbar-wagon-brand img {
+.navbar-hearsay-brand img {
   height: 50px;
+  position: absolute;
+  left: 50%;
+  top: 10px;
 }
 
 /* User Avatar */
@@ -29,6 +33,36 @@
   justify-content: space-between;
 }
 
+.left-navigation {
+  align-self: flex-start;
+  display: flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+  height: 100%;
+}
+
+.right-navigation {
+  display: flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+  height: 100%;
+}
+
+.right-navigation-link{
+  margin-left: 10px;
+  font-family: 'Arimo', sans-serif;
+}
+
+.left-navigation-links {
+  color: #13A4EB;
+}
+
+.left-navigation-links:hover{
+  color: red;
+}
+
 /* Basic navbar item */
 .navbar-wagon-item {
   cursor: pointer;
@@ -36,11 +70,35 @@
 }
 
 /* Navbar link */
-.navbar-wagon-link {
-  color: #1DA1F2;
-  font-size: 14px;
+.navbar-hearsay-link {
+  color: #13A4EB;
+  font-size: 18px;
   font-weight: bold;
+  font-family: 'Arimo', sans-serif;
 }
+
+.btn-homepage {
+  padding: 10px 20px 10px 20px;
+  margin: 1px 1px 1px 1px;
+  border:1px solid rgba(255,255,255,0);
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Arimo', sans-serif;
+  font-weight: 300;
+  color: white;
+  text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+  text-align: center;
+  transition: all 0.2s;
+  background-color: #f14e5e;
+}
+
+.btn-homepage:hover {
+  color:white;
+  background-color: #960200;
+}
+
+
 .navbar-wagon-link:hover {
   color: #da552f;
   text-decoration: none;
