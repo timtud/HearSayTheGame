@@ -1,12 +1,6 @@
-<div class="container text-center">
-<h1>Leaderboard</h1>
-<% if user_signed_in? %>
-  <%= current_user.total_score %>
-
-<% end %>
-
-
-  <div class="tabs">
+<div class="container text-center leaderboard">
+  <h1>Leaderboard</h1>
+   <div class="tabs">
     <a class="tab active" data-target="#alltime">
       <h3>All time</h3>
     </a>
@@ -21,34 +15,147 @@
     </a>
   </div>
 
-  <div class="container text-center">
-    <div class="tab-content" id="alltime">
-      <ol>
-        <% User.top_players.each do |user| %>
-          <li><%= user[1] %>: <%= user[0] %></li>
+  <div class=" text-center">
+    <div class="tab-content board" id="alltime">
+      <% board = User.top_players %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="thead">Rank</th>
+            <th class="thead">Username</th>
+            <th class="thead">Score</th>
+          </tr>
+        <% if user_signed_in? %>
+            <tr>
+              <% score = current_user.player_score %>
+              <th class="self">#<%= board.find_index([score,current_user.email]) + 1 %></th>
+              <th class="self" ><%= current_user.email %></th>
+              <th class="self"><%= score %></th>
+            </tr>
+          </thead>
         <% end %>
-      </ol>
+        <tbody>
+          <% board[0..100].each_with_index do |user, index| %>
+            <tr>
+              <% if user_signed_in? && current_user.email == user[1] %>
+                <td class="info">#<%= index+1 %></td>
+                <td class="info" ><%= user[1] %></td>
+                <td class="info"><%= user[0] %></td>
+              <% else %>
+                <td>#<%= index+1 %></td>
+                <td><%= user[1] %></td>
+                <td><%= user[0] %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-    <div class="tab-content hidden" id="monthly">
-      <ol>
-        <% User.top_players("month").each do |user| %>
-          <li><%= user[1] %>: <%= user[0] %></li>
+  </div>
+    <div class="tab-content hidden board" id="monthly">
+      <% board = User.top_players('month') %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="thead">Rank</th>
+            <th class="thead">Username</th>
+            <th class="thead">Score</th>
+          </tr>
+        <% if user_signed_in? %>
+            <tr>
+              <% score = current_user.player_score('month') %>
+              <th class="self">#<%= board.find_index([score,current_user.email]) + 1 %></th>
+              <th class="self" ><%= current_user.email %></th>
+              <th class="self"><%= score %></th>
+            </tr>
+          </thead>
         <% end %>
-      </ol>
+        <tbody>
+          <% board[0..100].each_with_index do |user, index| %>
+            <tr>
+              <% if user_signed_in? && current_user.email == user[1] %>
+                <td class="info">#<%= index+1 %></td>
+                <td class="info" ><%= user[1] %></td>
+                <td class="info"><%= user[0] %></td>
+              <% else %>
+                <td>#<%= index+1 %></td>
+                <td><%= user[1] %></td>
+                <td><%= user[0] %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-    <div class="tab-content hidden" id="weekly">
-      <ol>
-        <% User.top_players("week").each do |user| %>
-          <li><%= user[1] %>: <%= user[0] %></li>
+    <div class="tab-content hidden board" id="weekly">
+      <% board = User.top_players('week') %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="thead">Rank</th>
+            <th class="thead">Username</th>
+            <th class="thead">Score</th>
+          </tr>
+        <% if user_signed_in? %>
+            <tr>
+              <% score = current_user.player_score("week") %>
+              <th class="self">#<%= board.find_index([score,current_user.email]) + 1 %></th>
+              <th class="self" ><%= current_user.email %></th>
+              <th class="self"><%= score %></th>
+            </tr>
+          </thead>
         <% end %>
-      </ol>
+        <tbody>
+          <% board[0..100].each_with_index do |user, index| %>
+            <tr>
+              <% if user_signed_in? && current_user.email == user[1] %>
+                <td class="info">#<%= index+1 %></td>
+                <td class="info" ><%= user[1] %></td>
+                <td class="info"><%= user[0] %></td>
+              <% else %>
+                <td>#<%= index+1 %></td>
+                <td><%= user[1] %></td>
+                <td><%= user[0] %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-    <div class="tab-content hidden" id="daily">
-      <ol>
-        <% User.top_players("day").each do |user| %>
-          <li><%= user[1] %>: <%= user[0] %></li>
+    <div class="tab-content hidden board" id="daily">
+      <% board = User.top_players('day') %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="thead">Rank</th>
+            <th class="thead">Username</th>
+            <th class="thead">Score</th>
+          </tr>
+        <% if user_signed_in? %>
+            <tr>
+              <% score = current_user.player_score('day') %>
+              <th class="self">#<%= board.find_index([score,current_user.email]) + 1 %></th>
+              <th class="self" ><%= current_user.email %></th>
+              <th class="self"><%= score %></th>
+            </tr>
+          </thead>
         <% end %>
-      </ol>
+        <tbody>
+          <% board[0..100].each_with_index do |user, index| %>
+            <tr>
+              <% if user_signed_in? && current_user.email == user[1] %>
+                <td class="info">#<%= index+1 %></td>
+                <td class="info" ><%= user[1] %></td>
+                <td class="info"><%= user[0] %></td>
+              <% else %>
+                <td>#<%= index+1 %></td>
+                <td><%= user[1] %></td>
+                <td><%= user[0] %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
