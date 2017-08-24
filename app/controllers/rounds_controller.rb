@@ -16,25 +16,24 @@ class RoundsController < ApplicationController
 
   def update
     @round = Round.find(params[:id])
-    # answer = @round.round_questions.where(answered: false).first
-    # answer.update(answered: true)
-    # @round.save
     redirect_to round_path(@round)
-
   end
 
   def create
     #Creates 10 random questions
     questions = Question.order("RANDOM()")[0..9]
-    @round = Round.create(user_id: current_user.id, score: 0, correct_count: 0)
+    if user_signed_in?
+      @round = Round.create(user_id: current_user.id, score: 0, correct_count: 0)
+    else
+      @round = Round.create( score: 0, correct_count: 0)
+    end
     questions.each do |q|
       @round.round_questions.create(question: q, answered: false)
     end
     if @round.save
       redirect_to @round
     else
-      raise
-      redirect_to root_path
+      redirect_to @round
     end
   end
 

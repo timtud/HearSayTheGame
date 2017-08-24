@@ -1,5 +1,9 @@
 <div class="container wrapper text-center">
+<% if user_signed_in? %>
 <% avatar_url = current_user.picture_url || "http://placehold.it/30x30" %>
+  <% else %>
+<% avatar_url = "http://placehold.it/30x30" %>
+<% end %>
 
 
 
@@ -7,7 +11,11 @@
     <%= image_tag avatar_url, class: "avatar" %>
     <div class="tweet-items">
       <div class="tweet-name">
-        <h2><%= @round.user.email %></h2>
+        <% if user_signed_in? %>
+          <h2><%= @round.user.email %></h2>
+        <% else %>
+          <h2>Player</h2>
+        <% end %>
 
       </div>
       <div class="tweet-content">
