@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
+  devise_scope :user do
+    get "/users/:id", to: "users#show", as: :user
+  end
 
-  resources :users, only: [:show]
+  mount Attachinary::Engine => "/attachinary"
 
   resources :followers, only: [:create, :destroy]
 

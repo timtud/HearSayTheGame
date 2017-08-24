@@ -8,6 +8,18 @@ class User < ApplicationRecord
   has_many :followers
   has_many :rounds
 
+  has_attachment :photo
+
+  validates_length_of :bio, :maximum => 140, :allow_blank => true
+  validates_length_of :first_name, :maximum => 40
+  validates_length_of :last_name, :maximum => 40, :allow_blank => true
+  validates_length_of :handle, :maximum => 15, :allow_blank => true
+  validates :handle, uniqueness: true
+
+  def country_name
+    country = ISO3166::Country[country_code]
+    country.translations[I18n.locale.to_s] || country.name
+  end
 
   def total_score
     total = 0;
