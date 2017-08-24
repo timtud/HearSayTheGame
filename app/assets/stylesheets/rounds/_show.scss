@@ -1,21 +1,26 @@
 // Specific CSS for your home-page
-h3 {
+.question h3 {
   color: black;
-  border: 2px solid;
-  border-radius: 16px;
-  padding: 20px;
 }
 
 .jumbotron {
   background-color: white;
   margin-top: 50px;
-  border: 2px solid;
+  border: 1px solid;
   border-radius: 16px;
   padding: 20px;
 }
 
+.grayer {
+	width: 100px;
+	height: 100px;
+}
+
 .question {
   margin-bottom: 50px;
+  border: 1px solid;
+  border-radius: 16px;
+  padding: 20px;
 }
 
 .answer_wrapper {
@@ -23,9 +28,6 @@ h3 {
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  border: 2px solid;
-  border-radius: 16px;
-  padding: 20px;
   margin-bottom: 30px;
 }
 
@@ -35,18 +37,18 @@ h3 {
   box-shadow: 1px 1px #888888;
 }
 
-.btn {
-  background-color: white;
-  opacity: 0.6;
-  color: #999999;
-  font-weight: lighter;
-  border: 1px solid #999999;
-  border-radius: 16px;
-  padding: 10px 15px;
-}
+// .btn {
+//   background-color: white;
+//   opacity: 0.6;
+//   color: #999999;
+//   font-weight: lighter;
+//   border: 1px solid #999999;
+//   border-radius: 16px;
+//   padding: 10px 15px;
+// }
 
-.btn:hover {
-  background-color: white;
-  opacity: 1;
-  color: #999999;
-}
+// .btn:hover {
+//   background-color: white;
+//   opacity: 1;
+//   color: #999999;
+// }

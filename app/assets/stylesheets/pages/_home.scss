@@ -3,7 +3,7 @@ body {
 }
 
 .banner {
-  height: 80vh;
+  height: calc(100vh - 50px);
   background-size: cover;
   position: relative;
   background-position: center;
@@ -12,14 +12,16 @@ body {
     padding-top:10px;
   }
 }
+.no-margin {
+  margin: 0 !important;
+}
 
 h2{
   color:white;
 }
 .page-wrapper {
-	max-width: 900px;
 	margin: 0 auto;
-	min-height: calc(100vh - 100px)
+	min-height: calc(100vh - 50px);
 }
 
 .wrap{
