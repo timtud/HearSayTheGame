@@ -68,9 +68,10 @@
     min-height: 150px;
     overflow-y: scroll;
     width: 40vw;
+    border-radius: 0 0 0 16px ;
     border-bottom: 2px solid black;
     border-top: 2px solid black;
-    box-shadow: 0 0 5px rgba(0,0,0,0.8);
+    box-shadow: 0 0 1px rgba(0,0,0,0.8);
   }
   .tab-content p {
     font-size: 30px;
