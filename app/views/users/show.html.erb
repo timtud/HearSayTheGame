@@ -1,33 +1,45 @@
-<div class="container">
-  <div class="row" id="twitter-bar">
-    <div class="bar-avatar">
-      <%= cl_image_tag user_avatar(current_user), width: 150, height: 150, crop: :fill %>
+<div class="container-fluid">
+  <div class="row background-row">
+  </div>
+  <div class="row twitter-bar">
+    <div class="col-xs-offset-1 col-xs-2">
+      <div class="bar-avatar">
+        <%= cl_image_tag user_avatar(current_user), width: 250, height: 250, crop: :fill %>
+      </div>
     </div>
-    <div class="profile-tabs">
+    <div class="col-xs-1">
       <div class="tab-box active">
         <a class="profile tab active" data-target="#fame">
           <p class="button-word">Fame</p>
-          <p class="tab-number">1,567</p>
+          <p class="tab-number"><%= current_user.player_score %></p>
         </a>
       </div>
+    </div>
+    <div class="col-xs-1">
       <div class="tab-box">
         <a class="profile tab" data-target="#following">
           <p class="button-word">Following</p>
           <p class="tab-number">256</p>
         </a>
       </div>
+    </div>
+    <div class="col-xs-1">
       <div class="tab-box">
         <a class="profile tab" data-target="#followers">
           <p class="button-word">Followers</p>
           <p class="tab-number">2,637</p>
         </a>
       </div>
+    </div>
+    <div class="col-xs-offset-3 col-xs-1 btn-spacing">
       <a href="#" class="follow-btn">Follow</a>
     </div>
   </div>
+</div>
+<div class="container add-top-margin">
   <div class="row">
-    <div class="col-sm-3">
-      <div class="panel panel-default info add-top-margin">
+    <div class="col-xs-3">
+      <div class="panel panel-default info">
         <div class="panel-body">
           <div class="row">
             <h3 id="profile"><%= @user.first_name %> <%= @user.last_name %></h3>
@@ -51,10 +63,10 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-9 ">
+    <div class="col-xs-9">
       <div class="tab-content active" id="fame">
         <div class="row">
-          <div class="col-sm-12">
+          <div class="col-xs-12">
             <div class="score-panel add-top-margin">
               <div class="row">
                 <div class="col-xs-2">
