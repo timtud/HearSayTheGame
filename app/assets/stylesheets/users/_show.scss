@@ -1,5 +1,5 @@
 .background-row {
-  background-color: #0084b4;
+  background-color: $blue;
   height: 150px;
 }
 
@@ -20,6 +20,7 @@
   background-color: white;
   height: 80px;
   position: relative;
+  box-shadow: 0 1px 2px #ACACAC;
 }
 
 .small-font {
@@ -37,11 +38,11 @@
 }
 
 .tab-box.active {
-  border-bottom: 3px solid #0084b4;
+  border-bottom: 3px solid $blue;
 }
 
 .tab-box:hover {
-  border-bottom: 3px solid #0084b4;
+  border-bottom: 3px solid $blue;
 }
 
 .tab-box a {
@@ -78,17 +79,17 @@ body {
 }
 
 .active .tab-number {
-  color: #0084b4;
+  color: $blue;
 }
 
 .tab:hover .tab-number {
-  color: #0084b4;
+  color: $blue;
 }
 
 .follow-btn {
   background-color: white;
-  color: #0084b4;
-  border: 1px solid #0084b4;
+  color: $blue;
+  border: 1px solid $blue;
   padding: 5px 25px 5px 25px;
   border-radius: 50px;
   font-size: 16px;
@@ -98,7 +99,7 @@ body {
 
 .follow-btn:hover {
   background-color: #E5F2F7;
-  color: #0084b4;
+  color: $blue;
   text-decoration: none;
 }
 
@@ -125,7 +126,7 @@ body {
   position: relative;
   height: 100px;
   background-size: cover;
-  background-color: #1da1f2;
+  background-color: $blue;
 }
 
 .card-footer {
@@ -167,4 +168,11 @@ body {
 
 .score-panel {
   background-color: white;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+
+.score-panel img {
+  border-radius: 50%;
 }

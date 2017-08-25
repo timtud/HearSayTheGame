@@ -70,12 +70,51 @@
             <div class="score-panel add-top-margin">
               <div class="row">
                 <div class="col-xs-2">
-                  <img alt="avatar" class="small-avatar" src="https://image.flaticon.com/icons/png/512/78/78373.png">
+                  <%= cl_image_tag user_avatar(current_user), width: 70, height: 70, crop: :fill %>
+                </div>
+                <div class="col-xs-8">
+                  <h4 class="card-inline scorecard-name"><%= @user.first_name %> <%= @user.last_name %></h4>
+                  <p class="small-font card-inline">@<%= @user.handle %></p>
+                  <br />
+                  <br>
+                  <p class="card-inline"><i class="fa fa-bar-chart" aria-hidden="true"></i> 87</p>
+                  <p class="card-inline"> <i class="fa fa-check-square-o" aria-hidden="true"></i> 6/10</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="score-panel add-top-margin">
+              <div class="row">
+                <div class="col-xs-2">
+                  <img alt="avatar" class="small-avatar" src="http://alexpoucher.com/wp-content/uploads/2017/04/C8QsNInXUAAyjZQ.jpg">
                 </div>
                 <div class="col-xs-8">
                   <h4 class="card-inline scorecard-name">Name</h4>
                   <p class="small-font card-inline">@Handle</p>
                   <br />
+                  <br>
+                  <p class="card-inline"><i class="fa fa-bar-chart" aria-hidden="true"></i> 87</p>
+                  <p class="card-inline"> <i class="fa fa-check-square-o" aria-hidden="true"></i> 6/10</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="score-panel add-top-margin">
+              <div class="row">
+                <div class="col-xs-2">
+                  <img alt="avatar" class="small-avatar" src="http://alexpoucher.com/wp-content/uploads/2017/04/C8QsNInXUAAyjZQ.jpg">
+                </div>
+                <div class="col-xs-8">
+                  <h4 class="card-inline scorecard-name">Name</h4>
+                  <p class="small-font card-inline">@Handle</p>
+                  <br />
+                  <br>
                   <p class="card-inline"><i class="fa fa-bar-chart" aria-hidden="true"></i> 87</p>
                   <p class="card-inline"> <i class="fa fa-check-square-o" aria-hidden="true"></i> 6/10</p>
                 </div>
