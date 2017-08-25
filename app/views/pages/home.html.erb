@@ -10,18 +10,20 @@
             <% end %>
           </div>
           <div>
-          <a class="btn btn-hearsay btn-hearsay-facebook">
+          <%= link_to user_facebook_omniauth_authorize_path() , :method=> :get, class: "btn btn-hearsay btn-hearsay-facebook" do%>
             <span class ="fa fa-facebook social-icon"></span>Facebook</a>
+            <% end %>
           </div>
           <div>
-          <a class="btn btn-hearsay btn-hearsay-twitter">
+          <%= link_to user_twitter_omniauth_authorize_path() , :method=> :get, class: "btn btn-hearsay btn-hearsay-twitter" do%>
             <span class ="fa fa-twitter social-icon"></span>Twitter</a>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
     <div class="row no-margin">
-      <h1><div class="col-xs-4 left-home-div typewrite" data-period="5" data-type='[ "#WhoSaidWhatNow" ]'>
+      <h1><div class="col-xs-4 left-home-div typewrite" data-period="5" data-type='[ "#WhoSaidWhatNow!" ]'>
         <span class="wrap"></span>
       </div>
       </h1>
