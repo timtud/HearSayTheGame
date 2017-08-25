@@ -33,7 +33,7 @@ class RoundsController < ApplicationController
     if @round.save
       redirect_to @round
     else
-      redirect_to @round
+      redirect_to root_path
     end
   end
 

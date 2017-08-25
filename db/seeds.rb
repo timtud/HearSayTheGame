@@ -42,12 +42,13 @@ seed.each do |k,v|
     name: v[:name],
     handle: v[:handle]
     )
-  answer.save
-  v[:questions].each do |q|
-    Question.create(
-      content: q,
-      answer_id: answer.id
-      )
+  if answer.save
+    v[:questions].each do |q|
+      Question.create(
+        content: q,
+        answer_id: answer.id
+        )
+    end
   end
 end
 p "completed"
