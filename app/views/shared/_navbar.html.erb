@@ -4,14 +4,14 @@
 
   <div class ="left-navigation">
         <div class ="left-navigation-links">
-            <span class ="fa fa-home"><%= link_to "Home", "#", class: "navbar-wagon-item navbar-hearsay-link" %>
+            <span class ="fa fa-home"><%= link_to "Home", root_path, class: "navbar-wagon-item navbar-hearsay-link" %>
             </span></a>
         </div>
         <div class="left-navigation-links">
-            <span class ="fa fa-user"><%= link_to "Profile", "#", class: "navbar-wagon-item navbar-hearsay-link" %>
+            <span class ="fa fa-user"><%= link_to "Profile", user_path(current_user), class: "navbar-wagon-item navbar-hearsay-link" %>
         </div>
         <div class="left-navigation-links">
-            <span class ="fa fa-trophy"><%= link_to "Leaderboard", "#", class: "navbar-wagon-item navbar-hearsay-link" %>
+            <span class ="fa fa-trophy"><%= link_to "Leaderboard", pages_leaderboard_path, class: "navbar-wagon-item navbar-hearsay-link" %>
         </div>
 
       </div>

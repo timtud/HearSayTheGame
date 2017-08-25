@@ -75,6 +75,9 @@
   font-size: 18px;
   font-weight: bold;
   font-family: 'Arimo', sans-serif;
+  &:hover {
+    text-decoration:none;
+  }
 }
 
 .btn-homepage {
@@ -101,7 +104,6 @@
 
 .navbar-wagon-link:hover {
   color: #da552f;
-  text-decoration: none;
 }
 
 /* Dropdown menu */
