@@ -29,7 +29,7 @@
       </div>
       <div class="tweet-links">
         <%= link_to "<i class='fa fa-trophy' aria-hidden='true'></i> Leaderboards ".html_safe, pages_leaderboard_path %>
-        <%= link_to "<i class='fa fa-user' aria-hidden='true'></i> Profile ".html_safe, pages_leaderboard_path %>
+        <%= link_to "<i class='fa fa-user' aria-hidden='true'></i> Profile ".html_safe, user_path(current_user) %>
       </div>
     </div>
   </div>
