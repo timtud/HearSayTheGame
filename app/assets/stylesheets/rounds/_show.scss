@@ -51,9 +51,8 @@
 .btn-answer {
   background-color: white;
   opacity: 0.6;
-  color: #999999;
-  font-weight: lighter;
-  border: 1px solid #999999;
+  color: black;
+  border: 1px solid $gray-lighter;
   border-radius: 16px;
   padding: 10px 15px;
 }
@@ -61,15 +60,14 @@
 .btn-answer:hover {
   background-color: white;
   opacity: 1;
-  color: #999999;
+  color: black;
 }
 
 .btn-answer-green {
   background-color: green;
   opacity: 0.6;
   color: white;
-  font-weight: lighter;
-  border: 1px solid #999999;
+  border: 1px solid $gray-lighter;
   border-radius: 16px;
   padding: 10px 15px;
 
@@ -79,8 +77,7 @@
   background-color: red;
   opacity: 0.6;
   color: white;
-  font-weight: lighter;
-  border: 1px solid #999999;
+  border: 1px solid $gray-lighter;
   border-radius: 16px;
   padding: 10px 15px;
 }
@@ -96,15 +93,63 @@
 }
 
 .speech-bubble {
-	position: absolute 50%;
+	width: 114px * 2;
+	height: 100px * 2;
+	position: absolute;
+	top: 170px;
+	left: 35px;
+	right: 3%;
+	background-image: url('speech_bubble.png');
+	background-size: cover;
+	background-repeat: none;
+	p {
+		position: absolute;
+		top: 75px;
+		left: calc(50% - 10px);
+		color: white;
+		font-size: 50px;
+		font-weight: bolder;
+		line-height: 1;
+	}
 }
 
 .next-question {
 	display: none;
+	position: absolute;
+	top: 70%;
+	right: 10px;
 }
 
 #next-question {
-	background-color: rgb(66,191,252);
+	background-color: $blue;
 	color: white;
+}
 
+.go-to-next-question {
+	display: none;
+}
+
+#score {
+	margin-bottom: -50px;
+}
+
+#bar-column {
+	height: 100vh;
+}
+
+#myProgress {
+  -ms-transform: rotate(270deg); /* IE 9 */
+  -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
+  transform: rotate(270deg);
+  margin-top: 50px;
+  width: 150%;
+  background-color: #ddd;
+  position: absolute;
+  bottom: 67%;
+}
+
+#myBar {
+  width: 1%;
+  height: 40px;
+  background-color: $blue;
 }
