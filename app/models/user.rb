@@ -11,10 +11,10 @@ class User < ApplicationRecord
   has_attachment :photo
 
   validates_length_of :bio, :maximum => 140, :allow_blank => true
-  validates_length_of :first_name, :maximum => 40
+  validates_length_of :first_name, :maximum => 40, :allow_blank => true
   validates_length_of :last_name, :maximum => 40, :allow_blank => true
   validates_length_of :handle, :maximum => 15, :allow_blank => true
-  validates :handle, uniqueness: true
+  validates :handle, uniqueness: true, :allow_blank => true
 
   def country_name
     country = ISO3166::Country[country_code]
