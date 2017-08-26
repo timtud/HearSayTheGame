@@ -65,7 +65,7 @@
 
 .btn-answer-green {
   background-color: green;
-  opacity: 0.6;
+  opacity: 1;
   color: white;
   border: 1px solid $gray-lighter;
   border-radius: 16px;
@@ -75,7 +75,7 @@
 
 .btn-answer-red {
   background-color: red;
-  opacity: 0.6;
+  opacity: 1;
   color: white;
   border: 1px solid $gray-lighter;
   border-radius: 16px;
@@ -85,11 +85,13 @@
 .btn-answer-red:hover {
   color: white;
   background-color: red;
+  opacity: 1;
 }
 
 .btn-answer-green:hover {
   background-color: green;
   color: white;
+  opacity: 1;
 }
 
 .speech-bubble {

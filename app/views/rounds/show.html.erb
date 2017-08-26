@@ -1,36 +1,36 @@
 <% content_for :after_js do %>
-<script>
-$(document).ready(function() {
-	var elem = document.getElementById("myBar");
-  	var width = 1;
-  	var id = setInterval(frame, 100);
-  	function frame() {
-    	if (width >= 100) {
-    	} else {
-      	width++; 
-      	elem.style.width = width + '%'; 
-    	}
-  	}
-})
-  
-</script>
+	<script>
+	$(document).ready(function() {
+		var elem = document.getElementById("myBar");
+	  	var width = 1;
+	  	var id = setInterval(frame, 100);
+	  	function frame() {
+	    	if (width >= 100) {
+	    	} else {
+	      	width++; 
+	      	elem.style.width = width + '%'; 
+	    	}
+	  	}
+	})
+	</script>
 <% end %>
 
 <% rqst = @round.round_questions.where(answered: false).first%>
 
 
-<div class="col-lg-2 col-md-3" id="bar-column">
+<div class="col-md-3 col-lg-2" id="bar-column">
 	<div id="myProgress">
-	  <div id="myBar"></div>
+		<div id="myBar">
+		</div>
 	</div>
 </div>
 
-<div class="jumbotron col-lg-8 col-md-6 col-xs-10">
+<div class="jumbotron col-xs-10 col-md-6 col-lg-8">
 	<div class="question">
 		<div style="display:flex;">
 			<%= image_tag "grayer_photo.png", class: "grayer" %>
 			<div style = "margin-left:20px;">
-				<h4>HearSay</h5>
+				<h4>HearSay</h4>
 				<h5>@WhoSaidWhatNow</h5>
 			</div>
 		</div>
@@ -41,12 +41,12 @@ $(document).ready(function() {
 
 	<div class="answer_wrapper">
 		<div>
-			<%  @answers[0,2].each do |answer| %>
+			<% @answers[0,2].each do |answer| %>
 				<div>
 					<%= link_to check_answer_round_path(@round, answer_id: answer.id), remote: true, class: 'btn btn-answer answer' do %>
 						<strong class="answer-name"><%= answer.name %></strong>
 						<br />
-						<%= answer.handle  %>
+						<%= answer.handle %>
 					<% end %>
 				</div>
 			<% end %>
@@ -58,7 +58,7 @@ $(document).ready(function() {
 					<%= link_to check_answer_round_path(@round, answer_id: answer.id), remote: true, class: 'btn btn-answer answer' do %>
 						<strong class="answer-name"><%= answer.name %></strong>
 						<br />
-						<%= answer.handle  %>
+						<%= answer.handle %>
 					<% end %>
 				</div>
 			<% end %>
@@ -66,12 +66,14 @@ $(document).ready(function() {
 
 		<div class="next-question">
 			<div class="col-xs-4">
-				<%= link_to "next question <i class='fa fa-arrow-right' aria-hidden='true'></i>".html_safe , round_path(@round) , :method=> :put, class: 'btn btn-answer' , id: 'next-question' %>
+				<%= link_to "next question <i class='fa fa-arrow-right' aria-hidden='true'></i>".html_safe , round_path(@round) , :method=> :put, class: 'btn btn-answer', id: 'next-question' %>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div class="col-lg-2 col-md-3 col-xs-2">
-		<span class="speech-bubble"><p class="text-center", id="score"> <%= @round.score %></p></span>
+<div class=" col-xs-2 col-md-3 col-lg-2">
+	<span class="speech-bubble">
+		<p class="text-center", id="score"><%= @round.score %></p>
+	</span>
 </div>
