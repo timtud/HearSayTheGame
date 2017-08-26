@@ -27,9 +27,9 @@
 
 <div class="jumbotron col-xs-10 col-md-6 col-lg-8">
 	<div class="question">
-		<div style="display:flex;">
+		<div style="display:flex">
 			<%= image_tag "grayer_photo.png", class: "grayer" %>
-			<div style = "margin-left:20px;">
+			<div style = "margin-left:20px">
 				<h4>HearSay</h4>
 				<h5>@WhoSaidWhatNow</h5>
 			</div>
@@ -44,9 +44,14 @@
 			<% @answers[0,2].each do |answer| %>
 				<div>
 					<%= link_to check_answer_round_path(@round, answer_id: answer.id), remote: true, class: 'btn btn-answer answer' do %>
-						<strong class="answer-name"><%= answer.name %></strong>
-						<br />
-						<%= answer.handle %>
+						<div style="display:flex">
+							<%= image_tag "grayer_photo.png", class: "answer-picture" %>
+							<div style = "margin-left:20px">
+								<strong class="answer-name"><%= answer.name %></strong>
+								<br />
+								<%= answer.handle %>
+							</div>
+						</div>
 					<% end %>
 				</div>
 			<% end %>
@@ -56,9 +61,14 @@
 			<% @answers[2,2].each do |answer| %>
 				<div>
 					<%= link_to check_answer_round_path(@round, answer_id: answer.id), remote: true, class: 'btn btn-answer answer' do %>
-						<strong class="answer-name"><%= answer.name %></strong>
-						<br />
-						<%= answer.handle %>
+						<div style="display:flex">
+							<%= image_tag "grayer_photo.png", class: "answer-picture" %>
+							<div style = "margin-left:20px">
+								<strong class="answer-name"><%= answer.name %></strong>
+								<br />
+								<%= answer.handle %>
+							</div>
+						</div>
 					<% end %>
 				</div>
 			<% end %>
