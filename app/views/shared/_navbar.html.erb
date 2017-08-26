@@ -1,34 +1,38 @@
 <div class="navbar-wagon">
 
+
+  <div class ="left-navigation hidden-xs">
  <% if user_signed_in? %>
 
-  <div class ="left-navigation">
         <div class ="left-navigation-links">
             <span class ="fa fa-home"><%= link_to "Home", root_path, class: "navbar-wagon-item navbar-hearsay-link" %>
-            </span></a>
+            </span>
         </div>
         <div class="left-navigation-links">
             <span class ="fa fa-user"><%= link_to "Profile", user_path(current_user), class: "navbar-wagon-item navbar-hearsay-link" %>
+            </span>
         </div>
+        <% end %>
         <div class="left-navigation-links">
             <span class ="fa fa-trophy"><%= link_to "Leaderboard", pages_leaderboard_path, class: "navbar-wagon-item navbar-hearsay-link" %>
+            </span>
         </div>
 
       </div>
 
-    <% end %>
+
 
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-hearsay-brand" do %>
     <%= cl_image_tag "SayerNavbar_z6ayp4.png" %>
   <% end %>
 
-  <div class="right-navigation">
+  <div class="right-navigation hidden-xs">
 
      <%= link_to "New Game" , rounds_path() , :method=> :post, class:"navbar-wagon-item btn btn-homepage right-navigation-link" %>
 
     <!-- Right Navigation -->
-    <div class="navbar-wagon-right hidden-xs hidden-sm">
+    <div class="navbar-wagon-right hidden-xs ">
 
       <% if user_signed_in? %>
 
@@ -52,5 +56,26 @@
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
+   <div class="navbar-wagon-item hidden-sm hidden-md hidden-lg">
+    <div class="dropdown">
+      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <% if user_signed_in? %>
+          <li><%= link_to "Profile", user_path(current_user), class: "navbar-wagon-item navbar-hearsay-link" %></li>
+        <% else %>
+          <li> <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-hearsay-link" %></li>
+        <% end %>
+
+        <li><%= link_to "Leaderboard", pages_leaderboard_path, class: "navbar-wagon-item navbar-hearsay-link" %></li>
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete, class: "right-navigation-link" do %>
+              <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
   </div>
 
