@@ -15,6 +15,7 @@ class User < ApplicationRecord
   validates_length_of :last_name, :maximum => 40, :allow_blank => true
   validates_length_of :handle, :maximum => 15, :allow_blank => true
   validates :handle, uniqueness: true, :allow_blank => true
+  validates_format_of :twitter, :with => /http(?:s)?:\/\/(?:www.)?twitter\.com\/([a-zA-Z0-9_]+)/, :allow_blank => true
 
   def country_name
     country = ISO3166::Country[country_code]
