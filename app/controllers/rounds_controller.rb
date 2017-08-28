@@ -10,6 +10,7 @@ class RoundsController < ApplicationController
       @answers << answer
       @answers.shuffle!
     else
+
       redirect_to round_show_result_path(@round)
     end
   end

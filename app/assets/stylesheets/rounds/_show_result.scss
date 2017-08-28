@@ -5,44 +5,66 @@
 .tweet {
   background-color: white;
   border-radius: 5px;
-  width: 50%;
-  margin: 20%;
+  width: 900px;
   padding: 20px;
   border: 2px solid  rgb(225, 232, 237);
   box-shadow: 0 0 5px rgba(0,0,0,0.6);
   display:flex;
   align-items: center;
+  height:450px;
+  position: relative;
+  margin: 0 auto;
+  flex-direction: column;
+  margin-top: 150px;
+}
+
+.tweet-user{
+  display:flex;
+  justify-content: center;
+  position: absolute;
+  margin-top: 15px;
+
 }
 
 .tweet-items {
   margin-left: 20px;
-  flex-grow: 3;
-
 }
 
 .tweet-name {
   display: flex;
   align-items: center;
 }
+
+
 .tweet-name h2{
   color: black;
   margin-left: 10px;
 }
 
 .tweet-content {
-  flex-grow: 3;
   display: flex;
-  justify-content: space-between;
-
+  align-items: center;
+  position: absolute;
+  left: 3%;
+  top: 250px;
+  margin-top: 35px;
 }
 
 .tweet-content h3 {
   color: rgba(0,0,0,0.6);
 }
 
+.tweet-content-sub {
+  margin-left: 15px;
+}
+
 .tweet-links {
   display: flex;
   justify-content: space-around;
+  position: absolute;
+  bottom: 10px;
+  left: 3%;
+
 }
 
 .tweet .avatar {
@@ -51,3 +73,24 @@
   border-radius: 50%;
 }
 
+.tweet-message {
+  color: black;
+  position: absolute;
+  left: 3%;
+  top: 150px;
+  display: flex;
+}
+
+.profile-results {
+  margin-left: 15px;
+}
+
+.score-message {
+  margin-left: 15px;
+  width: 100%;
+}
+
+#typewriter {
+  font-family: 'Arimo', sans-serif;
+  font-size: 14px;
+}

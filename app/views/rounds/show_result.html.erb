@@ -1,36 +1,94 @@
-<div class="container wrapper text-center">
+<div class = "trumper hidden-xs">
+  <%= cl_image_tag "trumper_zinp6o", height:300, crop:"scale" %>
+</div>
+
+<div class="swanye hidden-xs">
+  <%= cl_image_tag "kanyer_inverted_vexyme", height:300, crop:"scale" %>
+</div>
+
+
+<div class="container-fluid wrapper text-center ">
 <% if user_signed_in? %>
 <% avatar_url = current_user.picture_url || "http://placehold.it/30x30" %>
   <% else %>
 <% avatar_url = "http://placehold.it/30x30" %>
 <% end %>
 
-
-
   <div class="tweet">
-    <%= image_tag avatar_url, class: "avatar" %>
-    <div class="tweet-items">
-      <div class="tweet-name">
-        <% if user_signed_in? %>
-          <h2><%= @round.user.email %></h2>
-        <% else %>
-          <h2>Player</h2>
+    <div class="tweet-user">
+      <%= image_tag avatar_url, class: "avatar" %>
+      <div class="tweet-items">
+        <div class="tweet-name">
+          <% if user_signed_in? %>
+            <h2><%= @round.user.email %></h2>
+          <% else %>
+            <h2>Player</h2>
+          <% end %>
+        </div>
+        <%= link_to 'Edit Profile', edit_user_registration_path %>
+      </div>
+
+    <div class="tweet-message">
+      <div class="bird-image">
+        <%= image_tag "grayer_photo.png", class: "grayer" %>
+      </div>
+      <div class="score-message" >
+        <% if @round.correct_count > 5 %>
+          <h3><%= (["Amazing! See how you did on our leaderboards.", "Wow. You are a natural kiddo."]).sample %></h3>
+          <% else %>
+          <h3><%= (["Keep playing!", "Show business isn't easy kid"]).sample %></h3>
         <% end %>
-
       </div>
-      <div class="tweet-content">
-        <div class="tweet-content-sub">
-          <h3>Score: <%= @round.score %></h2>
+    </div>
 
-        </div>
-        <div class="tweet-content-sub">
-          <h3><%= @round.correct_count %>/10 correct</h2>
-        </div>
+
+    </div>
+
+    <div class="tweet-content">
+      <div class="tweet-content-sub ">
+        <h3>Score:</h3>
+        <p class="odometer">0</p>
       </div>
-      <div class="tweet-links">
-        <%= link_to "<i class='fa fa-trophy' aria-hidden='true'></i> Leaderboards ".html_safe, pages_leaderboard_path %>
-        <%= link_to "<i class='fa fa-user' aria-hidden='true'></i> Profile ".html_safe, user_path(current_user) %>
+      <div class="tweet-content-sub">
+        <h3><%= @round.correct_count %>/10 correct</h3>
+      </div>
+    </div>
+
+    <div class="tweet-links">
+      <div class="leaderboard-results">
+      <%= link_to "<i class='fa fa-trophy' aria-hidden='true'></i> Leaderboards ".html_safe, pages_leaderboard_path %>
+      </div>
+      <div class="profile-results">
+      <%= link_to "<i class='fa fa-user' aria-hidden='true'></i> Profile ".html_safe, user_path(current_user) %>
       </div>
     </div>
   </div>
+
+
+  <% content_for(:after_js) do %>
+
+  <script>
+
+  $(document).ready(function () {
+
+
+    var score = "<%= @round.score %>";
+    console.log(score);
+
+  setTimeout(function(){
+    $('p.odometer').text(score);
+
+  }, 500);
+
+  });
+
+
+  </script>
+
+  <% end %>
+
 </div>
+
+
+
+
