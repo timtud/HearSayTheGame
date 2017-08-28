@@ -133,7 +133,6 @@
   height: calc(100vh - 50px);
 }
 
-
 #myProgress {
   -ms-transform: rotate(270deg); /* IE 9 */
   -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
@@ -148,6 +147,7 @@
   height: 40px;
   background-color: $blue;
 }
+
 .small-score {
 	display: flex;
 	justify-content: space-between;

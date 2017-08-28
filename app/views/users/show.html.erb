@@ -1,13 +1,13 @@
 <div class="container-fluid">
   <div class="row background-row">
   </div>
-  <div class="row twitter-bar">
-    <div class="col-xs-offset-1 col-xs-2">
+  <div class="row twitter-bar hidden-xs">
+    <div class="col-sm-offset-1 col-sm-2">
       <div class="bar-avatar">
         <%= cl_image_tag user_avatar(current_user), width: 250, height: 250, crop: :fill %>
       </div>
     </div>
-    <div class="col-xs-1">
+    <div class="col-sm-1">
       <div class="tab-box active">
         <a class="profile tab active" data-target="#fame">
           <p class="button-word">Fame</p>
@@ -15,7 +15,7 @@
         </a>
       </div>
     </div>
-    <div class="col-xs-1">
+    <div class="col-sm-1">
       <div class="tab-box">
         <a class="profile tab" data-target="#following">
           <p class="button-word">Following</p>
@@ -23,7 +23,7 @@
         </a>
       </div>
     </div>
-    <div class="col-xs-1">
+    <div class="col-sm-1">
       <div class="tab-box">
         <a class="profile tab" data-target="#followers">
           <p class="button-word">Followers</p>
@@ -31,14 +31,15 @@
         </a>
       </div>
     </div>
-    <div class="col-xs-offset-3 col-xs-1 btn-spacing">
+    <div class="col-sm-offset-3 col-sm-1 btn-spacing">
       <a href="#" class="follow-btn">Follow</a>
     </div>
   </div>
 </div>
-<div class="container add-top-margin">
+
+<div class="container add-top-margin hidden-xs">
   <div class="row">
-    <div class="col-xs-3">
+    <div class="col-sm-3">
       <div class="panel panel-default info">
         <div class="panel-body">
           <div class="row">
@@ -52,77 +53,37 @@
             <p><i class="fa fa-map-marker" aria-hidden="true"></i> <%= @user.location %></p>
           </div>
           <div class="row small-font">
-            <p><i class="fa fa-link" aria-hidden="true"></i> <%= @user.twitter %></p>
+            <p><i class="icon-twitter"></i> <%= link_to "My Twitter", @user.twitter %></p>
           </div>
           <div class="row small-font">
             <p><i class="icon-calendar"></i> Joined <%= @user.created_at.strftime("%B %Y") %></p>
           </div>
-          <div class="row small-font">
-            <p><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <%= link_to 'Edit Profile', edit_user_registration_path %></p>
-          </div>
+          <% if @user == current_user %>
+            <div class="row small-font">
+              <p><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <%= link_to 'Edit Profile', edit_user_registration_path %></p>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
-    <div class="col-xs-9">
-      <div class="tab-content active" id="fame">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="score-panel add-top-margin">
-              <div class="row">
-                <div class="col-xs-2">
-                  <%= cl_image_tag user_avatar(current_user), width: 70, height: 70, crop: :fill %>
-                </div>
-                <div class="col-xs-8">
-                  <h4 class="card-inline scorecard-name"><%= @user.first_name %> <%= @user.last_name %></h4>
-                  <p class="small-font card-inline">@<%= @user.handle %></p>
-                  <br />
-                  <br>
-                  <p class="card-inline"><i class="fa fa-bar-chart" aria-hidden="true"></i> 87</p>
-                  <p class="card-inline"> <i class="fa fa-check-square-o" aria-hidden="true"></i> 6/10</p>
-                </div>
-              </div>
-            </div>
+
+    <div class="tab-content active" id="fame">
+      <% @user.rounds.order(created_at: :desc)[0..99].each do |r| %>
+        <div class="col-sm-9 score-panel add-top-margin">
+          <div class="col-sm-2">
+            <%= cl_image_tag user_avatar(current_user), width: 70, height: 70, crop: :fill %>
+          </div>
+          <div class="col-sm-10">
+            <h4 class="card-inline scorecard-name"><%= @user.first_name %> <%= @user.last_name %></h4>
+            <p class="small-font card-inline">@<%= @user.handle %> • <%= r.created_at.strftime("%e %b %Y") %></p>
+            <br />
+            <br>
+            <p class="card-inline"><b>Score:</b> <%= r.score %> - </p>
+            <p class="card-inline"><b>Correct:</b> <%= r.correct_count %>/10</p>
           </div>
         </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="score-panel add-top-margin">
-              <div class="row">
-                <div class="col-xs-2">
-                  <img alt="avatar" class="small-avatar" src="http://alexpoucher.com/wp-content/uploads/2017/04/C8QsNInXUAAyjZQ.jpg">
-                </div>
-                <div class="col-xs-8">
-                  <h4 class="card-inline scorecard-name">Name</h4>
-                  <p class="small-font card-inline">@Handle</p>
-                  <br />
-                  <br>
-                  <p class="card-inline"><i class="fa fa-bar-chart" aria-hidden="true"></i> 87</p>
-                  <p class="card-inline"> <i class="fa fa-check-square-o" aria-hidden="true"></i> 6/10</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="score-panel add-top-margin">
-              <div class="row">
-                <div class="col-xs-2">
-                  <img alt="avatar" class="small-avatar" src="http://alexpoucher.com/wp-content/uploads/2017/04/C8QsNInXUAAyjZQ.jpg">
-                </div>
-                <div class="col-xs-8">
-                  <h4 class="card-inline scorecard-name">Name</h4>
-                  <p class="small-font card-inline">@Handle</p>
-                  <br />
-                  <br>
-                  <p class="card-inline"><i class="fa fa-bar-chart" aria-hidden="true"></i> 87</p>
-                  <p class="card-inline"> <i class="fa fa-check-square-o" aria-hidden="true"></i> 6/10</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <% end %>
+    </div>
 
       <div class="tab-content hidden" id="following">
         <div class="container">
@@ -173,4 +134,124 @@
       </div>
     </div>
   </div>
+
+<!-- For Mobile -->
+
+<div class="container mobile-profile visible-xs">
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="mobile-avatar">
+        <%= cl_image_tag user_avatar(current_user), width: 75, height: 75, crop: :fill %>
+      </div>
+    </div>
+    <div class="col-xs-3 mobile-btn-spacing">
+      <a href="#" class="follow-btn">Follow</a>
+    </div>
+  </div>
+  <div class="row mobile-info">
+    <h4 id="profile"><%= @user.first_name %> <%= @user.last_name %></h4>
+    <p class="small-font">@<%= @user.handle %></p>
+    <p><%= @user.bio %></p>
+    <p class="small-font"><i class="fa fa-map-marker" aria-hidden="true"></i> <%= @user.location %></p>
+    <p class="small-font"><i class="icon-twitter"></i> <%= link_to "My Twitter", @user.twitter %></p>
+    <% if @user == current_user %>
+      <p class="small-font"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <%= link_to 'Edit Profile', edit_user_registration_path %></p>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="row visible-xs">
+  <div class="col-xs-2 side-margin">
+    <div class="tab-box active">
+      <a class="profile tab active" data-target="#fame-mobile">
+        <p class="button-word button-word-mobile">Fame</p>
+        <p class="tab-number tab-number-mobile"><%= current_user.player_score %></p>
+      </a>
+    </div>
+  </div>
+  <div class="col-xs-2">
+    <div class="tab-box">
+      <a class="profile tab" data-target="#following-mobile">
+        <p class="button-word button-word-mobile">Following</p>
+        <p class=" tab-number tab-number-mobile">256</p>
+      </a>
+    </div>
+  </div>
+  <div class="col-xs-2">
+    <div class="tab-box">
+      <a class="profile tab" data-target="#followers-mobile">
+        <p class="button-word button-word-mobile">Followers</p>
+        <p class=" tab-number tab-number-mobile">2,637</p>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container visible-xs">
+    <div class="tab-content active" id="fame-mobile">
+      <% @user.rounds.each do |r| %>
+        <div class="row scorecard-mobile">
+          <div class="col-xs-2">
+            <%= cl_image_tag user_avatar(current_user), width: 70, height: 70, crop: :fill %>
+          </div>
+          <div class="col-xs-8">
+            <h4 class="card-inline scorecard-name"><%= @user.first_name %> <%= @user.last_name %></h4>
+            <p class="small-font card-inline">@<%= @user.handle %></p>
+            <br />
+            <p class="small-font">• <%= r.created_at.strftime("%e %b %Y") %></p>
+            <p class="card-inline"><b>Score: </b><%= r.score %> - </p>
+            <p class="card-inline"><b>Correct:</b> <%= r.correct_count %>/10</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="tab-content hidden" id="following-mobile">
+      <div class="container">
+        <div class="cards">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-avatar">
+                <img src="https://pbs.twimg.com/media/C8TLA5aWsAEbNUg.jpg" class="small-avatar">
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <div class="card-info">
+                <p class="card-name">Name</p>
+                <p class="small-font">@Handle</p>
+              </div>
+              <div class="card-follow">
+                <a href="#" class="btn btn-primary follow-btn">Follow</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content hidden" id="followers-mobile">
+      <div class="container">
+        <div class="cards">
+          <div class="card add-top-margin">
+            <div class="card-body">
+              <div class="card-avatar">
+                <img src="https://pbs.twimg.com/media/C8TLA5aWsAEbNUg.jpg" class="small-avatar">
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <div class="card-info">
+                <p class="card-name">Name</p>
+                <p class="small-font">@Handle</p>
+              </div>
+              <div class="card-follow">
+                <a href="#" class="btn btn-primary follow-btn">Follow</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
