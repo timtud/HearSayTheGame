@@ -74,19 +74,40 @@
     font-size: 30px;
     font-weight: bold;
   }
+  td {
+    font-size: 1em;
+  }
+  th {
+    font-size: 1em;
+  }
+
+  .lead-menu {
+    background-color: $blue;
+    width: 90%;
+    border-radius: 5px 5px 0 0;
+    padding: 5px 0;
+   a {
+    color: $blue;
+  }
+   a:hover {
+    cursor: pointer;
+    text-decoration: none;
+    opacity: 0.8;
+  }
+  }
 
 }
 
 .swanye {
   position: absolute;
   right: 10px;
-  top:250px;
+  top:30%;
 
 }
 
 .trumper {
   position:absolute;
   left:10px;
-  top:250px;
+  top:30%;
 }
 
