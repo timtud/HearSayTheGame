@@ -44,8 +44,9 @@ class RoundsController < ApplicationController
     answer = @round.round_questions.where(answered: false).first
     answer.update(answered: true)
     answer.save
+
     if @answer == @choice
-      score = @round.score + 10
+      score = @round.score + cookies[:time].to_i
       count = @round.correct_count + 1
       @round.update(score: score, correct_count: count)
       @round.save
