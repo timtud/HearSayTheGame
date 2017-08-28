@@ -1,8 +1,8 @@
-<div class = "trumper hidden-xs">
+<div class = "trumper hidden-sm hidden-xs">
   <%= cl_image_tag "trumper_zinp6o", height:300, crop:"scale" %>
 </div>
 
-<div class="swanye hidden-xs">
+<div class="swanye hidden-sm hidden-xs">
   <%= cl_image_tag "kanyer_inverted_vexyme", height:300, crop:"scale" %>
 </div>
 
@@ -13,61 +13,50 @@
 <% end %>
 
 
-<div class="tweet">
-  <div class="container tweet-card  col-xs-12">
-        <div class="tweet-user">
-          <%= image_tag avatar_url, class: "avatar" %>
-          <div class="tweet-items">
-            <div class="tweet-name hidden-xs">
-              <% if user_signed_in? %>
-                <p><%= @round.user.email %></p>
-              <% else %>
-                <p><b>Player</b></p>
-              <% end %>
-            </div>
+<div class="play-game__wrapper wrapper">
+  <div class="play-game__card col-xs-12 col-md-6 col-md-offset-3">
+    <div class="play-game-card__user col-xs-12">
+      <div class="play-game-card-user__picture col-xs-12 col-md-2">
+        <%= image_tag avatar_url, class: "avatar" %>
+      </div>
+      <div class="play-game-card-user__details hidden-sm hidden-xs col-md-10">
+        <% if user_signed_in? %>
+          <p><%= @round.user.email %></p>
+        <% else %>
+          <p><b>Player</b></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="play-game-card__tweet col-xs-12">
+      <div class="play-game-card-tweet__bird col-md-4 hidden-sm hidden-xs">
+        <%= image_tag "grayer_photo.png", class: "grayer" %>
+      </div>
+      <div class="play-game-card-tweet__message col-xs-8">
+        <% if @round.correct_count > 5 %>
+          <h3><%= (["A star is born. Leaderboard. Now.", "Wow. You are a natural kiddo.", "Yass Queen!", "Have you done this before?"]).sample %></h3>
+          <% else %>
+          <h3><%= (["Play it again Sam.", "Show business isn't easy kid", "Go home. You're drunk.", "Respawn", "You can do better. I know you can.", "Don't be scared. Fear leads to the dark side."]).sample %></h3>
+        <% end %>
+      </div>
+    </div>
+    <div class="play-game-card__footer col-xs-12">
+      <div class="play-game-card-footer__links col-xs-7">
+        <%= link_to "<i class='fa fa-trophy' aria-hidden='true'></i> Leaderboard".html_safe, pages_leaderboard_path, class: 'col-xs-12' %>
 
-          </div>
+        <% if user_signed_in? %>
+        <%= link_to "<i class='fa fa-user' aria-hidden='true'></i> Profile ".html_safe, user_path(current_user), class: 'col-xs-12' %>
+        <% end %>
+      </div>
+      <div class="play-game-card-footer__score col-xs-5">
+        <div class="tweet-content-sub">
+          <p class="odometer">00</p>
         </div>
-
-
-
-      <div class="row col-md-6 col-md-offset-3 col-xs-12">
-            <div class="tweet-message">
-              <div class="bird-image">
-                <%= image_tag "grayer_photo.png", class: "grayer" %>
-              </div>
-              <div class="score-message" >
-                <% if @round.correct_count > 5 %>
-                  <h3><%= (["Amazing! Check the leaderboards.", "Wow. You are a natural kiddo." ]).sample %></h3>
-                  <% else %>
-                  <h3><%= (["Play it again Sam.", "Show business isn't easy kid"]).sample %></h3>
-                <% end %>
-              </div>
-            </div>
-
-
-        </div>
-
-        <div class=" row col-xs-12">
-          <div class="tweet-links">
-            <div class="leaderboard-results hidden-xs ">
-            <%= link_to "<i class='fa fa-trophy' aria-hidden='true'></i> Leaderboards ".html_safe, pages_leaderboard_path %>
-
-            <% if user_signed_in? %>
-            <%= link_to "<i class='fa fa-user' aria-hidden='true'></i> Profile ".html_safe, user_path(current_user) %>
-            <% end %>
-            </div>
-            <div class="tweet-content">
-              <p>Score:</p>
-              <div class="tweet-content-sub">
-                <p class="odometer">00</p>
-                <p><%= @round.correct_count %>/10</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<!-- -->
 
   <% content_for(:after_js) do %>
 
