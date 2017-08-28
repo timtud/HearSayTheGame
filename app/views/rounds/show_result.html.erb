@@ -6,64 +6,68 @@
   <%= cl_image_tag "kanyer_inverted_vexyme", height:300, crop:"scale" %>
 </div>
 
-
-<div class="container-fluid wrapper text-center ">
 <% if user_signed_in? %>
 <% avatar_url = current_user.picture_url || "http://placehold.it/30x30" %>
   <% else %>
 <% avatar_url = "http://placehold.it/30x30" %>
 <% end %>
 
-  <div class="tweet">
-    <div class="tweet-user">
-      <%= image_tag avatar_url, class: "avatar" %>
-      <div class="tweet-items">
-        <div class="tweet-name">
-          <% if user_signed_in? %>
-            <h2><%= @round.user.email %></h2>
-          <% else %>
-            <h2>Player</h2>
-          <% end %>
+
+<div class="tweet">
+  <div class="container tweet-card  col-xs-12">
+        <div class="tweet-user">
+          <%= image_tag avatar_url, class: "avatar" %>
+          <div class="tweet-items">
+            <div class="tweet-name hidden-xs">
+              <% if user_signed_in? %>
+                <p><%= @round.user.email %></p>
+              <% else %>
+                <p><b>Player</b></p>
+              <% end %>
+            </div>
+
+          </div>
         </div>
-        <%= link_to 'Edit Profile', edit_user_registration_path %>
-      </div>
-
-    <div class="tweet-message">
-      <div class="bird-image">
-        <%= image_tag "grayer_photo.png", class: "grayer" %>
-      </div>
-      <div class="score-message" >
-        <% if @round.correct_count > 5 %>
-          <h3><%= (["Amazing! See how you did on our leaderboards.", "Wow. You are a natural kiddo."]).sample %></h3>
-          <% else %>
-          <h3><%= (["Keep playing!", "Show business isn't easy kid"]).sample %></h3>
-        <% end %>
-      </div>
-    </div>
 
 
-    </div>
 
-    <div class="tweet-content">
-      <div class="tweet-content-sub ">
-        <h3>Score:</h3>
-        <p class="odometer">0</p>
-      </div>
-      <div class="tweet-content-sub">
-        <h3><%= @round.correct_count %>/10 correct</h3>
-      </div>
-    </div>
+      <div class="row col-md-6 col-md-offset-3 col-xs-12">
+            <div class="tweet-message">
+              <div class="bird-image">
+                <%= image_tag "grayer_photo.png", class: "grayer" %>
+              </div>
+              <div class="score-message" >
+                <% if @round.correct_count > 5 %>
+                  <h3><%= (["Amazing! Check the leaderboards.", "Wow. You are a natural kiddo." ]).sample %></h3>
+                  <% else %>
+                  <h3><%= (["Play it again Sam.", "Show business isn't easy kid"]).sample %></h3>
+                <% end %>
+              </div>
+            </div>
 
-    <div class="tweet-links">
-      <div class="leaderboard-results">
-      <%= link_to "<i class='fa fa-trophy' aria-hidden='true'></i> Leaderboards ".html_safe, pages_leaderboard_path %>
-      </div>
-      <div class="profile-results">
-      <%= link_to "<i class='fa fa-user' aria-hidden='true'></i> Profile ".html_safe, user_path(current_user) %>
-      </div>
-    </div>
+
+        </div>
+
+        <div class=" row col-xs-12">
+          <div class="tweet-links">
+            <div class="leaderboard-results hidden-xs ">
+            <%= link_to "<i class='fa fa-trophy' aria-hidden='true'></i> Leaderboards ".html_safe, pages_leaderboard_path %>
+
+            <% if user_signed_in? %>
+            <%= link_to "<i class='fa fa-user' aria-hidden='true'></i> Profile ".html_safe, user_path(current_user) %>
+            <% end %>
+            </div>
+            <div class="tweet-content">
+              <p>Score:</p>
+              <div class="tweet-content-sub">
+                <p class="odometer">00</p>
+                <p><%= @round.correct_count %>/10</p>
+              </div>
+            </div>
+          </div>
+        </div>
   </div>
-
+</div>
 
   <% content_for(:after_js) do %>
 
@@ -87,7 +91,6 @@
 
   <% end %>
 
-</div>
 
 
 
