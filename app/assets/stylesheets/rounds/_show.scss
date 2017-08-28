@@ -104,7 +104,7 @@
   p {
   	position: absolute;
   	top: 75px;
-  	left: calc(50% - 10px);
+  	left: 40%;
   	color: $white;
 	font-size: 50px;
 	font-weight: bolder;
@@ -133,6 +133,7 @@
   height: calc(100vh - 50px);
 }
 
+
 #myProgress {
   -ms-transform: rotate(270deg); /* IE 9 */
   -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
@@ -142,9 +143,12 @@
   width: 100%;
   background-color: #ddd;
 }
-
 #myBar {
   width: 100%;
   height: 40px;
   background-color: $blue;
+}
+.small-score {
+	display: flex;
+	justify-content: space-between;
 }
