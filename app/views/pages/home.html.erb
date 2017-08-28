@@ -1,29 +1,29 @@
 <div class="banner" style="background-image: linear-gradient(-100deg, rgba(0,0,0,0) 100%, rgba(0,36,61,0.6) 99%), url(<%=image_path('banner_extended.png')%>">
     <div class="row no-margin">
-      <div class="col-xs-4 col-xs-offset-8 ">
+      <div class="col-xs-12 col-sm-4 col-sm-offset-8 ">
         <div class="banner-content text-center">
           <h2>Guess Tweets. Get Famous.</h2>
           <div>
           <%= link_to rounds_path() , :method=> :post, class: "btn btn-hearsay btn-hearsay-white" do%>
           <!-- <a class="btn btn-hearsay btn-hearsay-white"> -->
-            <span class ="fa fa-play social-icon"></span>Play</a>
+            <span class ="fa fa-play social-icon"></span>Play
             <% end %>
           </div>
           <div>
           <%= link_to user_facebook_omniauth_authorize_path() , :method=> :get, class: "btn btn-hearsay btn-hearsay-facebook" do%>
-            <span class ="fa fa-facebook social-icon"></span>Facebook</a>
+            <span class ="fa fa-facebook social-icon"></span>Facebook
             <% end %>
           </div>
           <div>
           <%= link_to user_twitter_omniauth_authorize_path() , :method=> :get, class: "btn btn-hearsay btn-hearsay-twitter" do%>
-            <span class ="fa fa-twitter social-icon"></span>Twitter</a>
+            <span class ="fa fa-twitter social-icon"></span>Twitter
             <% end %>
           </div>
         </div>
       </div>
     </div>
-    <div class="row no-margin">
-      <h1><div class="col-xs-4 left-home-div typewrite" data-period="5" data-type='[ "#WhoSaidWhatNow!" ]'>
+    <div class="row no-margin hidden-xs">
+      <h1><div class="col-xs-12 col-sm-4 left-home-div typewrite" data-period="5" data-type='[ "#WhoSaidWhatNow!" ]'>
         <span class="wrap"></span>
       </div>
       </h1>
