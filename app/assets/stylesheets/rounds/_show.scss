@@ -1,4 +1,8 @@
 // Specific CSS for your home-page
+
+body {
+  background: #DCF0FA;
+}
 .jumbotron {
   background-color: $white;
   margin-top: 50px;
@@ -87,7 +91,7 @@
   &:hover {
   	opacity: 1;
   	background-color: red;
-  	color: $white;	
+  	color: $white;
   }
 }
 

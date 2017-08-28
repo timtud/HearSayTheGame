@@ -1,4 +1,11 @@
-<div class="container wrapper text-center">
+<div class = "trumper hidden-sm hidden-xs">
+  <%= cl_image_tag "trumper_zinp6o", height:300, crop:"scale" %>
+</div>
+
+<div class="swanye hidden-sm hidden-xs">
+  <%= cl_image_tag "kanyer_inverted_vexyme", height:300, crop:"scale" %>
+</div>
+
 <% if user_signed_in? %>
 <% avatar_url = current_user.picture_url || "http://placehold.it/30x30" %>
   <% else %>
@@ -6,31 +13,74 @@
 <% end %>
 
 
-
-  <div class="tweet">
-    <%= image_tag avatar_url, class: "avatar" %>
-    <div class="tweet-items">
-      <div class="tweet-name">
+<div class="play-game__wrapper wrapper">
+  <div class="play-game__card col-xs-12 col-md-6 col-md-offset-3">
+    <div class="play-game-card__user col-xs-12">
+      <div class="play-game-card-user__picture col-xs-12 col-md-2">
+        <%= image_tag avatar_url, class: "avatar" %>
+      </div>
+      <div class="play-game-card-user__details hidden-sm hidden-xs col-md-10">
         <% if user_signed_in? %>
-          <h2><%= @round.user.email %></h2>
+          <p><%= @round.user.email %></p>
         <% else %>
-          <h2>Player</h2>
+          <p><b>Player</b></p>
         <% end %>
-
       </div>
-      <div class="tweet-content">
-        <div class="tweet-content-sub">
-          <h3>Score: <%= @round.score %></h2>
-
-        </div>
-        <div class="tweet-content-sub">
-          <h3><%= @round.correct_count %>/10 correct</h2>
-        </div>
+    </div>
+    <div class="play-game-card__tweet col-xs-12">
+      <div class="play-game-card-tweet__bird col-md-4 hidden-sm hidden-xs">
+        <%= image_tag "grayer_photo.png", class: "grayer" %>
       </div>
-      <div class="tweet-links">
-        <%= link_to "<i class='fa fa-trophy' aria-hidden='true'></i> Leaderboards ".html_safe, pages_leaderboard_path %>
-        <%= link_to "<i class='fa fa-user' aria-hidden='true'></i> Profile ".html_safe, user_path(current_user) %>
+      <div class="play-game-card-tweet__message col-xs-8">
+        <% if @round.correct_count > 5 %>
+          <h3><%= (["A star is born. Leaderboard. Now.", "Wow. You are a natural kiddo.", "Yass Queen!", "Have you done this before?"]).sample %></h3>
+          <% else %>
+          <h3><%= (["Play it again Sam.", "Show business isn't easy kid", "Go home. You're drunk.", "Respawn", "You can do better. I know you can.", "Don't be scared. Fear leads to the dark side."]).sample %></h3>
+        <% end %>
+      </div>
+    </div>
+    <div class="play-game-card__footer col-xs-12">
+      <div class="play-game-card-footer__links col-xs-7">
+        <%= link_to "<i class='fa fa-trophy' aria-hidden='true'></i> Leaderboard".html_safe, pages_leaderboard_path, class: 'col-xs-12' %>
+
+        <% if user_signed_in? %>
+        <%= link_to "<i class='fa fa-user' aria-hidden='true'></i> Profile ".html_safe, user_path(current_user), class: 'col-xs-12' %>
+        <% end %>
+      </div>
+      <div class="play-game-card-footer__score col-xs-5">
+        <div class="tweet-content-sub">
+          <p class="odometer">00</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- -->
+
+  <% content_for(:after_js) do %>
+
+  <script>
+
+  $(document).ready(function () {
+
+
+    var score = "<%= @round.score %>";
+    console.log(score);
+
+  setTimeout(function(){
+    $('p.odometer').text(score);
+
+  }, 500);
+
+  });
+
+
+  </script>
+
+  <% end %>
+
+
+
+
+
