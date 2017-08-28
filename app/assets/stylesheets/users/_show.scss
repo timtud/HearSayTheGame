@@ -16,11 +16,25 @@
   border: 5px solid white;
 }
 
+.mobile-avatar img {
+  border: 3px solid white;
+  border-radius: 50%;
+  margin-top: 5px;
+}
+
 .twitter-bar {
   background-color: white;
   height: 80px;
   position: relative;
   box-shadow: 0 1px 2px #ACACAC;
+}
+
+.mobile-profile {
+  background-color: white;
+}
+
+.mobile-info {
+  padding: 5px;
 }
 
 .small-font {
@@ -72,10 +86,18 @@ body {
   margin-top: 25px;
 }
 
+.button-word-mobile {
+  font-size: 10px;
+}
+
 .tab-number {
   color: #657786;
   font-weight: bold;
   margin-top: -12px;
+}
+
+.tab-number-mobile {
+  font-size: 14px;
 }
 
 .active .tab-number {
@@ -107,8 +129,16 @@ body {
   margin-top: 40px
 }
 
+.mobile-btn-spacing {
+  margin-top: 22px;
+}
+
 .add-top-margin {
   margin-top: 10px;
+}
+
+.side-margin {
+  margin-left: 10px;
 }
 
 /* cards */
@@ -175,4 +205,21 @@ body {
 
 .score-panel img {
   border-radius: 50%;
+}
+
+.scorecard-mobile {
+  background-color: white;
+  margin-bottom: 8px;
+}
+
+.score-mobile {
+  margin-left: -20px;
+}
+
+/* media query */
+
+@media only screen and (max-width: 500px) {
+    .background-row {
+      height: 50px;
+  }
 }
