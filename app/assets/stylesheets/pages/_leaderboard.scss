@@ -1,11 +1,9 @@
 .leaderboard {
   background-color: white;
   margin-top: 50px;
-  padding: 30px;
   border-radius: 16px;
   height: 70vh;
   min-height: 350px;
-  width: 50vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,9 +12,6 @@
   font-family: 'Arimo', sans-serif;
   h1 {
     margin-bottom: 3vh;
-  }
-  table {
-    width: 38.5vw;
   }
 
   .thead {
@@ -29,7 +24,7 @@
   .tabs {
     background: white;
     display: flex;
-    width: 40vw;
+    width: 90%;
     min-height: 50px;
   }
   .tabs a {
@@ -53,7 +48,7 @@
     background: $blue;
     flex: 1 1 auto;
     text-align: center;
-    padding: 20px 30px;
+    padding: 20px 0;
   }
   .tab:first-child {
     border-radius: 10px 0 0 0;
@@ -69,7 +64,7 @@
     height: 40vh;
     min-height: 150px;
     overflow-y: scroll;
-    width: 40vw;
+    width: 90%;
     border-radius: 0 0 0 16px ;
     border-bottom: 2px solid black;
     border-top: 2px solid black;
@@ -79,19 +74,40 @@
     font-size: 30px;
     font-weight: bold;
   }
+  td {
+    font-size: 1em;
+  }
+  th {
+    font-size: 1em;
+  }
+
+  .lead-menu {
+    background-color: $blue;
+    width: 90%;
+    border-radius: 5px 5px 0 0;
+    padding: 5px 0;
+   a {
+    color: $blue;
+  }
+   a:hover {
+    cursor: pointer;
+    text-decoration: none;
+    opacity: 0.8;
+  }
+  }
 
 }
 
 .swanye {
   position: absolute;
   right: 10px;
-  top:250px;
+  top:30%;
 
 }
 
 .trumper {
   position:absolute;
   left:10px;
-  top:250px;
+  top:30%;
 }
 
