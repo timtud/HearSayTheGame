@@ -22,9 +22,9 @@
 	</div>
 
 	<div class="answer_wrapper">
-		<div>
-			<% @answers[0,2].each do |answer| %>
-				<div>
+		<div class="row">
+			<% @answers[0,4].each do |answer| %>
+				<div class="col-xs-12 col-lg-6">
 					<%= link_to check_answer_round_path(@round, answer_id: answer.id), remote: true, class: 'btn btn-answer answer' do %>
 						<div style="display:flex">
 							<%= image_tag "http://res.cloudinary.com/dgtihmi68/image/upload/v1503770191/AnnaKendrick47_cxs3b4.png", class: "answer-picture" %>
@@ -38,24 +38,7 @@
 				</div>
 			<% end %>
 		</div>
-
-		<div>
-			<% @answers[2,2].each do |answer| %>
-				<div>
-					<%= link_to check_answer_round_path(@round, answer_id: answer.id), remote: true, class: 'btn btn-answer answer' do %>
-						<div style="display:flex">
-							<%= image_tag "http://res.cloudinary.com/dgtihmi68/image/upload/v1503771753/mradamscott_mlhc1t.png", class: "answer-picture" %>
-							<div style = "margin-left:20px">
-								<strong class="answer-name"><%= answer.name %></strong>
-								<br />
-								<%= answer.handle %>
-							</div>
-						</div>
-					<% end %>
-				</div>
-			<% end %>
-		</div>
-
+		
 		<div class="next-question">
 			<div class="col-xs-4">
 				<%= link_to "next question <i class='fa fa-arrow-right' aria-hidden='true'></i>".html_safe , round_path(@round) , :method=> :put, class: 'btn btn-answer', id: 'next-question' %>
