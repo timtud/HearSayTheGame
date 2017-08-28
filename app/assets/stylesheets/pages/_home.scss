@@ -1,5 +1,6 @@
 // Specific CSS for your home-page
 body {
+  padding: 0;
 }
 
 .banner {
@@ -10,15 +11,15 @@ body {
   h2 {
     margin:0;
     padding-top:10px;
+    color:white;
   }
 }
+
 .no-margin {
-  margin: 0 !important;
+  margin: auto 0 !important;
 }
 
-h2{
-  color:white;
-}
+
 .page-wrapper {
 	margin: 0 auto;
 	min-height: calc(100vh - 50px);
@@ -30,9 +31,9 @@ h2{
 }
 
 .banner-content{
-  white-space: nowrap;
+  //white-space: nowrap;
   margin-top: 140px;
-  margin-right: 200px;
+  //margin-right: 200px;
 }
 
  .btn-hearsay {
