@@ -19,24 +19,83 @@
   font-weight: bold;
 }
 
+.btn-div {
+  display: flex;
+  justify-content: center;
+}
+
 .signup {
-  padding: 5px 40px 5px 40px;
+  color: #1da1f2;
+  background-color: white;
+  padding: 5px 10vw;
   border-radius: 50px;
   text-align: center;
-  color: white;
-  background-color: #1da1f2;
   text-shadow: none;
-  border: none;
-  margin-left: -30px;
+  border: 1px solid #1da1f2;
+  box-shadow: none;
+}
+
+.social-btn-div {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.social-btn-div a {
+  text-decoration: none;
+}
+
+.fb-btn {
+  color: #3b5998;
+}
+
+.fb-btn:hover {
+  color: #1D2885;
 }
 
 .signup:hover {
-  background-color: #006dbf;
+  background-color: #1da1f2;
   color: white;
+  border: 1px solid white;
 }
 
-@media only screen and (max-width: 800px) {
+.or {
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #B0B0B0
+}
+
+.or > span {
+    position: relative;
+    display: inline-block;
+}
+
+.or > span:before,
+.or > span:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 11vw;
+    height: 1px;
+    background: #B0B0B0;
+}
+
+.or > span:before {
+    right: 100%;
+    margin-right: 15px;
+}
+
+.or > span:after {
+    left: 100%;
+    margin-left: 15px;
+}
+
+@media only screen and (max-width: 900px) {
     .form-box {
-      width: 90vw;
+      width: 80vw;
   }
 }

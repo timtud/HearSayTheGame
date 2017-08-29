@@ -1,15 +1,33 @@
-<h2>Log in</h2>
+<div class="container-fluid background">
+  <div class="container form-box">
+    <h3>Welcome back.</h3>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-inputs">
+        <%= f.input :email, required: false, autofocus: true %>
+        <%= f.input :password, required: false %>
+        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      </div>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      <div class="btn-div">
+        <%= f.button :submit, "Sign in", :class => "signup" %>
+      </div>
+    <% end %>
+    <div class="or">
+      <span>or</span>
+    </div>
+    <div class="social-btn-div">
+      <a href=<%= user_facebook_omniauth_authorize_path %> class="fb-btn">
+        <i class="fa fa-facebook-square fa-4x"></i> <br>Sign in with Facebook
+      </a>
+      <a href=<%= user_twitter_omniauth_authorize_path %>>
+        <i class="fa fa-twitter-square fa-4x"></i> <br>Sign in with Twitter
+      </a>
+    </div>
+    <br>
+    <%= link_to "Sign up", new_registration_path(resource_name) %>
+    <br>
+    <%= link_to "Forgot your password?", new_password_path(resource_name) %>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
