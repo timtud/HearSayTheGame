@@ -96,19 +96,19 @@ body {
 }
 
 .speech-bubble {
-  width: 114px * 2;
-  height: 100px * 2;
+  width: 104px * 2;
+  height: 90px * 2;
   position: absolute;
   top: 170px;
-  left: 35px;
+  left: 25px;
   right: 3%;
   background-image: url('speech_bubble.png');
   background-size: cover;
   background-repeat: none;
   p {
   	position: absolute;
-  	top: 75px;
-  	left: 40%;
+  	top: 70px;
+  	left: 35%;
   	color: $white;
 	font-size: 50px;
 	font-weight: bolder;
@@ -131,6 +131,7 @@ body {
 
 #score {
   margin-bottom: -50px;
+  color: $blue;
 }
 
 #bar-column {
