@@ -33,6 +33,10 @@ answers_hash = {}
   answers_hash
 end
 
+p "delete questions and answers"
+RoundQuestion.delete_all
+Question.delete_all
+Answer.delete_all
 p "load file"
 seed = load_movies
 p "seed file"
