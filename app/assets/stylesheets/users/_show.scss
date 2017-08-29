@@ -145,10 +145,9 @@ body {
 
 /* cards */
 
-.cards .card {
+.card {
   margin: 10px;
-  width: 80vh;
-  box-shadow: 1px 1px 4px #D1D1D1;
+  width: 50vw;
 }
 
 .card-inline {
@@ -227,4 +226,7 @@ body {
     .background-row {
       height: 50px;
   }
+    .card {
+      width: 80vw;
+    }
 }
