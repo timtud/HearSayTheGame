@@ -1,0 +1,22 @@
+.background-edit {
+  background: $blue;
+  background: -webkit-linear-gradient(left top, $blue, #88DDED);
+  background: -o-linear-gradient(bottom right, $blue, #88DDED);
+  background: -moz-linear-gradient(bottom right, $blue, #88DDED);
+  background: linear-gradient(to bottom right, $blue, #88DDED);
+  height: 125vh;
+}
+
+.form-box-edit {
+  background-color: white;
+  margin: 30px auto;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px #6C9FBF;
+  width: 50vw;
+}
+
+@media only screen and (max-width: 900px) {
+    .form-box-edit {
+      width: 80vw;
+  }
+}

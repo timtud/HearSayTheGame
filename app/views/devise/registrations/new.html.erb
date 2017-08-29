@@ -1,17 +1,29 @@
-<h2>Sign up</h2>
+<div class="container-fluid background">
+  <div class="container form-box">
+    <h3>Join the fun.</h3>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
+      <div class="form-inputs">
+        <%= f.input :email, required: true, autofocus: true, placeholder: "Email" %>
+        <%= f.input :password, required: true, placeholder: "Password", hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+        <%= f.input :password_confirmation, required: true, placeholder: "Confirm Password" %>
+      </div>
+      <div class="btn-div">
+        <%= f.button :submit, "Sign up", :class => "signup" %>
+      </div>
+    <% end %>
+    <div class="or">
+      <span>or</span>
+    </div>
+    <div class="social-btn-div">
+      <a href=<%= user_facebook_omniauth_authorize_path %> class="fb-btn">
+        <i class="fa fa-facebook-square fa-4x"></i> <br>Sign in with Facebook
+      </a>
+      <a href=<%= user_twitter_omniauth_authorize_path %>>
+        <i class="fa fa-twitter-square fa-4x"></i> <br>Sign in with Twitter
+      </a>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
