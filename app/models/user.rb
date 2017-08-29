@@ -80,6 +80,20 @@ class User < ApplicationRecord
     end
   end
 
+  def self.top_round
+    board = User.all.map do |user|
+      if user.rounds.maximum(:score)
+        user_score = user.rounds.maximum(:score)
+      else
+        user_score = 0
+      end
+      [user_score, user.email]
+    end
+    board.sort! do |a,b|
+      b[0] <=> a[0]
+    end
+  end
+
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
