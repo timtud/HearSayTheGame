@@ -1,9 +1,10 @@
-<div class = "trumper hidden-sm hidden-xs">
-  <%= cl_image_tag "chickiano_c7mo9d", height:300, crop:"scale" %>
-</div>
+<div><div class = "birdber hidden-sm hidden-xs">
+    <%= cl_image_tag "birdber", height:300, crop:"scale" %>
+  </div>
 
-<div class="swanye hidden-sm hidden-xs">
-  <%= cl_image_tag "kanyer_inverted_vexyme", height:300, crop:"scale" %>
+  <div class="rownaldo hidden-sm hidden-xs">
+    <%= cl_image_tag "rownaldo-flipped_fxulq0", height:300, crop:"scale" %>
+  </div>
 </div>
 
 <% if user_signed_in? %>
@@ -50,6 +51,7 @@
       <div class="play-game-card-footer__score col-xs-5">
         <div class="tweet-content-sub">
           <p class="odometer">00</p>
+            <%= link_to " <strong>Play again</strong>".html_safe , rounds_path() , :method=> :post, class:"navbar-wagon-item btn btn-homepage right-navigation-link" %>
         </div>
       </div>
     </div>
