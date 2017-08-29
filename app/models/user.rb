@@ -21,12 +21,23 @@ class User < ApplicationRecord
   has_attachment :photo
 
   validates_length_of :bio, :maximum => 140, :allow_blank => true
-  validates_length_of :first_name, :maximum => 40, :allow_blank => true
-  validates_length_of :last_name, :maximum => 40, :allow_blank => true
+  validates_length_of :first_name, :maximum => 40
+  validates_length_of :last_name, :maximum => 40
   validates_length_of :handle, :maximum => 15, :allow_blank => true
   validates :handle, uniqueness: true, :allow_blank => true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates_format_of :twitter, :with => /http(?:s)?:\/\/(?:www.)?twitter\.com\/([a-zA-Z0-9_]+)/, :allow_blank => true
 
+
+  def get_username
+    unless self.handle.empty?
+      return self.handle
+    else
+      return "#{self.first_name}#{self.last_name}".gsub(/\s+/, "")
+    end
+  end
+  
   def follow(other_user)
     following << other_user
   end
@@ -83,6 +94,20 @@ class User < ApplicationRecord
         user_score = User.cal_score(user.rounds.where("created_at >= ?", Time.zone.now.beginning_of_month))
       else
         user_score = user.total_score
+      end
+      [user_score, user.email]
+    end
+    board.sort! do |a,b|
+      b[0] <=> a[0]
+    end
+  end
+
+  def self.top_round
+    board = User.all.map do |user|
+      if user.rounds.maximum(:score)
+        user_score = user.rounds.maximum(:score)
+      else
+        user_score = 0
       end
       [user_score, user.email]
     end

@@ -22,6 +22,9 @@
       <a class="tab" data-target="#daily">
         <h3>Daily</h3>
       </a>
+      <a class="tab" data-target="#daily">
+        <h3>Top round</h3>
+      </a>
   </div>
   <div class="navbar-wagon-item hidden-sm hidden-md hidden-lg lead-menu">
     <div class="dropdown">
@@ -39,17 +42,21 @@
       <a class="tab" data-target="#daily">
         <p>Daily</p>
       </a>
+      <a class="tab" data-target="#round">
+        <p>Top round</p>
+      </a>
       </ul>
     </div>
   </div>
 
   <div class="tab-content board" id="alltime">
     <% board = User.top_players %>
+    <% round_board = User.top_round %>
     <table class="table table-striped">
       <thead>
         <tr>
           <th class="thead">Rank</th>
-          <th class="thead" id="user">Username</th>
+          <th class="thead" id="user">Handle</th>
           <th class="thead">Score</th>
           <th class="thead hidden-xs">Rounds played</th>
         </tr>
@@ -57,7 +64,7 @@
             <tr>
               <% score = current_user.player_score %>
               <th class="self">#<%= board.find_index([score,current_user.email]) + 1 %></th>
-              <th class="self" ><%= current_user.email %></th>
+              <th class="self" >@<%= current_user.get_username %></th>
               <th class="self"><%= score %></th>
               <th class="self hidden-xs"><%= current_user.rounds.count %></th>
             </tr>
@@ -68,12 +75,12 @@
           <tr>
             <% if user_signed_in? && current_user.email == user[1] %>
               <td class="info">#<%= index+1 %></td>
-              <td class="info" ><%= user[1] %></td>
+              <td class="info" >@<%= link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %></td>
               <td class="info"><%= user[0] %></td>
               <td class="info hidden-xs"><%= current_user.rounds.count %></td>
             <% else %>
               <td>#<%= index+1 %></td>
-              <td><%= user[1] %></td>
+              <td>@<%= link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %></td>
               <td><%= user[0] %></td>
               <td class = "hidden-xs"><%= User.where(email: user[1]).first.rounds.count %></td>
             <% end %>
@@ -88,14 +95,14 @@
       <thead>
         <tr>
           <th class="thead">Rank</th>
-          <th class="thead">Username</th>
+          <th class="thead">Handle</th>
           <th class="thead">Score</th>
         </tr>
         <% if user_signed_in? %>
             <tr>
               <% score = current_user.player_score('month') %>
               <th class="self">#<%= board.find_index([score,current_user.email]) + 1 %></th>
-              <th class="self" ><%= current_user.email %></th>
+              <th class="self" >@<%= current_user.get_username %></th>
               <th class="self"><%= score %></th>
             </tr>
         <% end %>
@@ -105,11 +112,11 @@
           <tr>
             <% if user_signed_in? && current_user.email == user[1] %>
               <td class="info">#<%= index+1 %></td>
-              <td class="info" ><%= user[1] %></td>
+              <td class="info" >@<%= User.where(email: user[1]).first.get_username %></td>
               <td class="info"><%= user[0] %></td>
             <% else %>
               <td>#<%= index+1 %></td>
-              <td><%= user[1] %></td>
+              <td>@<%= link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %></td>
               <td><%= user[0] %></td>
             <% end %>
           </tr>
@@ -123,14 +130,14 @@
       <thead>
         <tr>
           <th class="thead">Rank</th>
-          <th class="thead">Username</th>
+          <th class="thead">Handle</th>
           <th class="thead">Score</th>
         </tr>
         <% if user_signed_in? %>
             <tr>
               <% score = current_user.player_score("week") %>
               <th class="self">#<%= board.find_index([score,current_user.email]) + 1 %></th>
-              <th class="self" ><%= current_user.email %></th>
+              <th class="self" >@<%= current_user.get_username %></th>
               <th class="self"><%= score %></th>
             </tr>
         <% end %>
@@ -140,11 +147,11 @@
           <tr>
             <% if user_signed_in? && current_user.email == user[1] %>
               <td class="info">#<%= index+1 %></td>
-              <td class="info" ><%= user[1] %></td>
+              <td class="info" >@<%= User.where(email: user[1]).first.get_username %></td>
               <td class="info"><%= user[0] %></td>
             <% else %>
               <td>#<%= index+1 %></td>
-              <td><%= user[1] %></td>
+              <td>@<%= link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %></td>
               <td><%= user[0] %></td>
             <% end %>
           </tr>
@@ -158,14 +165,14 @@
       <thead>
         <tr>
           <th class="thead">Rank</th>
-          <th class="thead">Username</th>
+          <th class="thead">Handle</th>
           <th class="thead">Score</th>
         </tr>
         <% if user_signed_in? %>
             <tr>
               <% score = current_user.player_score('day') %>
               <th class="self">#<%= board.find_index([score,current_user.email]) + 1 %></th>
-              <th class="self" ><%= current_user.email %></th>
+              <th class="self" >@<%= current_user.get_username %></th>
               <th class="self"><%= score %></th>
             </tr>
         <% end %>
@@ -175,11 +182,50 @@
           <tr>
             <% if user_signed_in? && current_user.email == user[1] %>
               <td class="info">#<%= index+1 %></td>
-              <td class="info" ><%= user[1] %></td>
+              <td class="info" >@<%= User.where(email: user[1]).first.get_username %></td>
               <td class="info"><%= user[0] %></td>
             <% else %>
               <td>#<%= index+1 %></td>
-              <td><%= user[1] %></td>
+              <td>@<%= link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %></td>
+              <td><%= user[0] %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="tab-content hidden board" id="round">
+    <% board = User.top_players('day') %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="thead">Rank</th>
+          <th class="thead">Handle</th>
+          <th class="thead">Score</th>
+        </tr>
+        <% if user_signed_in? %>
+            <tr>
+              <% if current_user.rounds.maximum(:score) %>
+                <% score = current_user.rounds.maximum(:score) %>
+              <% else %>
+                <% score = 0 %>
+              <% end %>
+              <th class="self">#<%= round_board.find_index([score,current_user.email]) + 1 %></th>
+              <th class="self" >@<%= current_user.get_username %></th>
+              <th class="self"><%= score %></th>
+            </tr>
+        <% end %>
+      </thead>
+      <tbody>
+        <% round_board[0..100].each_with_index do |user, index| %>
+          <tr>
+            <% if user_signed_in? && current_user.email == user[1] %>
+              <td class="info">#<%= index+1 %></td>
+              <td class="info" >@<%= User.where(email: user[1]).first.get_username %></td>
+              <td class="info"><%= user[0] %></td>
+            <% else %>
+              <td>#<%= index+1 %></td>
+              <td>@<%= link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %></td>
               <td><%= user[0] %></td>
             <% end %>
           </tr>
