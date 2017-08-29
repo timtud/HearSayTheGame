@@ -51,7 +51,6 @@
 
   <div class="tab-content board" id="alltime">
     <% board = User.top_players %>
-    <% round_board = User.top_round %>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -195,7 +194,7 @@
     </table>
   </div>
   <div class="tab-content hidden board" id="round">
-    <% board = User.top_players('day') %>
+    <% round_board = User.top_round %>
     <table class="table table-striped">
       <thead>
         <tr>
