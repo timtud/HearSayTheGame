@@ -11,11 +11,22 @@ class User < ApplicationRecord
   has_attachment :photo
 
   validates_length_of :bio, :maximum => 140, :allow_blank => true
-  validates_length_of :first_name, :maximum => 40, :allow_blank => true
-  validates_length_of :last_name, :maximum => 40, :allow_blank => true
+  validates_length_of :first_name, :maximum => 40
+  validates_length_of :last_name, :maximum => 40
   validates_length_of :handle, :maximum => 15, :allow_blank => true
   validates :handle, uniqueness: true, :allow_blank => true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates_format_of :twitter, :with => /http(?:s)?:\/\/(?:www.)?twitter\.com\/([a-zA-Z0-9_]+)/, :allow_blank => true
+
+
+  def get_username
+    unless self.handle.empty?
+      return self.handle
+    else
+      return "#{self.first_name}#{self.last_name}".gsub(/\s+/, "")
+    end
+  end
 
   def country_name
     country = ISO3166::Country[country_code]
