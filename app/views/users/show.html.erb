@@ -19,7 +19,7 @@
       <div class="tab-box">
         <a class="profile tab" data-target="#following">
           <p class="button-word">Following</p>
-          <p class="tab-number">256</p>
+          <p class="tab-number"><%= @user.following.count %></p>
         </a>
       </div>
     </div>
@@ -27,12 +27,12 @@
       <div class="tab-box">
         <a class="profile tab" data-target="#followers">
           <p class="button-word">Followers</p>
-          <p class="tab-number">2,637</p>
+          <p class="tab-number"><%= @user.followers.count %></p>
         </a>
       </div>
     </div>
     <div class="col-sm-offset-3 col-sm-1 btn-spacing">
-      <a href="#" class="follow-btn">Follow</a>
+      <%= render 'follow_form' if user_signed_in? %>
     </div>
   </div>
 </div>
@@ -86,51 +86,47 @@
     </div>
 
       <div class="tab-content hidden" id="following">
-        <div class="container">
-          <div class="cards">
-            <div class="card">
-              <div class="card-body">
-                <div class="card-avatar">
-                  <img src="https://pbs.twimg.com/media/C8TLA5aWsAEbNUg.jpg" class="small-avatar">
-                </div>
+        <% @user.following.each do |f| %>
+          <div class="container card">
+            <div class="card-body">
+              <div class="card-avatar">
+                <%= cl_image_tag user_avatar(current_user), width: 70, height: 70, crop: :fill, class: "small-avatar" %>
               </div>
+            </div>
 
-              <div class="card-footer">
-                <div class="card-info">
-                  <p class="card-name">Name</p>
-                  <p class="small-font">@Handle</p>
-                </div>
-                <div class="card-follow">
-                  <a href="#" class="btn btn-primary follow-btn">Follow</a>
-                </div>
+            <div class="card-footer">
+              <div class="card-info">
+                <p class="card-name"><%= f.first_name %> <%= f.last_name %></p>
+                <p class="small-font">@<%= f.handle %></p>
+              </div>
+              <div class="card-follow">
+                <%= link_to 'View', user_path(f.id), class: "follow-btn" %>
               </div>
             </div>
           </div>
-        </div>
+        <% end %>
       </div>
 
       <div class="tab-content hidden" id="followers">
-        <div class="container">
-          <div class="cards">
-            <div class="card add-top-margin">
-              <div class="card-body">
-                <div class="card-avatar">
-                  <img src="https://pbs.twimg.com/media/C8TLA5aWsAEbNUg.jpg" class="small-avatar">
-                </div>
+        <% @user.followers.each do |f| %>
+          <div class="container card">
+            <div class="card-body">
+              <div class="card-avatar">
+                <%= cl_image_tag user_avatar(current_user), width: 70, height: 70, crop: :fill, class: "small-avatar" %>
               </div>
+            </div>
 
-              <div class="card-footer">
-                <div class="card-info">
-                  <p class="card-name">Name</p>
-                  <p class="small-font">@Handle</p>
-                </div>
-                <div class="card-follow">
-                  <a href="#" class="btn btn-primary follow-btn">Follow</a>
-                </div>
+            <div class="card-footer">
+              <div class="card-info">
+                <p class="card-name"><%= f.first_name %> <%= f.last_name %></p>
+                <p class="small-font">@<%= f.handle %></p>
+              </div>
+              <div class="card-follow">
+                <%= link_to 'View', user_path(f.id), class: "follow-btn" %>
               </div>
             </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -145,7 +141,7 @@
       </div>
     </div>
     <div class="col-xs-3 mobile-btn-spacing">
-      <a href="#" class="follow-btn">Follow</a>
+      <%= render 'follow_form' if user_signed_in? %>
     </div>
   </div>
   <div class="row mobile-info">
@@ -174,7 +170,7 @@
     <div class="tab-box">
       <a class="profile tab" data-target="#following-mobile">
         <p class="button-word button-word-mobile">Following</p>
-        <p class=" tab-number tab-number-mobile">256</p>
+        <p class=" tab-number tab-number-mobile"><%= @user.following.count %></p>
       </a>
     </div>
   </div>
@@ -182,76 +178,72 @@
     <div class="tab-box">
       <a class="profile tab" data-target="#followers-mobile">
         <p class="button-word button-word-mobile">Followers</p>
-        <p class=" tab-number tab-number-mobile">2,637</p>
+        <p class=" tab-number tab-number-mobile"><%= @user.followers.count %></p>
       </a>
     </div>
   </div>
 </div>
 
 <div class="container visible-xs">
-    <div class="tab-content active" id="fame-mobile">
-      <% @user.rounds.order(created_at: :desc)[0..99].each do |r| %>
-        <div class="row scorecard-mobile">
-          <div class="col-xs-2">
-            <%= cl_image_tag user_avatar(current_user), width: 70, height: 70, crop: :fill %>
-          </div>
-          <div class="col-xs-8">
-            <h4 class="card-inline scorecard-name"><%= @user.first_name %> <%= @user.last_name %></h4>
-            <p class="small-font card-inline">@<%= @user.handle %></p>
-            <br />
-            <p class="small-font">• <%= r.created_at.strftime("%e %b %Y") %></p>
-            <p class="card-inline"><b>Score: </b><%= r.score %> - </p>
-            <p class="card-inline"><b>Correct:</b> <%= r.correct_count %>/10</p>
+  <div class="tab-content active" id="fame-mobile">
+    <% @user.rounds.order(created_at: :desc)[0..99].each do |r| %>
+      <div class="row scorecard-mobile">
+        <div class="col-xs-2">
+          <%= cl_image_tag user_avatar(current_user), width: 70, height: 70, crop: :fill %>
+        </div>
+        <div class="col-xs-8">
+          <h4 class="card-inline scorecard-name"><%= @user.first_name %> <%= @user.last_name %></h4>
+          <p class="small-font card-inline">@<%= @user.handle %></p>
+          <br />
+          <p class="small-font">• <%= r.created_at.strftime("%e %b %Y") %></p>
+          <p class="card-inline"><b>Score: </b><%= r.score %> - </p>
+          <p class="card-inline"><b>Correct:</b> <%= r.correct_count %>/10</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="tab-content hidden" id="following-mobile">
+    <% @user.following.each do |f| %>
+      <div class="container card">
+        <div class="card-body">
+          <div class="card-avatar">
+            <%= cl_image_tag user_avatar(current_user), width: 70, height: 70, crop: :fill, class: "small-avatar" %>
           </div>
         </div>
-      <% end %>
-    </div>
 
-    <div class="tab-content hidden" id="following-mobile">
-      <div class="container">
-        <div class="cards">
-          <div class="card">
-            <div class="card-body">
-              <div class="card-avatar">
-                <img src="https://pbs.twimg.com/media/C8TLA5aWsAEbNUg.jpg" class="small-avatar">
-              </div>
-            </div>
-
-            <div class="card-footer">
-              <div class="card-info">
-                <p class="card-name">Name</p>
-                <p class="small-font">@Handle</p>
-              </div>
-              <div class="card-follow">
-                <a href="#" class="btn btn-primary follow-btn">Follow</a>
-              </div>
-            </div>
+        <div class="card-footer">
+          <div class="card-info">
+            <p class="card-name"><%= f.first_name %> <%= f.last_name %></p>
+            <p class="small-font">@<%= f.handle %></p>
+          </div>
+          <div class="card-follow">
+            <%= link_to 'View', user_path(f.id), class: "follow-btn" %>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
+  </div>
 
-    <div class="tab-content hidden" id="followers-mobile">
-      <div class="container">
-        <div class="cards">
-          <div class="card add-top-margin">
-            <div class="card-body">
-              <div class="card-avatar">
-                <img src="https://pbs.twimg.com/media/C8TLA5aWsAEbNUg.jpg" class="small-avatar">
-              </div>
-            </div>
+  <div class="tab-content hidden" id="followers-mobile">
+    <% @user.followers.each do |f| %>
+      <div class="container card">
+        <div class="card-body">
+          <div class="card-avatar">
+            <%= cl_image_tag user_avatar(current_user), width: 70, height: 70, crop: :fill, class: "small-avatar" %>
+          </div>
+        </div>
 
-            <div class="card-footer">
-              <div class="card-info">
-                <p class="card-name">Name</p>
-                <p class="small-font">@Handle</p>
-              </div>
-              <div class="card-follow">
-                <a href="#" class="btn btn-primary follow-btn">Follow</a>
-              </div>
-            </div>
+        <div class="card-footer">
+          <div class="card-info">
+            <p class="card-name"><%= f.first_name %> <%= f.last_name %></p>
+            <p class="small-font">@<%= f.handle %></p>
+          </div>
+          <div class="card-follow">
+            <%= link_to 'View', user_path(f.id), class: "follow-btn" %>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
+  </div>
 </div>
