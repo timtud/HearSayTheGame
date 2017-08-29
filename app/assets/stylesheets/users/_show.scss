@@ -74,9 +74,11 @@ body {
 }
 
 .info {
-  background-color: #e6ecf0;
+  background-color: #white;
   border: none;
-  box-shadow: none;
+  box-shadow: 1px 1px 4px #D1D1D1;
+  padding: 7px;
+  border-radius: 5px;
 }
 
 .button-word {
@@ -145,7 +147,8 @@ body {
 
 .cards .card {
   margin: 10px;
-  width: 250px;
+  width: 80vh;
+  box-shadow: 1px 1px 4px #D1D1D1;
 }
 
 .card-inline {
@@ -201,6 +204,7 @@ body {
   padding: 10px;
   margin-bottom: 5px;
   border-radius: 4px;
+  box-shadow: 1px 1px 4px #D1D1D1;
 }
 
 .score-panel img {
@@ -210,6 +214,7 @@ body {
 .scorecard-mobile {
   background-color: white;
   margin-bottom: 8px;
+  box-shadow: 1px 1px 4px #D1D1D1;
 }
 
 .score-mobile {

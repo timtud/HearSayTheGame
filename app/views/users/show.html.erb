@@ -190,7 +190,7 @@
 
 <div class="container visible-xs">
     <div class="tab-content active" id="fame-mobile">
-      <% @user.rounds.each do |r| %>
+      <% @user.rounds.order(created_at: :desc)[0..99].each do |r| %>
         <div class="row scorecard-mobile">
           <div class="col-xs-2">
             <%= cl_image_tag user_avatar(current_user), width: 70, height: 70, crop: :fill %>
