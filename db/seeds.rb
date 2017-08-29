@@ -16,17 +16,18 @@ require 'csv'
 
 def load_movies
 answers_hash = {}
-  CSV.foreach("db/tweets.csv") do |row|
+  CSV.foreach("db/Tweets290817.csv") do |row|
 
     question = row[0].to_s
     name = row[1].to_s
     handle = row[2].to_s
+    picture_url = row[3].to_s
     next if name == "Celebrity"
     if answers_hash.has_key? name
 
         answers_hash[name][:questions] << question
     else
-      answers_hash[name] = {name: name, handle: handle, questions: [question]}
+      answers_hash[name] = {name: name, handle: handle, picture_url: picture_url, questions: [question]}
     end
   end
   answers_hash
@@ -40,7 +41,8 @@ p "seed file"
 seed.each do |k,v|
   answer = Answer.new(
     name: v[:name],
-    handle: v[:handle]
+    handle: v[:handle],
+    picture_url: v[:picture_url]
     )
   if answer.save
     v[:questions].each do |q|
