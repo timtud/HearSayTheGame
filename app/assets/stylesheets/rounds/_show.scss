@@ -179,6 +179,10 @@ body {
  bottom: -3px;
 }
 
+.footer-bottom {
+  height: 120vh;
+}
+
 @media only screen and (max-width: 500px) {
   .round-score {
   	-ms-transform: rotate(0deg); /* IE 9 */
