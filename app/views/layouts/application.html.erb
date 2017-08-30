@@ -20,7 +20,8 @@
     <%= render 'shared/flashes' %>
     <div class="page-wrapper">
       <div id="tutorial">
-        <%= cl_image_tag "tutorial" %>
+        <%= cl_image_tag "tutorial", class: "hidden-xs" %>
+        <%= cl_image_tag "mobile_tutorial", class: "hidden-sm hidden-md hidden-lg" %>
       </div>
       <%= yield %>
     </div>
@@ -43,7 +44,18 @@
           el.show();
         }
 
+      });
+      $("#tutorial-mobile").click(function() {
+        el = $("#tutorial");
+        if ($('#tutorial').is(":visible")) {
+          el.hide();
+        }
+        else {
+          el.show();
+        }
+
       });     
+
     });
 </script>
 
