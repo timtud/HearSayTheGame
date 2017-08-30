@@ -4,6 +4,8 @@
   <div class ="left-navigation hidden-xs">
  <% if user_signed_in? %>
 
+
+
         <div class ="left-navigation-links">
             <span class ="fa fa-home"><%= link_to "Home", root_path, class: "navbar-wagon-item navbar-hearsay-link" %>
             </span>
@@ -12,11 +14,18 @@
             <span class ="fa fa-user"><%= link_to "Profile", user_path(current_user), class: "navbar-wagon-item navbar-hearsay-link" %>
             </span>
         </div>
-        <% end %>
+  <% end %>
         <div class="left-navigation-links">
             <span class ="fa fa-trophy"><%= link_to "Leaderboard", pages_leaderboard_path, class: "navbar-wagon-item navbar-hearsay-link" %>
             </span>
         </div>
+
+          <%= form_tag "/users/search", :method => 'get' do %>
+      <p>
+        <%= text_field_tag :q, params[:q] %>
+        <%= submit_tag "Search", :name => nil %>
+      </p>
+    <% end %>
 
       </div>
 
