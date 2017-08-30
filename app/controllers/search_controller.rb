@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
 
   def index
-    render json: :ok
+    @users = User.where("handle ILIKE ?", "%#{params["q"]}%")
   end
 
 end

@@ -1,1 +1,3 @@
-<h1>hello</h1>
+<% @users.each do |user| %>
+  <%= link_to user.handle, user_path(user) %>
+<% end %>
