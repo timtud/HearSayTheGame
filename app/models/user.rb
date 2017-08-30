@@ -37,7 +37,7 @@ class User < ApplicationRecord
       return "#{self.first_name}#{self.last_name}".gsub(/\s+/, "")
     end
   end
-  
+
   def follow(other_user)
     following << other_user
   end
