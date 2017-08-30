@@ -25,6 +25,9 @@
   </div>
 
   <!-- Logo -->
+  <div class="hidden-sm hidden-md hidden-lg">
+       <%= link_to "New Game" , rounds_path() , :method=> :post, class: "navbar-wagon-item btn btn-homepage right-navigation-link" %>
+   </div>
   <%= link_to root_path, class: "navbar-hearsay-brand" do %>
     <%= cl_image_tag "SayerNavbar_z6ayp4.png" %>
   <% end %>
@@ -58,7 +61,7 @@
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
-   <div class="navbar-wagon-item hidden-md hidden-lg">
+   <div class="navbar-wagon-item hidden-sm hidden-md hidden-lg">
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
@@ -71,6 +74,7 @@
         <li><%= link_to "Leaderboard", pages_leaderboard_path, class: "navbar-wagon-item navbar-hearsay-link" %></li>
         <% if user_signed_in? %>
           <li>
+          <li id="tutorial-mobile" title="Tutorial"><span>Tutorial</span></li>
             <%= link_to destroy_user_session_path, method: :delete, class: "right-navigation-link" do %>
               <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
             <% end %>
