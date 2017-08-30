@@ -1,0 +1,36 @@
+.search-results {
+  background: white;
+  height: 70vh;
+  margin-top: 2%;
+  position: relative;
+  box-shadow: 0 0 5px rgba(0,0,0,0.8);
+  font-family: 'Arimo', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 16px;
+
+}
+
+.search {
+  margin-left: 15vw;
+}
+
+.kardashatoo_invert {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+        position: absolute;
+        right: 10px;
+        top: 30%;
+}
+
+// background-color: white;
+//   margin-top: 50px;
+//   border-radius: 16px;
+//   height: 70vh;
+//   min-height: 350px;
+

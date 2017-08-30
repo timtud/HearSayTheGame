@@ -20,13 +20,6 @@
             </span>
         </div>
 
-          <%= form_tag "/users/search", :method => 'get' do %>
-      <p>
-        <%= text_field_tag :q, params[:q] %>
-        <%= submit_tag "Search", :name => nil %>
-      </p>
-    <% end %>
-
       </div>
 
 
@@ -46,6 +39,13 @@
       <% if user_signed_in? %>
 
         <!-- Links when logged in -->
+
+        <%= form_tag "/users/search", :method => 'get', :id => 'my_id' do %>
+            <p>
+              <%= text_field_tag :q, params[:q] %>
+              <%= submit_tag "Search", :name => nil %>
+            </p>
+        <% end %>
 
 
         <!-- Avatar with dropdown menu -->

@@ -1,3 +1,33 @@
-<% @users.each do |user| %>
-  <%= link_to user.handle, user_path(user) %>
-<% end %>
+<div class="container-fluid search-results">
+  <div class="row">
+
+    <div class = "birdber col-md-2 hidden-sm hidden-xs">
+        <%= cl_image_tag "kardashatoo_uijlti", height:300, crop:"scale" %>
+    </div>
+    <div class="search col-md-8">
+      <div class="container">
+        <%= form_tag "/users/search", :method => 'get', :id => 'my_id' do %>
+            <p>
+              <%= text_field_tag :q, params[:q] %>
+              <%= submit_tag "Search", :name => nil %>
+            </p>
+        <% end %>
+
+        <div class="list-group">
+        <% @users.each do |user| %>
+          <%= link_to  user_path(user),  class: "list-group-item " do %>
+            <%= image_tag user.picture_url %>
+            <p class="list-group-item-heading"><%= user.handle.capitalize %></p>
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="kardashatoo_invert col-md-2 hidden-sm hidden-xs">
+        <%= cl_image_tag "kardashatoo_uijlti", height:300, crop:"scale" %>
+    </div>
+
+  </div>
+</div>
+

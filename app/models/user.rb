@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  # include PgSearch
+  # pg_search_scope :search_by_first_name_and_last_name_, against: [ :title, :syllabus ]
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook, :twitter]
@@ -8,6 +11,7 @@ class User < ApplicationRecord
   has_many :followers
   has_many :rounds
 
+  # pg_search_scope :search_by_first_name_and_last_name_, against: [ :title, :syllabus ]
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
@@ -37,7 +41,7 @@ class User < ApplicationRecord
       return "#{self.first_name}#{self.last_name}".gsub(/\s+/, "")
     end
   end
-  
+
   def follow(other_user)
     following << other_user
   end
