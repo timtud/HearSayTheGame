@@ -2,7 +2,18 @@
   height: calc(100vh - 70px - 59px);
   display: flex;
   align-items: center;
+}
 
+.birdber {
+  position: absolute;
+  left: 15px;
+  top:30%;
+}
+
+.rownaldo {
+  position: absolute;
+  right: 10px;
+  top:30%;
 }
 
 .play-game__card {
@@ -191,6 +202,7 @@
     height: 135px;
     width: 175px;
   }
+  position: relative;
 }
 
 .profile-results {
