@@ -1,5 +1,5 @@
 <% rqst = @round.round_questions.where(answered: false).first%>
-
+<div class="container-fluid footer-bottom">
 <div class="col-md-3 col-lg-2 hidden-xs" id="bar-column">
 	<div id="myProgress">
 		<div id="myBar">
@@ -58,7 +58,7 @@
 		<p class="text-center" id="score"><%= @round.score %></p>
 	</span>
 </div>
-
+</div>
 <% content_for :after_js do %>
 	<script>
 	$(document).ready(function() {
