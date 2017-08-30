@@ -19,13 +19,13 @@ body {
   padding: 20px;
   color: $black;
   h3 {
-  	size: 25em;
+  	size: 25px;
   }
   h4 {
-  	size: 20em;
+  	size: 20px;
   }
   h5 {
-  	size: 16em;
+  	size: 16px;
   }
 }
 
@@ -74,6 +74,7 @@ body {
   border: 1px solid $gray-lighter;
   border-radius: 16px;
   padding: 10px 15px;
+  box-shadow: none;
   &:hover {
   	opacity: 1;
   	background-color: green;
@@ -88,6 +89,7 @@ body {
   border: 1px solid $gray-lighter;
   border-radius: 16px;
   padding: 10px 15px;
+  box-shadow: none;
   &:hover {
   	opacity: 1;
   	background-color: red;
@@ -126,7 +128,7 @@ body {
   width: 100%;
   margin-bottom: 10px;
   margin-right: 10px;
-  box-shadow: 1px 1px #888888;
+  box-shadow: none;
 }
 
 #score {
@@ -143,17 +145,46 @@ body {
   -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
   transform: rotate(270deg);
   margin-top: 50px;
-  left: -20px;
+  left: -30px;
   width: 100%;
   background-color: #ddd;
+  position: relative;
 }
+
 #myBar {
   width: 100%;
-  height: 40px;
+  height: 60px;
   background-color: $blue;
 }
 
 .small-score {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+}
+
+.round-score {
+ -ms-transform: rotate(90deg); /* IE 9 */
+ -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+ transform: rotate(90deg);
+ font-size: 30px;
+ color: $white;
+ font-weight: bolder;
+ position: absolute;
+ left: 7px;
+ bottom: -3px;
+}
+
+@media only screen and (max-width: 500px) {
+  .round-score {
+  	-ms-transform: rotate(0deg); /* IE 9 */
+    -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+    transform: rotate(0deg);
+    font-size: 27px;
+    color: $black;
+    font-weight: normal;
+    position: initial;
+}
+  #score {
+    margin-bottom: 0px;
+  }
 }
