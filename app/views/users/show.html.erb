@@ -148,7 +148,7 @@
     <h4 id="profile"><%= @user.first_name %> <%= @user.last_name %></h4>
     <p class="small-font">@<%= @user.handle %></p>
     <p><%= @user.bio %></p>
-    <p class="small-font"><i class="fa fa-map-marker" aria-hidden="true"></i> <%= @user.location %></p>
+    <p class="small-font"><i class="fa fa-map-marker" aria-hidden="true"></i> <%= @user.country_name %></p>
     <p class="small-font"><i class="icon-twitter"></i> <%= link_to "My Twitter", @user.twitter %></p>
     <% if @user == current_user %>
       <p class="small-font"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <%= link_to 'Edit Profile', edit_user_registration_path %></p>
