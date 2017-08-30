@@ -136,3 +136,11 @@
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
 }
+
+#tutorial {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
+  display: none;
+}

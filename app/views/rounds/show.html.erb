@@ -1,21 +1,18 @@
-
 <% rqst = @round.round_questions.where(answered: false).first%>
 
-
-<div class="col-xs-1 col-md-3 col-lg-2 hidden-xs" id="bar-column">
+<div class="col-md-3 col-lg-2 hidden-xs" id="bar-column">
 	<div id="myProgress">
 		<div id="myBar">
 		</div>
+	<p class="round-score"></p>
 	</div>
 </div>
 
-
-
-<div class="jumbotron col-xs-11 col-md-6 col-lg-8">
+<div class="jumbotron col-xs-12 col-md-6 col-lg-8">
 	<div class="hidden-sm hidden-md hidden-lg small-score">
-		<p class="", id="score"><%= @round.score %></p>
-		<p id="round-score">
-		</p>
+		<p class="" id="score">Score</p>
+		<p class="" id="score"><%= @round.score %></p>
+		<p class="round-score"></p>
 	</div>
 	<div class="question">
 		<div style="display:flex">
@@ -29,7 +26,6 @@
 			<%= rqst.question.content %>
 		</h3>
 		<h6 class="hidden-sm hidden-md hidden-lg"><%= rqst.question.content %></h6>
-
 	</div>
 
 	<div class="answer_wrapper">
@@ -57,14 +53,10 @@
 	</div>
 </div>
 
-<div class=" col-xs-12 col-md-3 col-lg-2 hidden-xs">
+<div class="col-md-3 col-lg-2 hidden-xs">
 	<span class="speech-bubble">
-		<p class="text-center", id="score"><%= @round.score %></p>
+		<p class="text-center" id="score"><%= @round.score %></p>
 	</span>
-</div>
-
-<div class="hidden-xs" id="round-score">
-
 </div>
 
 <% content_for :after_js do %>
@@ -86,15 +78,15 @@
 	  		width--;
 	      	elem.style.width = width + '%';
 		      	if (width <= 10) {
-		      		$("#round-score").text(10);
+		      		$(".round-score").text(10);
 		    	} else {
-		      		$("#round-score").text(width);
+		      		$(".round-score").text(width);
 		      	}
 	    	};
 	  	$(".btn-answer").click(function() {
 	  		stopBar = true;
 
-			Cookies.set('time', $("#round-score").text(), { expires: 7, path: '' });
+			Cookies.set('time', $(".round-score").text(), { expires: 7, path: '' });
 	  	});
 	  	function frame() {
 	    	if (width <= 0) {
@@ -107,4 +99,3 @@
     });
 	</script>
 <% end %>
-

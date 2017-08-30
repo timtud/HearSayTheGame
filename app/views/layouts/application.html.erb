@@ -19,6 +19,9 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <div class="page-wrapper">
+      <div id="tutorial">
+        <%= cl_image_tag "tutorial" %>
+      </div>
       <%= yield %>
     </div>
     <%= render 'shared/footer' %>
@@ -27,3 +30,20 @@
     <%= yield(:after_js) %>
   </body>
 </html>
+
+
+<script>
+  $(document).ready(function() {
+      $("#tutorial-show").click(function() {
+        el = $("#tutorial");
+        if ($('#tutorial').is(":visible")) {
+          el.hide();
+        }
+        else {
+          el.show();
+        }
+
+      });     
+    });
+</script>
+
