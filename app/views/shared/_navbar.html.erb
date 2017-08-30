@@ -69,6 +69,7 @@
         <% end %>
 
         <li><%= link_to "Leaderboard", pages_leaderboard_path, class: "navbar-wagon-item navbar-hearsay-link" %></li>
+        <li id="tutorial-mobile">Tutorial</li>
         <% if user_signed_in? %>
           <li>
             <%= link_to destroy_user_session_path, method: :delete, class: "right-navigation-link" do %>
