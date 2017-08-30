@@ -1,5 +1,9 @@
 // Specific CSS for your home-page
 
+.footer-bottom {
+  height: 120vh;
+}
+
 body {
   background: #DCF0FA;
 }
@@ -98,8 +102,8 @@ body {
 }
 
 .speech-bubble {
-  width: 104px * 2;
-  height: 90px * 2;
+  width: 99px * 2;
+  height: 85px * 2;
   position: absolute;
   top: 170px;
   left: 25px;
@@ -145,10 +149,11 @@ body {
   -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
   transform: rotate(270deg);
   margin-top: 50px;
-  left: -30px;
+  left: -8em;
   width: 100%;
   background-color: #ddd;
   position: relative;
+  z-index: 9999;
 }
 
 #myBar {

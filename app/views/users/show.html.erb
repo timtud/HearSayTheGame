@@ -4,14 +4,14 @@
   <div class="row twitter-bar hidden-xs">
     <div class="col-sm-offset-1 col-sm-2">
       <div class="bar-avatar">
-        <%= cl_image_tag user_avatar(current_user), width: 250, height: 250, crop: :fill %>
+        <%= cl_image_tag user_avatar(@user), width: 250, height: 250, crop: :fill %>
       </div>
     </div>
     <div class="col-sm-1">
       <div class="tab-box active">
         <a class="profile tab active" data-target="#fame">
           <p class="button-word">Fame</p>
-          <p class="tab-number"><%= current_user.player_score %></p>
+          <p class="tab-number"><%= @user.player_score %></p>
         </a>
       </div>
     </div>
@@ -50,7 +50,7 @@
             <p><%= @user.bio %></p>
           </div>
           <div class="row small-font">
-            <p><i class="fa fa-map-marker" aria-hidden="true"></i> <%= @user.location %></p>
+            <p><i class="fa fa-map-marker" aria-hidden="true"></i> <%= @user.country_name %></p>
           </div>
           <div class="row small-font">
             <p><i class="icon-twitter"></i> <%= link_to "My Twitter", @user.twitter %></p>
@@ -71,7 +71,7 @@
       <% @user.rounds.order(created_at: :desc)[0..99].each do |r| %>
         <div class="col-sm-9 score-panel add-top-margin">
           <div class="col-sm-2">
-            <%= cl_image_tag user_avatar(current_user), width: 70, height: 70, crop: :fill %>
+            <%= cl_image_tag user_avatar(@user), width: 70, height: 70, crop: :fill %>
           </div>
           <div class="col-sm-10">
             <h4 class="card-inline scorecard-name"><%= @user.first_name %> <%= @user.last_name %></h4>
@@ -90,7 +90,7 @@
           <div class="container card">
             <div class="card-body">
               <div class="card-avatar">
-                <%= cl_image_tag user_avatar(current_user), width: 70, height: 70, crop: :fill, class: "small-avatar" %>
+                <%= cl_image_tag user_avatar(f), width: 70, height: 70, crop: :fill, class: "small-avatar" %>
               </div>
             </div>
 
@@ -100,7 +100,7 @@
                 <p class="small-font">@<%= f.handle %></p>
               </div>
               <div class="card-follow">
-                <%= link_to 'View', user_path(f.id), class: "follow-btn" %>
+                <%= link_to 'View Profile', user_path(f.id), class: "follow-btn" %>
               </div>
             </div>
           </div>
@@ -112,7 +112,7 @@
           <div class="container card">
             <div class="card-body">
               <div class="card-avatar">
-                <%= cl_image_tag user_avatar(current_user), width: 70, height: 70, crop: :fill, class: "small-avatar" %>
+                <%= cl_image_tag user_avatar(f), width: 70, height: 70, crop: :fill, class: "small-avatar" %>
               </div>
             </div>
 
@@ -122,7 +122,7 @@
                 <p class="small-font">@<%= f.handle %></p>
               </div>
               <div class="card-follow">
-                <%= link_to 'View', user_path(f.id), class: "follow-btn" %>
+                <%= link_to 'View Profile', user_path(f.id), class: "follow-btn" %>
               </div>
             </div>
           </div>
@@ -137,7 +137,7 @@
   <div class="row">
     <div class="col-xs-3">
       <div class="mobile-avatar">
-        <%= cl_image_tag user_avatar(current_user), width: 75, height: 75, crop: :fill %>
+        <%= cl_image_tag user_avatar(@user), width: 75, height: 75, crop: :fill %>
       </div>
     </div>
     <div class="col-xs-3 mobile-btn-spacing">
@@ -148,7 +148,7 @@
     <h4 id="profile"><%= @user.first_name %> <%= @user.last_name %></h4>
     <p class="small-font">@<%= @user.handle %></p>
     <p><%= @user.bio %></p>
-    <p class="small-font"><i class="fa fa-map-marker" aria-hidden="true"></i> <%= @user.location %></p>
+    <p class="small-font"><i class="fa fa-map-marker" aria-hidden="true"></i> <%= @user.country_name %></p>
     <p class="small-font"><i class="icon-twitter"></i> <%= link_to "My Twitter", @user.twitter %></p>
     <% if @user == current_user %>
       <p class="small-font"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <%= link_to 'Edit Profile', edit_user_registration_path %></p>
@@ -162,7 +162,7 @@
     <div class="tab-box active">
       <a class="profile tab active" data-target="#fame-mobile">
         <p class="button-word button-word-mobile">Fame</p>
-        <p class="tab-number tab-number-mobile"><%= current_user.player_score %></p>
+        <p class="tab-number tab-number-mobile"><%= @user.player_score %></p>
       </a>
     </div>
   </div>
@@ -189,7 +189,7 @@
     <% @user.rounds.order(created_at: :desc)[0..99].each do |r| %>
       <div class="row scorecard-mobile">
         <div class="col-xs-2">
-          <%= cl_image_tag user_avatar(current_user), width: 70, height: 70, crop: :fill %>
+          <%= cl_image_tag user_avatar(@user), width: 70, height: 70, crop: :fill %>
         </div>
         <div class="col-xs-8">
           <h4 class="card-inline scorecard-name"><%= @user.first_name %> <%= @user.last_name %></h4>
@@ -208,7 +208,7 @@
       <div class="container card">
         <div class="card-body">
           <div class="card-avatar">
-            <%= cl_image_tag user_avatar(current_user), width: 70, height: 70, crop: :fill, class: "small-avatar" %>
+            <%= cl_image_tag user_avatar(f), width: 70, height: 70, crop: :fill, class: "small-avatar" %>
           </div>
         </div>
 
@@ -230,7 +230,7 @@
       <div class="container card">
         <div class="card-body">
           <div class="card-avatar">
-            <%= cl_image_tag user_avatar(current_user), width: 70, height: 70, crop: :fill, class: "small-avatar" %>
+            <%= cl_image_tag user_avatar(f), width: 70, height: 70, crop: :fill, class: "small-avatar" %>
           </div>
         </div>
 
