@@ -52,7 +52,6 @@ class User < ApplicationRecord
 
   def country_name
     country = ISO3166::Country[location]
-    country.translations[I18n.locale.to_s] || country.name
   end
 
   def total_score
