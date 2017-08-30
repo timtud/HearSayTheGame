@@ -1,5 +1,9 @@
 // Specific CSS for your home-page
 
+.footer-bottom {
+  height: 120vh;
+}
+
 body {
   background: #DCF0FA;
 }
@@ -98,8 +102,8 @@ body {
 }
 
 .speech-bubble {
-  width: 104px * 2;
-  height: 90px * 2;
+  width: 99px * 2;
+  height: 85px * 2;
   position: absolute;
   top: 170px;
   left: 25px;
