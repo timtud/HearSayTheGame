@@ -11,10 +11,42 @@
   border-radius: 16px;
 
 }
-
-.search {
-  margin-left: 15vw;
+.search-input {
+  form {
+    margin-top: 3vh;
+  }
+  input[type=submit] {
+    background-color: $blue;
+    opacity: 0.8;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 3px 10px;
+    margin-left: 1vw;
+  }
+  input[type=text] {
+    border-radius: 5px;
+    margin-top: 1vh;
+    padding: 10px 10px;
+  }
 }
+
+.clickable-row {
+  background-color: #DCF0FA;
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+
+.list-group {
+
+}
+
+#list_results {
+    background-color: $blue;
+  }
 
 .kardashatoo_invert {
         -moz-transform: scaleX(-1);

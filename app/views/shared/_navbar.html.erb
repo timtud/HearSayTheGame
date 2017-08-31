@@ -40,13 +40,6 @@
 
         <!-- Links when logged in -->
 
-        <%= form_tag "/users/search", :method => 'get', :id => 'my_id' do %>
-            <p>
-              <%= text_field_tag :q, params[:q] %>
-              <%= submit_tag "Search", :name => nil %>
-            </p>
-        <% end %>
-
 
         <!-- Avatar with dropdown menu -->
         <div class="navbar-wagon-item right-navigation-link">
@@ -54,14 +47,13 @@
             <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
                 <%= link_to destroy_user_session_path, method: :delete, class: "right-navigation-link" do %>
                   <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-                <% end %>
+                  <% end %>
         </div>
       <% else %>
         <!-- Login link (when logged out) -->
         <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <% end %>
     </div>
-
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
