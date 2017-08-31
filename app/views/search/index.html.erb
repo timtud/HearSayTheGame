@@ -31,7 +31,7 @@
                 <% @users.each do |user| %>
                   <tr class='clickable-row' data-href=<%= user_path(user) %>>
   <%#= link_to user_path(user),  class: "list-group-item ", id: "list_results" %>
-                    <td><%= cl_image_tag user_avatar(user), style: "height: 10vh;  border-radius: 50%;"%> </td>
+                    <td><%= cl_image_tag user_avatar(user), style: "height: 10vh; width: 10vh;  border-radius: 50%;"%> </td>
                     <td><%=  user.first_name %></td>
                     <td>@<%= user.get_username %></td>
                   </tr>
