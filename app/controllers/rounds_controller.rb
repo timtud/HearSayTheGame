@@ -22,7 +22,7 @@ class RoundsController < ApplicationController
 
   def create
     #Creates 10 random questions
-    questions = Question.order("RANDOM()")[0..9]
+    questions = Question.order("RANDOM()")[0..(ENV["AMOUNT"].to_i - 1)]
     if user_signed_in?
       @round = Round.create(user_id: current_user.id, score: 0, correct_count: 0)
     else
