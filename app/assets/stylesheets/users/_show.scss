@@ -68,6 +68,10 @@
   height: 55px;
 }
 
+.search_bar {
+  width: 10vw;
+}
+
 body {
   background-color: #e6ecf0;
   font-family: "Helvetica Neue", "arimo";
@@ -141,6 +145,11 @@ body {
 
 .side-margin {
   margin-left: 10px;
+}
+
+#fame {
+  overflow-y: scroll;
+  height: 60vh;
 }
 
 /* cards */

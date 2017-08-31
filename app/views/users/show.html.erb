@@ -32,19 +32,18 @@
       </div>
     </div>
     <div>
-    <div class="col-sm-offset-3 col-sm-1 btn-spacing">
+    <div class="col-sm-1 btn-spacing">
       <%= render 'follow_form' if user_signed_in? %>
     </div>
-     <div class="row search_bar hidden-xs search-input">
-
+    <div class="col-sm-offset-1 col-sm-4 hidden-xs search-input">
       <%= form_tag "/users/search", :method => 'get', :id => 'my_id' do %>
-      <p>
-        <%= text_field_tag :q, params[:q] %>
-        <%= submit_tag "Search", :name => nil %>
-      </p>
-     <% end %>
-     </div>
-     </div>
+        <p>
+          <%= text_field_tag :q, params[:q], :class => 'search_bar' %>
+          <%= submit_tag "Search", :name => nil %>
+        </p>
+      <% end %>
+    </div>
+    </div>
   </div>
 </div>
 
