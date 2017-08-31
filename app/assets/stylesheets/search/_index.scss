@@ -1,6 +1,6 @@
 .search-results {
   background: white;
-  height: 70vh;
+  height: 80vh;
   margin-top: 2%;
   position: relative;
   box-shadow: 0 0 5px rgba(0,0,0,0.8);
@@ -9,7 +9,16 @@
   flex-direction: column;
   align-items: center;
   border-radius: 16px;
-
+  .table {
+    width: 60vw;
+    margin: 0 auto;
+    overflow-y: scroll;
+    height: 40vh;
+  }
+  .results-overflow {
+    overflow-y: scroll;
+    height: 55vh;
+  }
 }
 .search-input {
   form {

@@ -17,7 +17,7 @@
 
         <div class="list-group">
 
-          <div class="container">
+          <div class="container results-overflow">
 
             <table class="table">
               <thead>
@@ -31,16 +31,9 @@
                 <% @users.each do |user| %>
                   <tr class='clickable-row' data-href=<%= user_path(user) %>>
   <%#= link_to user_path(user),  class: "list-group-item ", id: "list_results" %>
-                    <% if user.picture_url.nil? %>
-                      <% @photo = "http://placehold.it/50/50" %>
-                      <td><%= image_tag @photo %> </td>
-                    <% else %>
-                      <% @photo = user.picture_url %>
-                      <td><%= image_tag @photo %> </td>
-                    <% end %>
-
-                      <td><%=  user.first_name %></td>
-                      <td>@<%= user.get_username %></td>
+                    <td><%= image_tag user_avatar(user), style: "height: 10vh;  border-radius: 50%;"%> </td>
+                    <td><%=  user.first_name %></td>
+                    <td>@<%= user.get_username %></td>
                   </tr>
                 <% end %>
 
