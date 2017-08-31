@@ -4,6 +4,8 @@
   <div class ="left-navigation hidden-xs hidden-sm">
  <% if user_signed_in? %>
 
+
+
         <div class ="left-navigation-links">
             <span class ="fa fa-home"><%= link_to "Home", root_path, class: "navbar-wagon-item navbar-hearsay-link" %>
             </span>
@@ -12,7 +14,7 @@
             <span class ="fa fa-user"><%= link_to "Profile", user_path(current_user), class: "navbar-wagon-item navbar-hearsay-link" %>
             </span>
         </div>
-        <% end %>
+  <% end %>
         <div class="left-navigation-links">
             <span class ="fa fa-trophy"><%= link_to "Leaderboard", pages_leaderboard_path, class: "navbar-wagon-item navbar-hearsay-link" %>
             </span>
@@ -50,14 +52,13 @@
             <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
                 <%= link_to destroy_user_session_path, method: :delete, class: "right-navigation-link" do %>
                   <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-                <% end %>
+                  <% end %>
         </div>
       <% else %>
         <!-- Login link (when logged out) -->
         <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <% end %>
     </div>
-
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
