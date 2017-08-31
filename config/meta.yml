@@ -1,0 +1,5 @@
+meta_product_name: "HearSay"
+meta_title: "HearSay - Guess Tweets. Get Famous."
+meta_description: "Who Said What Now! Why be anonymous when you can be famous? Guess celebrity tweets and embrace your destiny!"
+meta_image: "HearSay.png"                       # should exist in `app/assets/images/`
+twitter_account: "@hearsaythegame"   # required for Twitter Cards
