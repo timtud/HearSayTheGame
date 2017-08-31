@@ -115,7 +115,7 @@ body {
   	position: absolute;
   	top: 70px;
   	left: 35%;
-  	color: $white;
+  	color: $blue;
 	font-size: 50px;
 	font-weight: bolder;
 	line-height: 1;
@@ -135,7 +135,7 @@ body {
   box-shadow: none;
 }
 
-#score {
+.score {
   margin-bottom: -50px;
   color: $blue;
 }
@@ -165,6 +165,7 @@ body {
 .small-score {
   display: flex;
   justify-content: space-between;
+  color: $blue;
 }
 
 .round-score {
@@ -183,7 +184,7 @@ body {
   height: 120vh;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 767px) {
   .round-score {
   	-ms-transform: rotate(0deg); /* IE 9 */
     -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
@@ -193,7 +194,7 @@ body {
     font-weight: normal;
     position: initial;
 }
-  #score {
+  .score {
     margin-bottom: 0px;
   }
 }
