@@ -35,6 +35,7 @@
   .self {
     background-color: $blue;
     border-bottom: 2px solid black;
+    color: white;
   }
   .tabs {
     background: white;
@@ -72,8 +73,9 @@
     border-radius: 0 10px 0 0;
   }
   .tab.active {
-    opacity: 0.8;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.5)
+    background-color: #DCF0FA;
+    color: #333;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
   }
   .tab-content {
     height: 40vh;
