@@ -68,7 +68,7 @@
               <% end %>
             </thead>
             <tbody>
-              <% board[0..100].each_with_index do |user, index| %>
+              <% board[0..1000].each_with_index do |user, index| %>
                 <tr>
                   <% if user_signed_in? && current_user.email == user[1] %>
                     <td class="info">#<%= index+1 %></td>
@@ -105,7 +105,7 @@
               <% end %>
             </thead>
             <tbody>
-              <% board[0..100].each_with_index do |user, index| %>
+              <% board[0..1000].each_with_index do |user, index| %>
                 <tr>
                   <% if user_signed_in? && current_user.email == user[1] %>
                     <td class="info">#<%= index+1 %></td>
@@ -140,7 +140,7 @@
               <% end %>
             </thead>
             <tbody>
-              <% board[0..100].each_with_index do |user, index| %>
+              <% board[0..1000].each_with_index do |user, index| %>
                 <tr>
                   <% if user_signed_in? && current_user.email == user[1] %>
                     <td class="info">#<%= index+1 %></td>
@@ -175,7 +175,7 @@
               <% end %>
             </thead>
             <tbody>
-              <% board[0..100].each_with_index do |user, index| %>
+              <% board[0..1000].each_with_index do |user, index| %>
                 <tr>
                   <% if user_signed_in? && current_user.email == user[1] %>
                     <td class="info">#<%= index+1 %></td>
@@ -214,7 +214,7 @@
               <% end %>
             </thead>
             <tbody>
-              <% round_board[0..100].each_with_index do |user, index| %>
+              <% round_board[0..1000].each_with_index do |user, index| %>
                 <tr>
                   <% if user_signed_in? && current_user.email == user[1] %>
                     <td class="info">#<%= index+1 %></td>
