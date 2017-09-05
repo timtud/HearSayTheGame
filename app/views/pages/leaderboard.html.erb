@@ -68,14 +68,14 @@
               <% end %>
             </thead>
             <tbody>
-              <% board.each_with_index do |user, index| %>
+              <% board[1..100].each_with_index do |user, index| %>
                 <tr>
                   <% if user_signed_in? && current_user.email == user[1] %>
                     <td class="info">#<%= index+1 %></td>
                     <td class="info" >@<%= link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %></td>
                     <td class="info"><%= user[0] %></td>
                     <td class="info hidden-xs"><%= current_user.rounds.count %></td>
-                  <% else %>
+                  <% elsif user[1].present? %>
                     <td>#<%= index+1 %></td>
                     <td>@<%= link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %></td>
                     <td><%= user[0] %></td>
@@ -105,13 +105,13 @@
               <% end %>
             </thead>
             <tbody>
-              <% board.each_with_index do |user, index| %>
+              <% board[0..100].each_with_index do |user, index| %>
                 <tr>
                   <% if user_signed_in? && current_user.email == user[1] %>
                     <td class="info">#<%= index+1 %></td>
                     <td class="info" >@<%= User.where(email: user[1]).first.get_username %></td>
                     <td class="info"><%= user[0] %></td>
-                  <% else %>
+                  <% elsif user[1].present? %>
                     <td>#<%= index+1 %></td>
                     <td>@<%= link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %></td>
                     <td><%= user[0] %></td>
@@ -140,13 +140,13 @@
               <% end %>
             </thead>
             <tbody>
-              <% board.each_with_index do |user, index| %>
+              <% board[0..100].each_with_index do |user, index| %>
                 <tr>
                   <% if user_signed_in? && current_user.email == user[1] %>
                     <td class="info">#<%= index+1 %></td>
                     <td class="info" >@<%= User.where(email: user[1]).first.get_username %></td>
                     <td class="info"><%= user[0] %></td>
-                  <% else %>
+                  <% elsif user[1].present? %>
                     <td>#<%= index+1 %></td>
                     <td>@<%= link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %></td>
                     <td><%= user[0] %></td>
@@ -175,13 +175,13 @@
               <% end %>
             </thead>
             <tbody>
-              <% board.each_with_index do |user, index| %>
+              <% board[0..100].each_with_index do |user, index| %>
                 <tr>
                   <% if user_signed_in? && current_user.email == user[1] %>
                     <td class="info">#<%= index+1 %></td>
                     <td class="info" >@<%= User.where(email: user[1]).first.get_username %></td>
                     <td class="info"><%= user[0] %></td>
-                  <% else %>
+                  <% elsif user[1].present? %>
                     <td>#<%= index+1 %></td>
                     <td>@<%= link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %></td>
                     <td><%= user[0] %></td>
@@ -214,13 +214,13 @@
               <% end %>
             </thead>
             <tbody>
-              <% round_board.each_with_index do |user, index| %>
+              <% round_board[0..100].each_with_index do |user, index| %>
                 <tr>
                   <% if user_signed_in? && current_user.email == user[1] %>
                     <td class="info">#<%= index+1 %></td>
                     <td class="info" >@<%= User.where(email: user[1]).first.get_username %></td>
                     <td class="info"><%= user[0] %></td>
-                  <% else %>
+                  <% elsif user[1].present? %>
                     <td>#<%= index+1 %></td>
                     <td>@<%= link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %></td>
                     <td><%= user[0] %></td>
