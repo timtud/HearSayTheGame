@@ -35,7 +35,7 @@ class User < ApplicationRecord
 
 
   def get_username
-    unless self.handle.empty?
+    unless self.handle.nil?
       return self.handle
     else
       return "#{self.first_name}#{self.last_name}".gsub(/\s+/, "")

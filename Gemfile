@@ -16,7 +16,6 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
-gem 'omniauth-facebook'
 gem 'country_select'
 gem 'countries'
 

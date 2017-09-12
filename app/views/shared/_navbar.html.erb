@@ -49,9 +49,9 @@
         <!-- Avatar with dropdown menu -->
         <div class="navbar-wagon-item right-navigation-link">
             <%= cl_image_tag user_avatar(current_user), class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-                <%= link_to destroy_user_session_path, method: :delete, class: "right-navigation-link" do %>
-                  <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-                  <% end %>
+            <%= link_to destroy_user_session_path, method: :delete, class: "right-navigation-link" do %>
+              <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+            <% end %>
         </div>
       <% else %>
         <!-- Login link (when logged out) -->
