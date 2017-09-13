@@ -1,32 +1,30 @@
 <div class="navbar-wagon">
 
   <div class ="left-navigation hidden-xs hidden-sm">
- <% if user_signed_in? %>
-
-        <div class ="left-navigation-links">
-            <%= link_to root_path, class: "navbar-wagon-item navbar-hearsay-link" do %>
-            <span class="fa fa-home">&nbsp;&nbsp;</span>
+    <% if user_signed_in? %>
+      <div class ="left-navigation-links">
+        <%= link_to root_path, class: "navbar-wagon-item navbar-hearsay-link" do %>
+          <span class="fa fa-home">&nbsp;&nbsp;</span>
             Home
-            <% end %>
-        </div>
-        <div class ="left-navigation-links">
-            <%= link_to user_path(current_user), class: "navbar-wagon-item navbar-hearsay-link" do %>
-            <span class="fa fa-user">&nbsp;&nbsp;</span>
+        <% end %>
+      </div>
+      <div class ="left-navigation-links">
+        <%= link_to user_path(current_user), class: "navbar-wagon-item navbar-hearsay-link" do %>
+          <span class="fa fa-user">&nbsp;&nbsp;</span>
             Profile
-            <% end %>
-        </div>
-  <% end %>
-        <div class ="left-navigation-links">
-            <%= link_to pages_leaderboard_path, class: "navbar-wagon-item navbar-hearsay-link" do %>
-            <span class="fa fa-trophy">&nbsp;&nbsp;</span>
+        <% end %>
+      </div>
+    <% end %>
+    <div class ="left-navigation-links">
+      <%= link_to pages_leaderboard_path, class: "navbar-wagon-item navbar-hearsay-link" do %>
+        <span class="fa fa-trophy">&nbsp;&nbsp;</span>
             Leaderboard
-            <% end %>
-        </div>
-
-        <div class="left-navigation-links" id="tutorial-show">
-            <span class="fa fa-question-circle" title="Tutorial"><a class="navbar-wagon-item navbar-hearsay-link">Tutorial</a>
-            </span>
-        </div>
+      <% end %>
+    </div>
+    <div class="left-navigation-links" id="tutorial-show">
+      <a class="navbar-wagon-item navbar-hearsay-link">Tutorial<span class="fa fa-question-circle" style="position:relative; left:-85px">
+      </span></a>
+    </div>
   </div>
 
   <!-- Logo -->
