@@ -13,6 +13,12 @@ $('.answer').each(function(i, obj){
 });
 
 $('.next-question').show();
+
 $('.grayer-reveal').removeClass('hidden');
 $('.grayer').addClass('hidden');
+$('.grayer-name').addClass('hidden');
+$('.grayer-handle').addClass('hidden');
+$('.celebrity-name').removeClass('hidden');
+$('.celebrity-handle').removeClass('hidden');
+
 $(".speech-bubble p").text("<%= @round.score %>");

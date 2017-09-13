@@ -20,8 +20,10 @@
         <%= image_tag "grayer_photo.png", class: "grayer" %>
         <%= image_tag @round.round_questions.where(answered: false).first.question.answer.picture_url, class: "hidden grayer-reveal" %>
         <div style = "margin-left:20px" class="hidden-xs">
-          <h4>HearSay</h4>
-          <h4>@WhoSaidWhatNow</h4>
+          <h4 class="grayer-name"><strong>HearSay</strong></h4>
+          <h4 class="grayer-handle">@WhoSaidWhatNow</h4>
+          <h4 class="hidden celebrity-name"><strong><%= @round.round_questions.where(answered: false).first.question.answer.name %></strong></h4>
+          <h4 class="hidden celebrity-handle"><%= @round.round_questions.where(answered: false).first.question.answer.handle %></h4>
         </div>
       </div>
       <h3 class="hidden-xs">
