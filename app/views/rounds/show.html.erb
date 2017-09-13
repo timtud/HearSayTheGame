@@ -17,13 +17,16 @@
     </div>
     <div class="question">
       <div style="display:flex">
-        <%= image_tag "grayer_photo.png", class: "grayer" %>
+        <%= image_tag "grayer_round.jpg", class: "grayer" %>
         <%= image_tag @round.round_questions.where(answered: false).first.question.answer.picture_url, class: "hidden grayer-reveal" %>
-        <div style = "margin-left:20px" class="hidden-xs">
-          <h4 class="grayer-name"><strong>HearSay</strong></h4>
-          <h4 class="grayer-handle">@WhoSaidWhatNow</h4>
-          <h4 class="hidden celebrity-name"><strong><%= @round.round_questions.where(answered: false).first.question.answer.name %></strong></h4>
-          <h4 class="hidden celebrity-handle"><%= @round.round_questions.where(answered: false).first.question.answer.handle %></h4>
+        <div style = "margin-left:20px">
+          <h4 class="grayer-name">HearSay</h4>
+          <h5 class="hidden-xs grayer-handle">@WhoSaidWhatNow</h5>
+          <h4 class="hidden celebrity-name"><%= @round.round_questions.where(answered: false).first.question.answer.name %></h4>
+          <h5 class="hidden-xs hidden celebrity-handle"><%= @round.round_questions.where(answered: false).first.question.answer.handle %></h5>
+          <div class="hidden twitter-button">
+            <a href="https://twitter.com/<%= @round.round_questions.where(answered: false).first.question.answer.handle %>" class="twitter-follow-button" data-show-count="false"></a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </div>
         </div>
       </div>
       <h3 class="hidden-xs">
@@ -42,7 +45,7 @@
                 <div style="margin-left:20px">
                   <strong class="answer-name"><%= answer.name %></strong>
                   <br />
-                  <%= answer.handle %>
+                  <strong class="answer-handle"><%= answer.handle %></strong>
                 </div>
               </div>
             <% end %>

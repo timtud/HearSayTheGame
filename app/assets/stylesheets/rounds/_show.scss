@@ -36,18 +36,43 @@ body {
 .grayer {
   width: 100px;
   height: 100px;
+  border-radius: 50%;
 }
 .grayer-reveal {
   width: 100px;
   height: 100px;
-  border: 2px solid black;
+  border-radius: 50%;
+  // border: 2px solid black;
 }
-
+.grayer-name {
+  color: #14171a;
+  font-size: 22px;
+  font-weight: bold;
+}
+.grayer-handle {
+  color: #66757f;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.celebrity-name {
+  color: #14171a;
+  font-size: 22px;
+  font-weight: bold; 
+}
+.celebrity-handle {
+  color: #66757f;
+  font-size: 14px;
+  white-space: nowrap;
+}
 .answer-picture {
   width: 60px;
   height: 60px;
+  border-radius: 50%;
 }
-
+.answer-handle {
+  font-weight: lighter;
+  font-size: 15px;
+}
 .answer_wrapper {
   display: flex;
   align-items: center;
