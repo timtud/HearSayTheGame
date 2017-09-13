@@ -93,3 +93,12 @@ body {
   background-color: #E5F2F7;
   color: #0084b4;
 }
+
+@media only screen and (max-width: 767px) {
+    #home-banner {
+      background: $blue;
+      height: 100vh;
+    } .banner-content {
+      margin-top: 20%;
+    }
+}
