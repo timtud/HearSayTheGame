@@ -18,6 +18,7 @@
     <div class="question">
       <div style="display:flex">
         <%= image_tag "grayer_photo.png", class: "grayer" %>
+        <%= image_tag @round.round_questions.where(answered: false).first.question.answer.picture_url, class: "hidden grayer-reveal" %>
         <div style = "margin-left:20px" class="hidden-xs">
           <h4>HearSay</h4>
           <h4>@WhoSaidWhatNow</h4>
