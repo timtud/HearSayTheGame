@@ -16,7 +16,7 @@
       </div>
     <% end %>
     <div class ="left-navigation-links">
-      <%= link_to pages_leaderboard_path, class: "navbar-wagon-item navbar-hearsay-link" do %>
+      <%= link_to leaderboard_path, class: "navbar-wagon-item navbar-hearsay-link" do %>
         <span class="fa fa-trophy">&nbsp;&nbsp;</span>
             Leaderboard
       <% end %>
@@ -72,7 +72,7 @@
           <li> <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-hearsay-link" %></li>
         <% end %>
 
-        <li><%= link_to "Leaderboard", pages_leaderboard_path, class: "navbar-wagon-item navbar-hearsay-link" %></li>
+        <li><%= link_to "Leaderboard", leaderboard_path, class: "navbar-wagon-item navbar-hearsay-link" %></li>
 
         <li><%= link_to "Search", users_search_path, class: "navbar-wagon-item navbar-hearsay-link" %></li>
 
