@@ -1,9 +1,9 @@
 <div><div class = "birdber hidden-sm hidden-xs">
-    <%= cl_image_tag "birdber", height:300, crop:"scale" %>
+    <%= image_tag "justinbiebird" %>
   </div>
 
   <div class="rownaldo hidden-sm hidden-xs">
-    <%= cl_image_tag "rownaldo-flipped_fxulq0", height:300, crop:"scale" %>
+    <%= image_tag "chickianoronaldo.png" %>
   </div>
 </div>
 
@@ -47,7 +47,7 @@
     </div>
     <div class="play-game-card__footer col-xs-12">
       <div class="play-game-card-footer__links col-xs-7">
-        <%= link_to "<i class='fa fa-trophy' aria-hidden='true'></i>".html_safe, pages_leaderboard_path %>
+        <%= link_to "<i class='fa fa-trophy' aria-hidden='true'></i>".html_safe, leaderboard_path %>
         <% if user_signed_in? %>
         <%= link_to "<i class='fa fa-user' aria-hidden='true'></i>".html_safe, user_path(current_user) %>
         <% end %>
