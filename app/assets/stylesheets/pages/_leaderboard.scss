@@ -137,10 +137,7 @@
 }
 .ss-content {
   height: 100%;
-  // width: 100%;
-  // padding: 0 0px 0 0;
   position: relative;
-  // right: -18px;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -174,6 +171,23 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .ss-content {
+    height: 100%;
+    position: relative;
+    overflow: scroll;
+    box-sizing: border-box;
+  }
+  .ss-scroll {
+    position: relative;
+    background: rgba(0, 0, 0, 0);
+    width: 0px;
+    border-radius: 0px;
+    top: 0;
+    z-index: 1;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.25s linear;
+  }
   .leaderboard .scoreboard {
     width: 88vw;
   }
