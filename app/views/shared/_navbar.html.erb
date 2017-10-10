@@ -1,77 +1,98 @@
 <div class="navbar-wagon">
-    <div class="left-navigation hidden-xs hidden-sm">
-        <% if user_signed_in? %>
-            <div class="left-navigation-links">
-                <%=link_to root_path, class: "navbar-wagon-item navbar-hearsay-link" do %> <span class="fa fa-home">&nbsp;&nbsp;</span> Home
-                    <% end %>
-            </div>
-            <div class="left-navigation-links">
-                <%=link_to user_path(current_user), class: "navbar-wagon-item navbar-hearsay-link" do %> <span class="fa fa-user">&nbsp;&nbsp;</span> Profile
-                    <% end %>
-            </div>
-            <div class="left-navigation-links">
-                <%=link_to aviary_path, class: "navbar-wagon-item navbar-hearsay-link" do %> <span class="fa fa-user">&nbsp;&nbsp;</span> Aviary
-                    <% end %>
-            </div>
-            <% end %>
-                <div class="left-navigation-links">
-                    <%=link_to leaderboard_path, class: "navbar-wagon-item navbar-hearsay-link" do %> <span class="fa fa-trophy">&nbsp;&nbsp;</span> Leaderboard
-                        <% end %>
-                </div>
-                <div class="left-navigation-links" id="tutorial-show"> <a class="navbar-wagon-item navbar-hearsay-link">Tutorial<span class="fa fa-question-circle" style="position:relative; left:-85px"> </span></a> </div>
+  <div class="left-navigation hidden-xs hidden-sm">
+    <%=link_to root_path, class: "navbar-wagon-item navbar-hearsay-link" do %>
+      <span class="fa fa-home"></span> Home
+    <% end %>
+    <div class="left-navigation-links">
+      <%=link_to leaderboard_path, class: "navbar-wagon-item navbar-hearsay-link" do %>
+        <span class="fa fa-trophy">&nbsp;&nbsp;</span> Leaderboard
+      <% end %>
     </div>
-    <div class="hidden-md hidden-lg">
-        <%=link_to "New Game" , rounds_path() , :method=> :post, class: "navbar-wagon-item btn btn-homepage right-navigation-link" %> </div>
-    <%=link_to root_path, class: "navbar-hearsay-brand" do %>
-        <%=image_tag "sayer_navbar.png" %>
+    <div class="left-navigation-links" id="tutorial-show">
+      <a class="navbar-wagon-item navbar-hearsay-link">Tutorial<span class="fa fa-question-circle" style="position:relative; left:-85px"> </span></a>
+    </div>
+  </div>
+  <div class="hidden-md hidden-lg">
+    <%=link_to "New Game" , rounds_path() , :method=> :post, class: "navbar-wagon-item btn btn-homepage right-navigation-link" %>
+  </div>
+  <%=link_to root_path, class: "navbar-hearsay-brand" do %>
+      <%=image_tag "sayer_navbar.png" %>
+  <% end %>
+  <div class="right-navigation hidden-xs hidden-sm">
+    <%=link_to "New Game" , rounds_path() , :method=> :post, class:"navbar-wagon-item btn btn-homepage right-navigation-link" %>
+    <div class="navbar-wagon-right hidden-xs hidden-sm">
+      <% if user_signed_in? %>
+        <div class="dropdown">
+          <div class="navbar-wagon-item right-navigation-link">
+            <%=cl_image_tag user_avatar(current_user), class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle"=> "dropdown" %>
+            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+              <li>
+                <%=link_to user_path(current_user), class: "navbar-wagon-item navbar-hearsay-link" do %>
+                  <p><i class="fa fa-user" aria-hidden="true"></i> Profile</p>
+                <% end %>
+              </li>
+              <li>
+                <%=link_to aviary_path, class: "navbar-wagon-item navbar-hearsay-link" do %>
+                  <p><i class="fa fa-star" aria-hidden="true"></i> Aviary</p>
+                <% end %>
+              </li>
+              <li>
+                <%=link_to destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-hearsay-link" do %>
+                  <p><i class="fa fa-sign-out" aria-hidden="true"></i> Log Out</p>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      <% else %>
+        <%=link_to t( ".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <% end %>
+    </div>
+  </div>
+
+  <div class="navbar-wagon-item hidden-md hidden-lg">
+    <div class="dropdown">
+      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <% if user_signed_in? %>
+          <li>
+            <%=link_to user_path(current_user), class: "navbar-wagon-item navbar-hearsay-link" do %>
+              <p><i class="fa fa-user" aria-hidden="true"></i> Profile</p>
             <% end %>
-                <div class="right-navigation hidden-xs hidden-sm">
-                    <%=link_to "New Game" , rounds_path() , :method=> :post, class:"navbar-wagon-item btn btn-homepage right-navigation-link" %>
-                        <div class="navbar-wagon-right hidden-xs hidden-sm">
-                            <% if user_signed_in? %>
-                                <div class="navbar-wagon-item right-navigation-link">
-                                    <%=cl_image_tag user_avatar(current_user), class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle"=> "dropdown" %>
-                                        <%=link_to destroy_user_session_path, method: :delete, class: "right-navigation-link" do %> <i class="fa fa-sign-out"></i>
-                                            <%=t( ".sign_out", default: "Log out") %>
-                                                <% end %>
-                                </div>
-                                <% else %>
-                                    <%=link_to t( ".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-                                        <% end %>
-                        </div>
-                </div>
-                <div class="navbar-wagon-item hidden-md hidden-lg">
-                    <div class="dropdown"> <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-                        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-                            <% if user_signed_in? %>
-                                <li>
-                                    <%=link_to "Profile", user_path(current_user), class: "navbar-wagon-item navbar-hearsay-link" %>
-                                </li>
-                                <% else %>
-                                    <li>
-                                        <%=link_to t( ".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-hearsay-link" %>
-                                    </li>
-                                    <% end %>
-                                        <li>
-                                            <%=link_to "Leaderboard", leaderboard_path, class: "navbar-wagon-item navbar-hearsay-link" %>
-                                        </li>
-                                        <li>
-                                        <li>
-                                        <%=link_to "Aviary", aviary_path, class: "navbar-wagon-item navbar-hearsay-link" %>
-                                </li>
-                                <% else %>
-                                            <%=link_to "Search", users_search_path, class: "navbar-wagon-item navbar-hearsay-link" %>
-                                        </li>
-                                        <li class="navbar-wagon-item navbar-hearsay-link" id="tutorial-mobile" title="Tutorial"><span>Tutorial</span>
-                                        </li>
-                                        <% if user_signed_in? %>
-                                            <li>
-                                                <%=link_to destroy_user_session_path, method: :delete, class: "right-navigation-link" do %> <i class="fa fa-sign-out"></i>
-                                                    <%=t( ".sign_out", default: "Log out") %>
-                                                        <% end %>
-                                            </li>
-                                            <% end %>
-                        </ul>
-                    </div>
-                </div>
+          </li>
+          <li>
+            <%=link_to aviary_path, class: "navbar-wagon-item navbar-hearsay-link" do %>
+              <p><i class="fa fa-star" aria-hidden="true"></i> Aviary</p>
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to new_user_session_path, class: "navbar-wagon-item navbar-hearsay-link" do %>
+              <p><i class="fa fa-sign-in" aria-hidden="true"></i> Sign In</p>
+            <% end %>
+          </li>
+        <% end %>
+        <li>
+          <%=link_to leaderboard_path, class: "navbar-wagon-item navbar-hearsay-link" do %>
+            <p><i class="fa fa-trophy" aria-hidden="true"></i> Leaderboard</p>
+          <% end %>
+        </li>
+        <li>
+          <%=link_to users_search_path, class: "navbar-wagon-item navbar-hearsay-link" do %>
+            <p><i class="fa fa-search" aria-hidden="true"></i> Search</p>
+          <% end %>
+        </li>
+        <li class="navbar-wagon-item navbar-hearsay-link" id="tutorial-mobile" title="Tutorial">
+          <p><i class="fa fa-question-circle" aria-hidden="true"></i> Tutorial</p>
+        </li>
+      <% if user_signed_in? %>
+        <li>
+          <%=link_to destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-hearsay-link" do %>
+            <p><i class="fa fa-sign-out"></i> Log Out</p>
+          <% end %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
 </div>
