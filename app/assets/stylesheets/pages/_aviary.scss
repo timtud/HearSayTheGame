@@ -1,0 +1,49 @@
+.aviary-banner {
+  height: 100vh;
+}
+
+.aviary-title {
+  height: 20vh;
+}
+
+.aviary-title-div {
+  display: flex;
+  justify-content: center;
+}
+
+.aviary-card-body {
+  background-color: #C7F2FF;
+  padding: 5px;
+  border-radius: 5px 5px 0px 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.aviary-card {
+  width: 18vw;
+}
+
+.aviary-card-footer {
+  background-color: white;
+  padding: 5px;
+  border-radius: 0px 0px 5px 5px;
+}
+
+.aviary-name {
+  overflow-y: hidden;
+}
+
+.aviary-achieve {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+@media only screen and (max-width: 768px) {
+    .aviary-card {
+      width: 40vw;
+    }
+}
+
+.aviary-image {
+  height: 20vh;
+}
