@@ -1,1 +1,20 @@
-<h1>This is the Aviary Page</h1>
+<div class="banner aviary-banner" style="background-image: url(<%=image_path('aviary_background.jpg')%>">
+  <div class="row">
+    <div class="aviary-title-div">
+      <%= image_tag('aviary.png', class: 'aviary-title') %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="container aviary-card">
+      <div class="aviary-card-body">
+        <%= image_tag('swanyewest.png', class: "aviary-image") %>
+      </div>
+      <div class="aviary-card-footer">
+        <div class="aviary-card-info">
+          <p class="aviary-name"><b>Bird Title</b></p>
+          <p class="aviary-achieve">Bird Achievement</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
