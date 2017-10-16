@@ -140,7 +140,7 @@ body {
 }
 
 .add-top-margin {
-  margin-top: 10px;
+  margin-top: 0px;
 }
 
 .side-margin {
@@ -149,13 +149,13 @@ body {
 
 #fame {
   overflow-y: scroll;
-  height: 60vh;
+  height: 55vh;
 }
 
 /* cards */
 
 .card {
-  margin: 10px;
+  margin-bottom: 15px;
   width: 50vw;
 }
 
@@ -210,7 +210,7 @@ body {
 .score-panel {
   background-color: white;
   padding: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   border-radius: 4px;
   box-shadow: 1px 1px 4px #D1D1D1;
 }
