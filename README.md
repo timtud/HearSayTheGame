@@ -2,7 +2,7 @@
 
 HearSay is a twitter-based game about celebrities. HearSay was made by Adnan Ahmed, Tim De Groot, Charlie Merrill, and Gonçalo Novo. It was built using Ruby on Rails. #WhoSaidWhatNow
 
-Play now at [HearSayTheGame.com](www.hearsaythegame.com)
+Play now at [HearSayTheGame.com](http://www.hearsaythegame.com)
 
 ## Gameplay
 
