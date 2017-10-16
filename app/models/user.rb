@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   has_many :followers
   has_many :rounds
+  has_many :badges, dependent: :destroy
+  has_many :achievements, through: :badges
 
   # pg_search_scope :search_by_first_name_and_last_name_, against: [ :title, :syllabus ]
   has_many :active_relationships, class_name:  "Relationship",
