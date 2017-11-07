@@ -4,17 +4,307 @@
       <%= image_tag('aviary.png', class: 'aviary-title') %>
     </div>
   </div>
-  <div class="row">
-    <div class="container aviary-card">
-      <div class="aviary-card-body">
-        <%= image_tag('swanyewest.png', class: "aviary-image") %>
-      </div>
+  <% perfect_round = false %>
+  <% zero_round = false %>
+  <% game_count = 0 %>
+  <% current_user.rounds.each do |r| %>
+    <% if r.correct_count == 10 %>
+      <% perfect_round = true %>
+    <% end %>
+    <% if r.correct_count == 0 %>
+      <% zero_round = true %>
+    <% end %>
+    <% game_count += 1 %>
+  <% end %>
+  <div class="container aviary-container">
+
+    <div class="aviary-card">
+      <% if game_count >= 1 %>
+        <div class="aviary-card-body">
+          <%= image_tag('hulkparrogan.png', class: "aviary-image") %>
+        </div>
+      <% else %>
+        <div class="aviary-card-body locked">
+          <%= image_tag('locked_sayer.png', class: "aviary-image") %>
+        </div>
+      <% end %>
       <div class="aviary-card-footer">
         <div class="aviary-card-info">
-          <p class="aviary-name"><b>Bird Title</b></p>
-          <p class="aviary-achieve">Bird Achievement</p>
+          <% if game_count >= 1 %>
+            <p class="aviary-name"><b>Hulk Parrotgan</b></p>
+            <p class="aviary-achieve">Play 1 Game</p>
+            <p class="aviary-achieve"><i>Congrats on your first game brother!</i></p>
+          <% else %>
+            <p class="aviary-name"><b>Locked</b></p>
+            <p class="aviary-achieve">Play 1 Game</p>
+          <% end %>
         </div>
       </div>
     </div>
+
+    <div class="aviary-card">
+      <% if game_count >= 10 %>
+        <div class="aviary-card-body">
+          <%= image_tag('chickianoronaldo.png', class: "aviary-image") %>
+        </div>
+      <% else %>
+        <div class="aviary-card-body locked">
+          <%= image_tag('locked_sayer.png', class: "aviary-image") %>
+        </div>
+      <% end %>
+      <div class="aviary-card-footer">
+        <div class="aviary-card-info">
+          <% if game_count >= 10 %>
+            <p class="aviary-name"><b>Chickiano Ronaldo</b></p>
+            <p class="aviary-achieve">Play 10 Games</p>
+            <p class="aviary-achieve"><i>Gooooaaaallll!</i></p>
+          <% else %>
+            <p class="aviary-name"><b>Locked</b></p>
+            <p class="aviary-achieve">Play 10 Games</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="aviary-card">
+      <% if zero_round == true %>
+        <div class="aviary-card-body">
+          <%= image_tag('trumper.png', class: "aviary-image") %>
+        </div>
+      <% else %>
+        <div class="aviary-card-body locked">
+          <%= image_tag('locked_sayer.png', class: "aviary-image") %>
+        </div>
+      <% end %>
+      <div class="aviary-card-footer">
+        <div class="aviary-card-info">
+          <% if zero_round == true %>
+            <p class="aviary-name"><b>Donald Jay Trump</b></p>
+            <p class="aviary-achieve">0/10 Round</p>
+            <p class="aviary-achieve"><i>Blame it on crooked Hillary and the dems!</i></p>
+          <% else %>
+            <p class="aviary-name"><b>Locked</b></p>
+            <p class="aviary-achieve">0/10 Round</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="aviary-card">
+      <% if perfect_round == true %>
+        <div class="aviary-card-body">
+          <%= image_tag('swanyewest.png', class: "aviary-image") %>
+        </div>
+      <% else %>
+        <div class="aviary-card-body locked">
+          <%= image_tag('locked_sayer.png', class: "aviary-image") %>
+        </div>
+      <% end %>
+      <div class="aviary-card-footer">
+        <div class="aviary-card-info">
+          <% if perfect_round == true %>
+            <p class="aviary-name"><b>Swanye West</b></p>
+            <p class="aviary-achieve">10/10 Round</p>
+            <p class="aviary-achieve"><i>Best round of all time! ALL TIME!</i></p>
+          <% else %>
+            <p class="aviary-name"><b>Locked</b></p>
+            <p class="aviary-achieve">10/10 Round</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="aviary-card">
+      <% if current_user.player_score >= 2000 %>
+        <div class="aviary-card-body">
+          <%= image_tag('grayer_round.jpg', class: "aviary-image") %>
+        </div>
+      <% else %>
+        <div class="aviary-card-body locked">
+          <%= image_tag('locked_sayer.png', class: "aviary-image") %>
+        </div>
+      <% end %>
+      <div class="aviary-card-footer">
+        <div class="aviary-card-info">
+          <% if current_user.player_score >= 2000 %>
+            <p class="aviary-name"><b>Hennifer Lopez</b></p>
+            <p class="aviary-achieve">2000 Fame Score</p>
+            <p class="aviary-achieve"><i>I'm still Henny from the block!</i></p>
+          <% else %>
+            <p class="aviary-name"><b>Locked</b></p>
+            <p class="aviary-achieve">2000 Fame Score</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="aviary-card">
+      <% if current_user.player_score >= 5000 %>
+        <div class="aviary-card-body">
+          <%= image_tag('grayer_round.jpg', class: "aviary-image") %>
+        </div>
+      <% else %>
+        <div class="aviary-card-body locked">
+          <%= image_tag('locked_sayer.png', class: "aviary-image") %>
+        </div>
+      <% end %>
+      <div class="aviary-card-footer">
+        <div class="aviary-card-info">
+          <% if current_user.player_score >= 5000 %>
+            <p class="aviary-name"><b>Parrots Hilton</b></p>
+            <p class="aviary-achieve">2000 Fame Score</p>
+            <p class="aviary-achieve"><i>That's hot.</i></p>
+          <% else %>
+            <p class="aviary-name"><b>Locked</b></p>
+            <p class="aviary-achieve">5000 Fame Score</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="aviary-card">
+      <% if current_user.player_score >= 10000 %>
+        <div class="aviary-card-body">
+          <%= image_tag('kardashatoo.png', class: "aviary-image") %>
+        </div>
+      <% else %>
+        <div class="aviary-card-body locked">
+          <%= image_tag('locked_sayer.png', class: "aviary-image") %>
+        </div>
+      <% end %>
+      <div class="aviary-card-footer">
+        <div class="aviary-card-info">
+          <% if current_user.player_score >= 10000 %>
+            <p class="aviary-name"><b>Kim Kardashatoo</b></p>
+            <p class="aviary-achieve">2000 Fame Score</p>
+            <p class="aviary-achieve"><i>Your score broke the internet!</i></p>
+          <% else %>
+            <p class="aviary-name"><b>Locked</b></p>
+            <p class="aviary-achieve">10000 Fame Score</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="aviary-card">
+      <% if current_user.followers.count >= 1 %>
+        <div class="aviary-card-body">
+          <%= image_tag('justinbiebird.png', class: "aviary-image") %>
+        </div>
+      <% else %>
+        <div class="aviary-card-body locked">
+          <%= image_tag('locked_sayer.png', class: "aviary-image") %>
+        </div>
+      <% end %>
+      <div class="aviary-card-footer">
+        <div class="aviary-card-info">
+          <% if current_user.followers.count >= 1 %>
+            <p class="aviary-name"><b>Justin Biebird</b></p>
+            <p class="aviary-achieve">Gain 1 Follower</p>
+            <p class="aviary-achieve"><i>You can go and love yourself.</i></p>
+          <% else %>
+            <p class="aviary-name"><b>Locked</b></p>
+            <p class="aviary-achieve">Gain 1 Follower</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="aviary-card">
+      <% if current_user.followers.count >= 10 %>
+        <div class="aviary-card-body">
+          <%= image_tag('justinbiebird.png', class: "aviary-image") %>
+        </div>
+      <% else %>
+        <div class="aviary-card-body locked">
+          <%= image_tag('locked_sayer.png', class: "aviary-image") %>
+        </div>
+      <% end %>
+      <div class="aviary-card-footer">
+        <div class="aviary-card-info">
+          <% if current_user.followers.count >= 10 %>
+            <p class="aviary-name"><b>Birdney Spears</b></p>
+            <p class="aviary-achieve">Gain 10 Followers</p>
+            <p class="aviary-achieve"><i>Gimme more!</i></p>
+          <% else %>
+            <p class="aviary-name"><b>Locked</b></p>
+            <p class="aviary-achieve">Gain 10 Followers</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="aviary-card">
+      <% if current_user.following.count >= 1 %>
+        <div class="aviary-card-body">
+          <%= image_tag('grayer_round.jpg', class: "aviary-image") %>
+        </div>
+      <% else %>
+        <div class="aviary-card-body locked">
+          <%= image_tag('locked_sayer.png', class: "aviary-image") %>
+        </div>
+      <% end %>
+      <div class="aviary-card-footer">
+        <div class="aviary-card-info">
+          <% if current_user.following.count >= 1 %>
+            <p class="aviary-name"><b>Ellen Pigeon-eres</b></p>
+            <p class="aviary-achieve">Follow 1 Person</p>
+            <p class="aviary-achieve"><i>Just keep swimming.</i></p>
+          <% else %>
+            <p class="aviary-name"><b>Locked</b></p>
+            <p class="aviary-achieve">Follow 1 Person</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="aviary-card">
+      <% if current_user.following.count >= 10 %>
+        <div class="aviary-card-body">
+          <%= image_tag('grayer_round.jpg', class: "aviary-image") %>
+        </div>
+      <% else %>
+        <div class="aviary-card-body locked">
+          <%= image_tag('locked_sayer.png', class: "aviary-image") %>
+        </div>
+      <% end %>
+      <div class="aviary-card-footer">
+        <div class="aviary-card-info">
+          <% if current_user.following.count >= 10 %>
+            <p class="aviary-name"><b>Swan Connery</b></p>
+            <p class="aviary-achieve">Follow 10 People</p>
+            <p class="aviary-achieve"><i>The name's Connery, Swan Connery.</i></p>
+          <% else %>
+            <p class="aviary-name"><b>Locked</b></p>
+            <p class="aviary-achieve">Follow 10 People</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="aviary-card">
+      <% if current_user.bio != "" && current_user.country_name != "" && current_user.twitter != "" && current_user.handle != "" %>
+        <div class="aviary-card-body">
+          <%= image_tag('grayer_round.jpg', class: "aviary-image") %>
+        </div>
+      <% else %>
+        <div class="aviary-card-body locked">
+          <%= image_tag('locked_sayer.png', class: "aviary-image") %>
+        </div>
+      <% end %>
+      <div class="aviary-card-footer">
+        <div class="aviary-card-info">
+          <% if current_user.bio != "" && current_user.country_name != "" && current_user.twitter != "" && current_user.handle != "" %>
+            <p class="aviary-name"><b>J.K. Owl-ing</b></p>
+            <p class="aviary-achieve">Complete Profile</p>
+            <p class="aviary-achieve"><i>You're a wizard.</i></p>
+          <% else %>
+            <p class="aviary-name"><b>Locked</b></p>
+            <p class="aviary-achieve">Complete Profile</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

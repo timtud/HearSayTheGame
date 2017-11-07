@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20171012220955) do
     t.string   "image_url"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["identity"], name: "index_achievements_on_identity", using: :btree
   end
 
   create_table "answers", force: :cascade do |t|
@@ -77,9 +78,6 @@ ActiveRecord::Schema.define(version: 20171012220955) do
     t.integer  "followed_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
-    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
-    t.index ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
   end
 
   create_table "round_questions", force: :cascade do |t|

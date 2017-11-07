@@ -1,9 +1,13 @@
-.aviary-banner {
-  height: 100vh;
+.aviary-title {
+  height: 110px;
 }
 
-.aviary-title {
-  height: 20vh;
+.aviary-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: 60vh;
+  overflow-x: hidden;
 }
 
 .aviary-title-div {
@@ -19,31 +23,28 @@
   justify-content: center;
 }
 
+.locked {
+  background-color: #E6E6E6 !important;
+}
+
 .aviary-card {
-  width: 18vw;
+  width: 215px;
+  margin: 15px;
 }
 
 .aviary-card-footer {
   background-color: white;
   padding: 5px;
   border-radius: 0px 0px 5px 5px;
-}
-
-.aviary-name {
-  overflow-y: hidden;
-}
-
-.aviary-achieve {
-  overflow-y: hidden;
-  overflow-x: hidden;
-}
-
-@media only screen and (max-width: 768px) {
-    .aviary-card {
-      width: 40vw;
-    }
+  height: 150px;
 }
 
 .aviary-image {
-  height: 20vh;
+  height: 150px;
+}
+
+@media only screen and (max-width: 768px) {
+    .aviary-title {
+      height: 50px;
+    }
 }
