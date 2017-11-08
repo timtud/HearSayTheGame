@@ -10,6 +10,67 @@
   overflow-x: hidden;
 }
 
+.aviary-achieve {
+  font-size: 14px;
+  color: #595959;
+}
+
+.aviary-locked {
+  background-color: #191919;
+  color: white;
+  width: 215px;
+  margin-left: -5px;
+  margin-top: -5px;
+  text-align: center;
+}
+
+.ribbon {
+  width: 238px;
+  margin-left: -17px;
+  margin-top: -5px;
+  height: 35px;
+  position: absolute;
+  text-align: center;
+  font-size: 23px!important;
+  background: #4c7ad4;
+  background: -webkit-gradient(linear, left top, left bottom, from(#4c7ad4), to(#518bd1));
+  background: -webkit-linear-gradient(top, #4c7ad4, #518bd1);
+  background: -moz-linear-gradient(top, #4c7ad4, #518bd1);
+  background: -ms-linear-gradient(top, #4c7ad4, #518bd1);
+  background: -o-linear-gradient(top, #4c7ad4, #518bd1);
+  background-image: -ms-linear-gradient(top, #4c7ad4 0%, #518bd1 100%);
+  -webkit-box-shadow: rgba(000,000,000,0.3) 0 1px 1px;
+  -moz-box-shadow: rgba(000,000,000,0.3) 0 1px 1px;
+  box-shadow: rgba(000,000,000,0.3) 0 1px 1px;
+  font-family: 'Helvetica Neue',Helvetica, sans-serif;
+}
+
+.ribbon p {
+  font-size: 20px;
+  color: #ffffff;
+  text-shadow: #240c0c 0 1px 0;
+  text-align: center;
+}
+
+.ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+  border-color: #0a2f57 transparent transparent transparent;
+  position: absolute;
+  display: block;
+  border-style: solid;
+  bottom: -0.5em;
+  content: '';
+}
+
+.ribbon .ribbon-content:before {
+  left: 0;
+  border-width: 0.5em 0 0 0.5em;
+}
+
+.ribbon .ribbon-content:after {
+  right: 0;
+  border-width: 0.5em 0.5em 0 0;
+}
+
 .aviary-title-div {
   display: flex;
   justify-content: center;
@@ -30,6 +91,9 @@
 .aviary-card {
   width: 215px;
   margin: 15px;
+  box-shadow: 1px 1px 1px #7F7F7F;
+  border-radius: 5px;
+  position: relative;
 }
 
 .aviary-card-footer {
