@@ -8,6 +8,7 @@
   flex-wrap: wrap;
   height: 60vh;
   overflow-x: hidden;
+  align-items: center;
 }
 
 .aviary-achieve {
@@ -24,9 +25,13 @@
   text-align: center;
 }
 
+.left-ribbon {
+  margin-left: -17px !important;
+}
+
 .ribbon {
   width: 238px;
-  margin-left: -17px;
+  margin-left: -16px;
   margin-top: -5px;
   height: 35px;
   position: absolute;
@@ -110,5 +115,8 @@
 @media only screen and (max-width: 768px) {
     .aviary-title {
       height: 50px;
+    }
+    .left-ribbon {
+      margin-left: -16px !important;
     }
 }
