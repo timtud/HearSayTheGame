@@ -16,7 +16,7 @@ require 'csv'
 
 def load_movies
 answers_hash = {}
-  CSV.foreach("db/Tweets310817.csv") do |row|
+  CSV.foreach("db/Tweets091117.csv") do |row|
 
     question = row[0].to_s
     name = row[1].to_s

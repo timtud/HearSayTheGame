@@ -1,1 +1,430 @@
-<div class="container text-center leaderboard"> <div class="row"> <div class="col-sm-2 trumper hidden-xs"> <%=image_tag "donaldjaytrump.png" %> </div><div class="col-sm-8"> <div class="container scoreboard"> <h1 class="hidden-xs move-text-right">Leaderboard</h1> <h3 class="visible-xs move-text-right">Leaderboard</h3> <div class="tabs hidden-xs"> <a class="tab active" data-target="#alltime"> <h3>All time</h3> </a> <a class="tab" data-target="#monthly"> <h3>Monthly</h3> </a> <a class="tab" data-target="#weekly"> <h3>Weekly</h3> </a> <a class="tab" data-target="#daily"> <h3>Daily</h3> </a> <a class="tab" data-target="#round"> <h3>Top round</h3> </a> </div><div class="navbar-wagon-item hidden-sm hidden-md hidden-lg lead-menu"> <div class="dropdown"> <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i> <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu"> <a class="tab active" data-target="#alltime"> <p>All time</p></a> <a class="tab" data-target="#monthly"> <p>Monthly</p></a> <a class="tab" data-target="#weekly"> <p>Weekly</p></a> <a class="tab" data-target="#daily"> <p>Daily</p></a> <a class="tab" data-target="#round"> <p>Top round</p></a> </ul> </div></div><div class="tab-content board" id="alltime" ss-container> <% board=User.top_players %> <table class="table table-striped"> <thead> <tr> <th class="thead">Rank</th> <th class="thead" id="user">Handle</th> <th class="thead">Score</th> <th class="thead hidden-xs">Rounds played</th> </tr><% if user_signed_in? %> <tr> <% score=current_user.player_score %> <th class="self">#<%=board.find_index([score,current_user.email]) + 1 %></th> <th class="self" >@<%=current_user.get_username %></th> <th class="self"><%=score %></th> <th class="self hidden-xs"><%=current_user.rounds.count %></th> </tr><% end %> </thead> <tbody> <% board[0..100].each_with_index do |user, index| %> <tr> <% if user_signed_in? && current_user.email==user[1] %> <td class="info">#<%=index+1 %></td><td class="info" >@<%=link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %></td><td class="info"><%=user[0] %></td><td class="info hidden-xs"><%=current_user.rounds.count %></td><% else %> <td>#<%=index+1 %></td><td>@<%=link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %></td><td><%=user[0] %></td><td class="hidden-xs"><%=User.where(email: user[1]).first.rounds.count %></td><% end %> </tr><% end %> </tbody> </table> </div><div class="tab-content hidden board" id="monthly" ss-container> <% board=User.top_players('month') %> <table class="table table-striped"> <thead> <tr> <th class="thead">Rank</th> <th class="thead">Handle</th> <th class="thead">Score</th> </tr><% if user_signed_in? %> <tr> <% score=current_user.player_score('month') %> <th class="self">#<%=board.find_index([score,current_user.email]) + 1 %></th> <th class="self" >@<%=current_user.get_username %></th> <th class="self"><%=score %></th> </tr><% end %> </thead> <tbody> <% board[0..100].each_with_index do |user, index| %> <tr> <% if user_signed_in? && current_user.email==user[1] %> <td class="info">#<%=index+1 %></td><td class="info" >@<%=User.where(email: user[1]).first.get_username %></td><td class="info"><%=user[0] %></td><% else %> <td>#<%=index+1 %></td><td>@<%=link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %></td><td><%=user[0] %></td><% end %> </tr><% end %> </tbody> </table> </div><div class="tab-content hidden board" id="weekly" ss-container> <% board=User.top_players('week') %> <table class="table table-striped"> <thead> <tr> <th class="thead">Rank</th> <th class="thead">Handle</th> <th class="thead">Score</th> </tr><% if user_signed_in? %> <tr> <% score=current_user.player_score("week") %> <th class="self">#<%=board.find_index([score,current_user.email]) + 1 %></th> <th class="self" >@<%=current_user.get_username %></th> <th class="self"><%=score %></th> </tr><% end %> </thead> <tbody> <% board[0..100].each_with_index do |user, index| %> <tr> <% if user_signed_in? && current_user.email==user[1] %> <td class="info">#<%=index+1 %></td><td class="info" >@<%=User.where(email: user[1]).first.get_username %></td><td class="info"><%=user[0] %></td><% else %> <td>#<%=index+1 %></td><td>@<%=link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %></td><td><%=user[0] %></td><% end %> </tr><% end %> </tbody> </table> </div><div class="tab-content hidden board" id="daily" ss-container> <% board=User.top_players('day') %> <table class="table table-striped"> <thead> <tr> <th class="thead">Rank</th> <th class="thead">Handle</th> <th class="thead">Score</th> </tr><% if user_signed_in? %> <tr> <% score=current_user.player_score('day') %> <th class="self">#<%=board.find_index([score,current_user.email]) + 1 %></th> <th class="self" >@<%=current_user.get_username %></th> <th class="self"><%=score %></th> </tr><% end %> </thead> <tbody> <% board[0..100].each_with_index do |user, index| %> <tr> <% if user_signed_in? && current_user.email==user[1] %> <td class="info">#<%=index+1 %></td><td class="info" >@<%=User.where(email: user[1]).first.get_username %></td><td class="info"><%=user[0] %></td><% else %> <td>#<%=index+1 %></td><td>@<%=link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %></td><td><%=user[0] %></td><% end %> </tr><% end %> </tbody> </table> </div><div class="tab-content hidden board" id="round" ss-container> <% round_board=User.top_round %> <table class="table table-striped"> <thead> <tr> <th class="thead">Rank</th> <th class="thead">Handle</th> <th class="thead">Score</th> </tr><% if user_signed_in? %> <tr> <% if current_user.rounds.maximum(:score) %> <% score=current_user.rounds.maximum(:score) %> <% else %> <% score=0 %> <% end %> <th class="self">#<%=round_board.find_index([score,current_user.email]) + 1 %></th> <th class="self" >@<%=current_user.get_username %></th> <th class="self"><%=score %></th> </tr><% end %> </thead> <tbody> <% round_board[0..100].each_with_index do |user, index| %> <tr> <% if user_signed_in? && current_user.email==user[1] %> <td class="info">#<%=index+1 %></td><td class="info" >@<%=User.where(email: user[1]).first.get_username %></td><td class="info"><%=user[0] %></td><% else %> <td>#<%=index+1 %></td><td>@<%=link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %></td><td><%=user[0] %></td><% end %> </tr><% end %> </tbody> </table> </div></div></div><div class="col-sm-2 swanye hidden-xs"> <%=image_tag "swanyewest.png" %> </div></div></div><% content_for(:after_js) do %><script>$(function(){$(".tab").on("click", function(e){/* Change active tab*/ $(".tab").removeClass('active'); $(this).addClass('active'); /* Hide all tab-content (use class="hidden")*/ $(".tab-content").addClass('hidden'); /* Show target tab-content (use class="hidden")*/ $($(this).data('target')).removeClass('hidden');});});/* Simple Scrollbar*/(function(e,d){function g(a){a.hasOwnProperty("data-simple-scrollbar")||Object.defineProperty(a,"data-simple-scrollbar",new SimpleScrollbar(a))}function l(a,b){function c(a){var c=a.pageY-e;e=a.pageY;h(function(){b.el.scrollTop+=c/b.scrollRatio})}function f(){a.classList.remove("ss-grabbed");d.body.classList.remove("ss-grabbed");d.removeEventListener("mousemove",c);d.removeEventListener("mouseup",f)}var e;a.addEventListener("mousedown",function(b){e=b.pageY;a.classList.add("ss-grabbed");d.body.classList.add("ss-grabbed");d.addEventListener("mousemove",c);d.addEventListener("mouseup",f);return!1})}function f(a){this.target=a;this.direction=window.getComputedStyle(this.target).direction;this.bar='<div class="ss-scroll">';this.wrapper=d.createElement("div");this.wrapper.setAttribute("class","ss-wrapper");this.el=d.createElement("div");this.el.setAttribute("class","ss-content");"rtl"===this.direction&&this.el.classList.add("rtl");for(this.wrapper.appendChild(this.el);this.target.firstChild;)this.el.appendChild(this.target.firstChild);this.target.appendChild(this.wrapper);this.target.insertAdjacentHTML("beforeend",this.bar);this.bar=this.target.lastChild;l(this.bar,this);this.moveBar();this.el.addEventListener("scroll",this.moveBar.bind(this));this.el.addEventListener("mouseenter",this.moveBar.bind(this));this.target.classList.add("ss-container");var b=window.getComputedStyle(a);"0px"===b.height&&"0px"!==b["max-height"]&&(a.style.height=b["max-height"])}function k(){for(var a=d.querySelectorAll("*[ss-container]"),b=0;b<a.length;b++)g(a[b])}var h=e.requestAnimationFrame||e.setImmediate||function(a){return setTimeout(a,0)};f.prototype={moveBar:function(a){var b=this.el.scrollHeight,c=this;this.scrollRatio=this.el.clientHeight/b;var d="rtl"===c.direction?c.target.clientWidth-c.bar.clientWidth+18:-1*(c.target.clientWidth-c.bar.clientWidth);h(function(){1<=c.scrollRatio?c.bar.classList.add("ss-hidden"):(c.bar.classList.remove("ss-hidden"),c.bar.style.cssText="height:"+Math.max(100*c.scrollRatio,10)+"%; top:"+c.el.scrollTop/b*100+"%;right:"+d+"px;")})}};d.addEventListener("DOMContentLoaded",k);f.initEl=g;f.initAll=k;e.SimpleScrollbar=f})(window,document)</script><% end %>
+<div class="container text-center leaderboard">
+  <div class="row">
+    <div class="col-sm-2 trumper hidden-xs">
+      <%=image_tag "donaldjaytrump.png" %>
+    </div>
+      <div class="col-sm-8">
+        <div class="container scoreboard">
+          <h1 class="hidden-xs move-text-right">Leaderboard</h1>
+          <h3 class="visible-xs move-text-right">Leaderboard</h3>
+          <div class="tabs hidden-xs">
+            <a class="tab active" data-target="#alltime">
+              <h3>All time</h3>
+            </a>
+            <a class="tab" data-target="#monthly">
+              <h3>Monthly</h3>
+            </a>
+            <a class="tab" data-target="#weekly">
+              <h3>Weekly</h3>
+            </a>
+            <a class="tab" data-target="#daily">
+              <h3>Daily</h3>
+            </a>
+            <a class="tab" data-target="#round">
+              <h3>Top round</h3>
+            </a>
+          </div>
+          <div class="navbar-wagon-item hidden-sm hidden-md hidden-lg lead-menu">
+            <div class="dropdown"> <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+              <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+                <a class="tab active" data-target="#alltime">
+                  <p>All time</p>
+                </a>
+                <a class="tab" data-target="#monthly">
+                  <p>Monthly</p>
+                </a>
+                <a class="tab" data-target="#weekly">
+                  <p>Weekly</p>
+                </a>
+                <a class="tab" data-target="#daily">
+                  <p>Daily</p>
+                </a>
+                <a class="tab" data-target="#round">
+                  <p>Top round</p>
+                </a>
+              </ul>
+            </div>
+          </div>
+        <div class="tab-content board" id="alltime" ss-container>
+          <% board=User.top_players %>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="thead">Rank</th>
+                  <th class="thead" id="user">Handle</th>
+                  <th class="thead">Score</th>
+                  <th class="thead hidden-xs">Rounds played</th>
+                </tr>
+                <% if user_signed_in? %>
+                  <tr>
+                    <% score=current_user.player_score %>
+                    <th class="self">#
+                      <%=board.find_index([score,current_user.email]) + 1 %>
+                    </th>
+                    <th class="self">@
+                      <%=current_user.get_username %>
+                    </th>
+                    <th class="self">
+                      <%=score %>
+                    </th>
+                    <th class="self hidden-xs">
+                      <%=current_user.rounds.count %>
+                    </th>
+                  </tr>
+                <% end %>
+              </thead>
+              <tbody>
+                <% board[0..100].each_with_index do |user, index| %>
+                  <% if user[0] > 0 %>
+                    <tr>
+                      <% if user_signed_in? && current_user.email==user[1] %>
+                        <td class="info">#
+                          <%=index+1 %>
+                        </td>
+                        <td class="info">@
+                          <%=link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %>
+                        </td>
+                        <td class="info">
+                          <%=user[0] %>
+                        </td>
+                        <td class="info hidden-xs">
+                          <%=current_user.rounds.count %>
+                        </td>
+                      <% else %>
+                        <td>#
+                          <%=index+1 %>
+                        </td>
+                        <td>@
+                          <%=link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %>
+                        </td>
+                        <td>
+                          <%=user[0] %>
+                        </td>
+                        <td class="hidden-xs">
+                          <%=User.where(email: user[1]).first.rounds.count %>
+                        </td>
+                      <% end %>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
+            </div>
+            <div class="tab-content hidden board" id="monthly" ss-container>
+              <% board=User.top_players('month') %>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th class="thead">Rank</th>
+                      <th class="thead">Handle</th>
+                      <th class="thead">Score</th>
+                    </tr>
+                    <% if user_signed_in? %>
+                      <tr>
+                        <% score=current_user.player_score('month') %>
+                        <th class="self">#
+                          <%=board.find_index([score,current_user.email]) + 1 %>
+                        </th>
+                        <th class="self">@
+                          <%=current_user.get_username %>
+                        </th>
+                        <th class="self">
+                          <%=score %>
+                        </th>
+                      </tr>
+                    <% end %>
+                  </thead>
+                <tbody>
+                  <% board[0..100].each_with_index do |user, index| %>
+                    <% if user[0] > 0 %>
+                      <tr>
+                        <% if user_signed_in? && current_user.email==user[1] %>
+                          <td class="info">#
+                            <%=index+1 %>
+                          </td>
+                          <td class="info">@
+                            <%=User.where(email: user[1]).first.get_username %>
+                          </td>
+                          <td class="info">
+                            <%=user[0] %>
+                          </td>
+                          <% else %>
+                            <td>#
+                              <%=index+1 %>
+                            </td>
+                            <td>@
+                              <%=link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %>
+                            </td>
+                            <td>
+                              <%=user[0] %>
+                            </td>
+                          <% end %>
+                        </tr>
+                      <% end %>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+              <div class="tab-content hidden board" id="weekly" ss-container>
+                <% board=User.top_players('week') %>
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th class="thead">Rank</th>
+                        <th class="thead">Handle</th>
+                        <th class="thead">Score</th>
+                      </tr>
+                      <% if user_signed_in? %>
+                        <tr>
+                          <% score=current_user.player_score("week") %>
+                          <th class="self">#
+                              <%=board.find_index([score,current_user.email]) + 1 %>
+                          </th>
+                          <th class="self">@
+                              <%=current_user.get_username %>
+                          </th>
+                          <th class="self">
+                              <%=score %>
+                          </th>
+                        </tr>
+                      <% end %>
+                    </thead>
+                    <tbody>
+                      <% board[0..100].each_with_index do |user, index| %>
+                        <% if user[0] > 0 %>
+                          <tr>
+                            <% if user_signed_in? && current_user.email==user[1] %>
+                              <td class="info">#
+                                <%=index+1 %>
+                              </td>
+                              <td class="info">@
+                                <%=User.where(email: user[1]).first.get_username %>
+                              </td>
+                              <td class="info">
+                                <%=user[0] %>
+                              </td>
+                            <% else %>
+                              <td>#
+                                <%=index+1 %>
+                              </td>
+                              <td>@
+                                <%=link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %>
+                              </td>
+                              <td>
+                                <%=user[0] %>
+                              </td>
+                            <% end %>
+                          </tr>
+                        <% end %>
+                      <% end %>
+                    </tbody>
+                  </table>
+              </div>
+                <div class="tab-content hidden board" id="daily" ss-container>
+                  <% board=User.top_players('day') %>
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th class="thead">Rank</th>
+                        <th class="thead">Handle</th>
+                        <th class="thead">Score</th>
+                      </tr>
+                        <% if user_signed_in? %>
+                          <tr>
+                            <% score=current_user.player_score('day') %>
+                            <th class="self">#
+                                <%=board.find_index([score,current_user.email]) + 1 %>
+                            </th>
+                            <th class="self">@
+                                <%=current_user.get_username %>
+                            </th>
+                            <th class="self">
+                                <%=score %>
+                            </th>
+                          </tr>
+                        <% end %>
+                    </thead>
+                    <tbody>
+                      <% board[0..100].each_with_index do |user, index| %>
+                        <% if user[0] > 0 %>
+                          <tr>
+                            <% if user_signed_in? && current_user.email==user[1] %>
+                              <td class="info">#
+                                  <%=index+1 %>
+                              </td>
+                              <td class="info">@
+                                  <%=User.where(email: user[1]).first.get_username %>
+                              </td>
+                              <td class="info">
+                                  <%=user[0] %>
+                              </td>
+                            <% else %>
+                              <td>#
+                                  <%=index+1 %>
+                              </td>
+                              <td>@
+                                  <%=link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %>
+                              </td>
+                              <td>
+                                  <%=user[0] %>
+                              </td>
+                            <% end %>
+                          </tr>
+                        <% end %>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="tab-content hidden board" id="round" ss-container>
+                  <% round_board=User.top_round %>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th class="thead">Rank</th>
+                          <th class="thead">Handle</th>
+                          <th class="thead">Score</th>
+                        </tr>
+                          <% if user_signed_in? %>
+                            <tr>
+                              <% if current_user.rounds.maximum(:score) %>
+                                <% score=current_user.rounds.maximum(:score) %>
+                              <% else %>
+                                <% score=0 %>
+                              <% end %>
+                                <th class="self">#
+                                  <%=round_board.find_index([score,current_user.email]) + 1 %>
+                                </th>
+                                <th class="self">@
+                                  <%=current_user.get_username %>
+                                </th>
+                                <th class="self">
+                                  <%=score %>
+                                </th>
+                            </tr>
+                          <% end %>
+                        </thead>
+                        <tbody>
+                          <% round_board[0..100].each_with_index do |user, index| %>
+                            <% if user[0] > 0 %>
+                              <tr>
+                                <% if user_signed_in? && current_user.email==user[1] %>
+                                  <td class="info">#
+                                      <%=index+1 %>
+                                  </td>
+                                  <td class="info">@
+                                      <%=User.where(email: user[1]).first.get_username %>
+                                  </td>
+                                  <td class="info">
+                                      <%=user[0] %>
+                                  </td>
+                                <% else %>
+                                  <td>#
+                                      <%=index+1 %>
+                                  </td>
+                                  <td>@
+                                    <%=link_to User.where(email: user[1]).first.get_username, user_path(User.where(email: user[1]).first) %>
+                                  </td>
+                                  <td>
+                                    <%=user[0] %>
+                                  </td>
+                                <% end %>
+                              </tr>
+                            <% end %>
+                          <% end %>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+            </div>
+        <div class="col-sm-2 swanye hidden-xs">
+          <%=image_tag "swanyewest.png" %>
+        </div>
+    </div>
+</div>
+<% content_for(:after_js) do %>
+    <script>
+        $(function() {
+            $(".tab").on("click", function(e) { /* Change active tab*/
+                $(".tab").removeClass('active');
+                $(this).addClass('active'); /* Hide all tab-content (use class="hidden")*/
+                $(".tab-content").addClass('hidden'); /* Show target tab-content (use class="hidden")*/
+                $($(this).data('target')).removeClass('hidden');
+            });
+        }); /* Simple Scrollbar*/
+        (function(e, d) {
+            function g(a) {
+                a.hasOwnProperty("data-simple-scrollbar") || Object.defineProperty(a, "data-simple-scrollbar", new SimpleScrollbar(a))
+            }
+
+            function l(a, b) {
+                function c(a) {
+                    var c = a.pageY - e;
+                    e = a.pageY;
+                    h(function() {
+                        b.el.scrollTop += c / b.scrollRatio
+                    })
+                }
+
+                function f() {
+                    a.classList.remove("ss-grabbed");
+                    d.body.classList.remove("ss-grabbed");
+                    d.removeEventListener("mousemove", c);
+                    d.removeEventListener("mouseup", f)
+                }
+                var e;
+                a.addEventListener("mousedown", function(b) {
+                    e = b.pageY;
+                    a.classList.add("ss-grabbed");
+                    d.body.classList.add("ss-grabbed");
+                    d.addEventListener("mousemove", c);
+                    d.addEventListener("mouseup", f);
+                    return !1
+                })
+            }
+
+            function f(a) {
+                this.target = a;
+                this.direction = window.getComputedStyle(this.target).direction;
+                this.bar = '<div class="ss-scroll">';
+                this.wrapper = d.createElement("div");
+                this.wrapper.setAttribute("class", "ss-wrapper");
+                this.el = d.createElement("div");
+                this.el.setAttribute("class", "ss-content");
+                "rtl" === this.direction && this.el.classList.add("rtl");
+                for (this.wrapper.appendChild(this.el); this.target.firstChild;) this.el.appendChild(this.target.firstChild);
+                this.target.appendChild(this.wrapper);
+                this.target.insertAdjacentHTML("beforeend", this.bar);
+                this.bar = this.target.lastChild;
+                l(this.bar, this);
+                this.moveBar();
+                this.el.addEventListener("scroll", this.moveBar.bind(this));
+                this.el.addEventListener("mouseenter", this.moveBar.bind(this));
+                this.target.classList.add("ss-container");
+                var b = window.getComputedStyle(a);
+                "0px" === b.height && "0px" !== b["max-height"] && (a.style.height = b["max-height"])
+            }
+
+            function k() {
+                for (var a = d.querySelectorAll("*[ss-container]"), b = 0; b < a.length; b++) g(a[b])
+            }
+            var h = e.requestAnimationFrame || e.setImmediate || function(a) {
+                return setTimeout(a, 0)
+            };
+            f.prototype = {
+                moveBar: function(a) {
+                    var b = this.el.scrollHeight,
+                        c = this;
+                    this.scrollRatio = this.el.clientHeight / b;
+                    var d = "rtl" === c.direction ? c.target.clientWidth - c.bar.clientWidth + 18 : -1 * (c.target.clientWidth - c.bar.clientWidth);
+                    h(function() {
+                        1 <= c.scrollRatio ? c.bar.classList.add("ss-hidden") : (c.bar.classList.remove("ss-hidden"), c.bar.style.cssText = "height:" + Math.max(100 * c.scrollRatio, 10) + "%; top:" + c.el.scrollTop / b * 100 + "%;right:" + d + "px;")
+                    })
+                }
+            };
+            d.addEventListener("DOMContentLoaded", k);
+            f.initEl = g;
+            f.initAll = k;
+            e.SimpleScrollbar = f
+        })(window, document)
+    </script>
+    <% end %>
