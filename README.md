@@ -18,6 +18,4 @@ Players can log in using their email, Facebook, or Twitter. Once signed in, a pr
 
 ## Achievements
 
-This feature is currently under construction.
-
 Achievements can be unlocked for reaching a certain fame score, playing on a specific day, or using different features of the website. Achievements are stored in The Aviary. Each achievement is displayed as a celebrity bird with the accomplishment shown below.
