@@ -4,7 +4,7 @@
 
 .aviary-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
   height: 60vh;
   overflow-x: hidden;
@@ -95,7 +95,7 @@
 
 .aviary-card {
   width: 215px;
-  margin: 15px;
+  margin: 20px;
   box-shadow: 1px 1px 1px #7F7F7F;
   border-radius: 5px;
   position: relative;
